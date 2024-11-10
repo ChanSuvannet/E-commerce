@@ -8,14 +8,9 @@ import './pages/help-center'
 import './pages/profile'
 
 // Apps
-import './apps/calendar'
-import './apps/chat'
-import './apps/email'
-import './apps/invoice'
 import './apps/permissions'
 
 // Dashboard
-import './dashboard/analytics'
 
 // forwards the matched request over network
 mock.onAny().passThrough()
