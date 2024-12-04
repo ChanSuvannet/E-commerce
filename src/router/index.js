@@ -3,12 +3,19 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { isUserLoggedIn } from './utils'
 import routes from '~pages'
 import { canNavigate } from '@layouts/plugins/casl'
+import Home from '../components/Home.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     // ℹ️ We are redirecting to different pages based on role.
     // NOTE: Role is just for UI purposes. ACL is based on abilities.
+    //homepage
+    { path: '/', 
+      name: 'home', 
+      component: Home, // Add Home component to the root path 
+    },
+    
     {
       path: '/',
       redirect: to => {
@@ -30,6 +37,7 @@ const router = createRouter({
       path: '/pages/account-settings',
       redirect: () => ({ name: 'pages-account-settings-tab', params: { tab: 'account' } }),
     },
+    
     ...setupLayouts(routes),
   ],
 })
