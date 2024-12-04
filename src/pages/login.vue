@@ -76,7 +76,7 @@ const onSubmit = () => {
       <div class="position-relative bg-background rounded-lg w-100 ma-8 me-0">
         <div class="d-flex align-center justify-center w-100 h-100">
           <VImg
-            max-width="505"
+            max-width="750"
             :src="authThemeImg"
             class="auth-illustration mt-16 mb-2"
           />
@@ -113,7 +113,7 @@ const onSubmit = () => {
           </p>
         </VCardText>
         <VCardText>
-          <VAlert
+          <!-- <VAlert
             color="primary"
             variant="tonal"
           >
@@ -123,7 +123,7 @@ const onSubmit = () => {
             <p class="text-caption mb-0">
               Client Email: <strong>client@demo.com</strong> / Pass: <strong>client</strong>
             </p>
-          </VAlert>
+          </VAlert> -->
         </VCardText>
         <VCardText>
           <VForm

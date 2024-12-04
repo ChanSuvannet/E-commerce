@@ -86,7 +86,7 @@ const onSubmit = () => {
       <div class="position-relative bg-background rounded-lg w-100 ma-8 me-0">
         <div class="d-flex align-center justify-center w-100 h-100">
           <VImg
-            max-width="441"
+            max-width="750"
             :src="imageVariant"
             class="auth-illustration mt-16 mb-2"
           />
