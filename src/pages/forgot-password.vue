@@ -24,7 +24,7 @@ const authThemeMask = useGenerateImageVariant(authV2MaskLight, authV2MaskDark)
       <div class="position-relative bg-background rounded-lg w-100 ma-8 me-0">
         <div class="d-flex align-center justify-center w-100 h-100">
           <VImg
-            max-width="368"
+            max-width="750"
             :src="authThemeImg"
             class="auth-illustration mt-16 mb-2"
           />

@@ -9,8 +9,20 @@ import { AppContentLayoutNav, ContentWidth, FooterType, NavbarType } from '@layo
 
 export const { themeConfig, layoutConfig } = defineThemeConfig({
   app: {
-    title: 'E-Commerce',
-    logo: h('div', { innerHTML: logo, style: 'line-height:0; color: #022D5A' }),
+    title: 'EduMaterialShop',
+    // logo: h('div', { innerHTML: logo, style: 'line-height:0; color: #022D5A' }),
+    logo: h('div', {
+      style: {
+        lineHeight: '0',
+        color: '#022D5A',
+        fontFamily: 'Arial, sans-serif', // Add a suitable font
+        fontWeight: 'bold',             // Make the text bold for similar appearance
+        fontSize: '1.5rem',             // Adjust size as needed
+      }
+    }, [
+      h('span', { style: { color: '#022D5A' } }, 'EduMaterial'),
+      h('span', { style: { color: '#FF6600' } }, 'Shop') // Orange for "Shop"
+    ]),
     contentWidth: ContentWidth.Boxed,
     contentLayoutNav: AppContentLayoutNav.Horizontal,
     overlayNavFromBreakpoint: breakpointsVuetify.md + 16,
