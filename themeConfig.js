@@ -4,12 +4,11 @@ import { VIcon } from 'vuetify/components/VIcon'
 // ❗ Logo SVG must be imported with ?raw suffix
 import { defineThemeConfig } from '@core'
 import { RouteTransitions, Skins } from '@core/enums'
-import logo from '@images/logo.svg?raw'
 import { AppContentLayoutNav, ContentWidth, FooterType, NavbarType } from '@layouts/enums'
 
 export const { themeConfig, layoutConfig } = defineThemeConfig({
   app: {
-    title: 'EduMaterialShop',
+    // title: 'EduMaterialShop',
     // logo: h('div', { innerHTML: logo, style: 'line-height:0; color: #022D5A' }),
     logo: h('div', {
       style: {
@@ -18,10 +17,10 @@ export const { themeConfig, layoutConfig } = defineThemeConfig({
         fontFamily: 'Arial, sans-serif', // Add a suitable font
         fontWeight: 'bold',             // Make the text bold for similar appearance
         fontSize: '1.5rem',             // Adjust size as needed
-      }
+      },
     }, [
       h('span', { style: { color: '#022D5A' } }, 'EduMaterial'),
-      h('span', { style: { color: '#FF6600' } }, 'Shop') // Orange for "Shop"
+      h('span', { style: { color: '#FF6600' } }, 'Shop'), // Orange for "Shop"
     ]),
     contentWidth: ContentWidth.Boxed,
     contentLayoutNav: AppContentLayoutNav.Horizontal,

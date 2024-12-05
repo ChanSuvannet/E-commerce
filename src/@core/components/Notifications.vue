@@ -1,6 +1,6 @@
 <script setup>
-import { PerfectScrollbar } from 'vue3-perfect-scrollbar'
 import { avatarText } from '@core/utils/formatters'
+import { PerfectScrollbar } from 'vue3-perfect-scrollbar'
 
 const props = defineProps({
   notifications: {
@@ -52,7 +52,7 @@ const totalUnseenNotifications = computed(() => {
     >
       <VIcon
         size="26"
-        icon="tabler-bell"
+        icon="tabler-basket"
       />
     </VBadge>
 

@@ -1,6 +1,6 @@
 export default [
   {
-    title: 'FAGs',
+    title: 'FAQs',
     icon: { icon: 'tabler-help' },
     to: 'faqs-faqs',
   },
