@@ -3,7 +3,7 @@
     <div class="row">
       <!-- Learn More Section -->
       <div class="col">
-        <h3 class="section-title">Learn More</h3>
+        <h4 class="section-title">Learn More</h4>
         <ul class="footer-list">
           <li><a href="/new-product" class="footer-link">New Product</a></li>
           <li><a href="/service" class="footer-link">Service</a></li>
@@ -16,7 +16,7 @@
       </div>
       <!-- Service Section -->
       <div class="col">
-        <h3 class="section-title">Service</h3>
+        <h4 class="section-title">Service</h4>
         <ul class="footer-list">
           <li><a href="/pen" class="footer-link">Pen</a></li>
           <li><a href="/book" class="footer-link">Book</a></li>
@@ -29,7 +29,7 @@
 
       <!-- Contact Us Section -->
       <div class="col">
-        <h3 class="section-title">Contact Us</h3>
+        <h4 class="section-title">Contact Us</h4>
         <p>Phone: +123456789</p>
         <p>Email: example@domain.com</p>
         <p>Address: 123 Street Name, City</p>
@@ -37,31 +37,27 @@
 
       <!-- Social Section -->
       <div class="col">
-        <h3 class="section-title">Social</h3>
+        <h4 class="section-title">Social</h4>
         <div class="social-icons">
-          <!-- Facebook Icon (link to Facebook) -->
+          <!-- Facebook Icon -->
           <a href="https://www.facebook.com" target="_blank">
-            <i class="fab fa-facebook" style="color: white"></i>
+            <i class="fab fa-facebook social-icon"></i>
           </a>
-
-          <!-- Instagram Icon (link to Instagram) -->
+          <!-- Instagram Icon -->
           <a href="https://www.instagram.com" target="_blank">
-            <i class="fab fa-instagram" style="color: white"></i>
+            <i class="fab fa-instagram social-icon"></i>
           </a>
-
-          <!-- Twitter Icon (link to Twitter) -->
+          <!-- Twitter Icon -->
           <a href="https://twitter.com" target="_blank">
-            <i class="fab fa-twitter" style="color: white"></i>
+            <i class="fab fa-twitter social-icon"></i>
           </a>
-
-          <!-- LinkedIn Icon (link to LinkedIn) -->
+          <!-- LinkedIn Icon -->
           <a href="https://www.linkedin.com" target="_blank">
-            <i class="fab fa-linkedin" style="color: white"></i>
+            <i class="fab fa-linkedin social-icon"></i>
           </a>
-
-          <!-- YouTube Icon (link to YouTube) -->
+          <!-- YouTube Icon -->
           <a href="https://www.youtube.com" target="_blank">
-            <i class="fab fa-youtube" style="color: white"></i>
+            <i class="fab fa-youtube social-icon"></i>
           </a>
         </div>
       </div>
@@ -71,13 +67,13 @@
 
 <style scoped>
 body {
-  
+  color: aliceblue;
   margin: 0; /* Remove default body margin */
 }
 
 .footer {
   background-color: #051752; /* Dark blue background */
-  color: white; /* Ensure text color is white */
+  color: white !important; /* Ensure text color is white */
   padding: 20px 0;
   width: 100%; /* Full width of the page */
   position: relative;
@@ -93,7 +89,7 @@ body {
   width: 100%; /* Full width of the row */
   margin: 0; /* Remove row margin */
   padding: 0 20px; /* Add padding to prevent text from touching edges */
-  color: white; /* Make sure row text is white */
+  color: white; /* Ensure row text is white */
 }
 
 .col {
@@ -103,10 +99,30 @@ body {
 }
 
 .section-title {
+  color: white; /* Ensure section titles are white */
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 10px;
-  color: white !important; /* Ensure section titles are white */
+}
+
+.footer-list {
+  list-style: none; /* Removes bullet points */
+  padding: 0; /* Removes default padding */
+  margin: 0; /* Removes default margin */
+  display: flex;
+  flex-direction: column; /* Align links vertically */
+  gap: 8px; /* Add spacing between links */
+}
+
+.footer-link {
+  color: white; /* Set link text color to white */
+  text-decoration: none; /* Removes underline from links */
+  font-size: 16px; /* Adjust font size */
+}
+
+.footer-link:hover {
+  text-decoration: underline; /* Adds underline on hover */
+  color: #ff9800; /* Optional: Change to an accent color on hover */
 }
 
 .social-icons {
@@ -114,40 +130,25 @@ body {
   gap: 10px;
 }
 
+.social-icon {
+  font-size: 24px;
+  color: white; /* Ensure social icons are white */
+  transition: color 0.3s ease; /* Smooth transition effect */
+}
+
+.social-icon:hover {
+  color: #ff9800; /* Change color on hover */
+}
+
 p {
-  margin: 10px 0; /* Increased margin for each paragraph */
-  font-size: 14px;
-  color: white !important; /* Ensure all paragraphs in footer are white */
+  color: white !important; /* Ensure all paragraph text is white */
+  font-size: 14px; /* Adjust font size */
+  margin: 10px 0; /* Add spacing between paragraphs */
 }
 
 /* Make sure the p and h4 elements inside the footer use white color */
-.footer p,
-footer h4 {
+.footer p, .footer h4 {
   color: white !important;
-  margin: 10px 0; /* Added margin for spacing */
-}
-.social-icon {
-  color: white; /* Set all icons to white */
-  font-size: 36px; /* Optional: adjust the size of the icons */
-}
-.footer-list {
-  list-style-type: none; /* Removes bullet points */
-  padding: 0; /* Removes padding from the list */
-  margin: 0; /* Removes margin */
-}
-
-.footer-link {
-  display: block; /* Makes each link take up a full line */
-  margin: 10px 0; /* Increases the space between links */
-  font-size: 20px; /* Increases the font size */
-  color: white;
-  text-decoration: none;
-  font-weight: bold; /* Makes the text bold */
-  padding: 10px 0; /* Adds padding for better spacing */
-}
-
-.footer-link:hover {
-  text-decoration: underline; /* Underline links on hover */
-  color: #ffcc00; /* Changes the link color on hover */
+  margin: 10px 0; /* Add margin for spacing */
 }
 </style>
