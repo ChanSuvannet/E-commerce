@@ -1,7 +1,7 @@
 <script setup>
 import { VForm } from 'vuetify/components/VForm'
 import { useAppAbility } from '@/plugins/casl/useAppAbility'
-import AuthProvider from '@/views/pages/authentication/AuthProvider.vue'
+import AuthProvider from '../views/authentication/AuthProvider.vue'
 import axios from '@axios'
 import { useGenerateImageVariant } from '@core/composable/useGenerateImageVariant'
 import authV2LoginIllustrationBorderedDark from '@images/pages/auth-v2-login-illustration-bordered-dark.png'
@@ -113,17 +113,19 @@ const onSubmit = () => {
           </p>
         </VCardText>
         <VCardText>
-          <!-- <VAlert
+          <!--
+            <VAlert
             color="primary"
             variant="tonal"
-          >
+            >
             <p class="text-caption mb-2">
-              Admin Email: <strong>admin@demo.com</strong> / Pass: <strong>admin</strong>
+            Admin Email: <strong>admin@demo.com</strong> / Pass: <strong>admin</strong>
             </p>
             <p class="text-caption mb-0">
-              Client Email: <strong>client@demo.com</strong> / Pass: <strong>client</strong>
+            Client Email: <strong>client@demo.com</strong> / Pass: <strong>client</strong>
             </p>
-          </VAlert> -->
+            </VAlert> 
+          -->
         </VCardText>
         <VCardText>
           <VForm
