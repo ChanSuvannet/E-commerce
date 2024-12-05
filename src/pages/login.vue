@@ -106,7 +106,7 @@ const onSubmit = () => {
           />
 
           <h5 class="text-h5 mb-1">
-            Welcome to <span class="text-capitalize"> {{ themeConfig.app.title }} </span>! 👋🏻
+            Welcome to EduMaterialShop<span class="text-capitalize"> {{ themeConfig.app.title }} </span>! 👋🏻
           </h5>
           <p class="mb-0">
             Please sign-in to your account and start the adventure
