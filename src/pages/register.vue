@@ -1,5 +1,6 @@
 <script setup>
-import { VForm } from 'vuetify/components/VForm'
+import axios from '@axios'
+import { useGenerateImageVariant } from '@core/composable/useGenerateImageVariant'
 import authV2RegisterIllustrationBorderedDark from '@images/pages/auth-v2-register-illustration-bordered-dark.png'
 import authV2RegisterIllustrationBorderedLight from '@images/pages/auth-v2-register-illustration-bordered-light.png'
 import authV2RegisterIllustrationDark from '@images/pages/auth-v2-register-illustration-dark.png'
@@ -8,8 +9,6 @@ import authV2MaskDark from '@images/pages/misc-mask-dark.png'
 import authV2MaskLight from '@images/pages/misc-mask-light.png'
 import { useAppAbility } from '@/plugins/casl/useAppAbility'
 import AuthProvider from '../views/authentication/AuthProvider.vue'
-import axios from '@axios'
-import { useGenerateImageVariant } from '@core/composable/useGenerateImageVariant'
 import { VNodeRenderer } from '@layouts/components/VNodeRenderer'
 import { themeConfig } from '@themeConfig'
 import {
@@ -17,6 +16,7 @@ import {
   emailValidator,
   requiredValidator,
 } from '@validators'
+import { VForm } from 'vuetify/components/VForm'
 
 const refVForm = ref()
 const username = ref('johnDoe')
@@ -115,10 +115,10 @@ const onSubmit = () => {
             class="mb-6"
           />
           <h5 class="text-h5 mb-1">
-            Adventure starts here 🚀
+            Adventure in Learning Here 🚀
           </h5>
           <p class="mb-0">
-            Make your app management easy and fun!
+            Revolutionizing School Supply Management !
           </p>
         </VCardText>
 
