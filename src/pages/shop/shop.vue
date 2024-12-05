@@ -32,6 +32,7 @@ import ShopCard from './ShopCard.vue'
 import SearchBox from './searchbox.vue'
 import Sidebar from './Sidebar.vue'
 import book from '../../assets/shop/book.png'
+import Footer from '@/layouts/components/Footer.vue';
 
 export default {
   name: 'Shop',
@@ -39,6 +40,7 @@ export default {
     ShopCard,
     SearchBox,
     Sidebar,
+    Footer,
   },
   
 }
