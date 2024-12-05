@@ -2,6 +2,6 @@ export default [
   {
     title: 'Home',
     icon: { icon: 'tabler-home' },
-    to: 'dashboards-analytics',
+    to: 'home-home',
   },
 ]

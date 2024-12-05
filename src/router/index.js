@@ -1,8 +1,8 @@
+import { canNavigate } from '@layouts/plugins/casl'
 import { setupLayouts } from 'virtual:generated-layouts'
 import { createRouter, createWebHistory } from 'vue-router'
-import { isUserLoggedIn } from './utils'
 import routes from '~pages'
-import { canNavigate } from '@layouts/plugins/casl'
+import { isUserLoggedIn } from './utils'
 
 
 const router = createRouter({
@@ -11,7 +11,7 @@ const router = createRouter({
     // ℹ️ We are redirecting to different pages based on role.
     // NOTE: Role is just for UI purposes. ACL is based on abilities.
     //homepage
-,
+    ,
     
     {
       path: '/',
@@ -19,7 +19,7 @@ const router = createRouter({
         const userData = JSON.parse(localStorage.getItem('userData') || '{}')
         const userRole = (userData && userData.role) ? userData.role : null
         if (userRole === 'admin')
-          return { name: 'dashboards-analytics' }
+          return { name: 'home-home' }
         if (userRole === 'client')
           return { name: 'access-control' }
         
