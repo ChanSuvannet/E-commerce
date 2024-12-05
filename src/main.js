@@ -12,6 +12,9 @@ import '@core/scss/template/index.scss'
 import '@styles/styles.scss'
 import { createPinia } from 'pinia'
 import { createApp } from 'vue'
+// main.js or App.vue
+import '@fortawesome/fontawesome-free/css/all.css'
+
 
 loadFonts()
 
