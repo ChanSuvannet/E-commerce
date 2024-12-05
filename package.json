@@ -28,6 +28,7 @@
     "axios": "1.4.0",
     "axios-mock-adapter": "1.21.4",
     "chart.js": "4.3.0",
+    "e-commerce": "file:",
     "eslint-import-resolver-alias": "^1.1.2",
     "jwt-decode": "3.1.2",
     "pinia": "2.0.35",
