@@ -23,9 +23,7 @@
     </div>
   </div>
 </template>
-
-
-<style>
+<style scoped>
 .home{
   width: 100%;
   height: auto;
