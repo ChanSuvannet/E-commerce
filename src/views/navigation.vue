@@ -1,5 +1,5 @@
 <template>
-  <div class="p-4">
+  <div class="p-4 shadow-[0px_4px_6px_0px_rgba(0,_0,_0,_0.1)]">
     <!-- Navigation Bar -->
     <nav class="flex justify-start space-x-6">
       <router-link
