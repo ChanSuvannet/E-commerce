@@ -14,9 +14,7 @@
       <div class="font-medium hover:scale-90 cursor-pointer">Register</div>
     </div>
   </div>
-  <div>
-    <Navigation></Navigation>
-  </div>
+  <Navigation></Navigation>
 </template>
 
 <script setup lang="ts">

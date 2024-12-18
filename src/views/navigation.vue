@@ -1,76 +1,84 @@
 <template>
-  <div class="bg-gray-800 text-white">
+  <div class="p-4">
     <!-- Navigation Bar -->
-    <nav class="flex justify-between p-4">
+    <nav class="flex justify-start space-x-6">
       <router-link
         to="/home"
-        class="flex items-center space-x-2"
-        :class="{ 'bg-red-500': $route.path === '/home' }"
+        class="flex items-center space-x-2 p-2 rounded-md transition-all duration-300"
+        :class="{
+          'bg-[#022d5a] text-white': $route.path === '/home',
+          'hover:bg-[#023e73]': $route.path !== '/home'
+        }"
       >
         <!-- Home Icon/Text -->
-        <svg-icon type="mdi" :path="mdiHome" class="text-white" />
-        <span>Home</span>
+        <svg-icon type="mdi" :path="mdiHome" :class="{'text-white': $route.path === '/home', 'text-gray-400': $route.path !== '/home'}" />
+        <span class="select-none">Home</span> <!-- Prevent text selection -->
       </router-link>
 
       <router-link
         to="/shop"
-        class="flex items-center space-x-2"
-        :class="{ 'bg-red-500': $route.path === '/shop' }"
+        class="flex items-center space-x-2 p-2 rounded-md transition-all duration-300"
+        :class="{
+          'bg-[#022d5a] text-white': $route.path === '/shop',
+          'hover:bg-[#023e73]': $route.path !== '/shop'
+        }"
       >
-        <!-- Shop Icon/Text -->_
-        <svg-icon type="mdi" :path="mdiShopping" class="text-white" />
-        <span>Shop</span>
+        <!-- Shop Icon/Text -->
+        <svg-icon type="mdi" :path="mdiShopping" :class="{'text-white': $route.path === '/shop', 'text-gray-400': $route.path !== '/shop'}" />
+        <span class="select-none">Shop</span> <!-- Prevent text selection -->
       </router-link>
 
       <router-link
         to="/event"
-        class="flex items-center space-x-2"
-        :class="{ 'bg-red-500': $route.path === '/event' }"
+        class="flex items-center space-x-2 p-2 rounded-md transition-all duration-300"
+        :class="{
+          'bg-[#022d5a] text-white': $route.path === '/event',
+          'hover:bg-[#023e73]': $route.path !== '/event'
+        }"
       >
         <!-- Event Icon/Text -->
-        <svg-icon type="mdi" :path="mdiEvent" class="text-white" />
-        <span>Event</span>
+        <svg-icon type="mdi" :path="mdiEvent" :class="{'text-white': $route.path === '/event', 'text-gray-400': $route.path !== '/event'}" />
+        <span class="select-none">Event</span> <!-- Prevent text selection -->
       </router-link>
 
       <router-link
         to="/faqs"
-        class="flex items-center space-x-2"
-        :class="{ 'bg-red-500': $route.path === '/faqs' }"
+        class="flex items-center space-x-2 p-2 rounded-md transition-all duration-300"
+        :class="{
+          'bg-[#022d5a] text-white': $route.path === '/faqs',
+          'hover:bg-[#023e73]': $route.path !== '/faqs'
+        }"
       >
         <!-- FAQ Icon/Text -->
-        <svg-icon type="mdi" :path="mdiHelp" class="text-white" />
-        <span>FAQs</span>
+        <svg-icon type="mdi" :path="mdiHelp" :class="{'text-white': $route.path === '/faqs', 'text-gray-400': $route.path !== '/faqs'}" />
+        <span class="select-none">FAQs</span> <!-- Prevent text selection -->
       </router-link>
     </nav>
   </div>
 </template>
 
 <script setup lang="ts">
-import SvgIcon from "@jamescoyle/vue-icon"; // Import SvgIcon for rendering SVG icons
+import SvgIcon from "@jamescoyle/vue-icon";
+import { mdiCalendarStar, mdiHelpCircleOutline, mdiHomeOutline, mdiStoreOutline } from "@mdi/js";
 
-
+const mdiHome = mdiHomeOutline;
+const mdiShopping = mdiStoreOutline;
+const mdiEvent = mdiCalendarStar;
+const mdiHelp = mdiHelpCircleOutline;
 </script>
 
 <style scoped>
-nav {
-  display: flex;
-  justify-content: space-between;
+/* Prevent text selection on active items */
+.select-none {
+  user-select: none;
 }
 
+/* Ensure a smooth color transition when hovering or changing active states */
 nav a {
-  padding: 10px 15px;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  transition: all 0.3s ease;
 }
 
 nav a:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 5px;
-}
-
-.bg-red-500 {
-  background-color: #f56565;
+  background-color: #023e73;
 }
 </style>
