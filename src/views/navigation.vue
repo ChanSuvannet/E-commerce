@@ -52,10 +52,10 @@
 <script setup lang="ts">
 import SvgIcon from "@jamescoyle/vue-icon";
 import {
-  mdiCalendarStar,
-  mdiHelpCircleOutline,
-  mdiHomeOutline,
-  mdiStoreOutline,
+mdiCalendarStar,
+mdiHelpCircleOutline,
+mdiHomeOutline,
+mdiStoreOutline,
 } from "@mdi/js";
 import { useRoute } from "vue-router";
 
