@@ -1,118 +1,87 @@
 <template>
-  <div class="p-4 shadow-[0px_4px_6px_0px_rgba(0,_0,_0,_0.1)] w-full">
+  <div class="p-4 shadow-[0px_4px_6px_0px_rgba(0,_0,_0,_0.1)] w-full mb-5">
     <!-- Navigation Bar -->
-    <nav class="flex justify-start space-x-6">
+    <div class="flex justify-start space-x-6">
       <router-link
         to="/home"
         class="flex items-center space-x-2 p-2 rounded-md transition-all duration-300"
-        :class="{
-          'bg-[#022d5a] text-white': $route.path === '/home',
-          'hover:bg-[#023e73]': $route.path !== '/home',
-        }"
+        :class="getLinkClass('/home')"
       >
         <!-- Home Icon/Text -->
-        <svg-icon
-          type="mdi"
-          :path="mdiHome"
-          :class="{
-            'text-white': $route.path === '/home',
-            'text-gray-400': $route.path !== '/home',
-          }"
-        />
+        <svg-icon type="mdi" :path="mdiHome" :class="getIconClass('/home')" />
         <span class="select-none">Home</span>
-        <!-- Prevent text selection -->
       </router-link>
 
       <router-link
         to="/shop"
         class="flex items-center space-x-2 p-2 rounded-md transition-all duration-300"
-        :class="{
-          'bg-[#022d5a] text-white': $route.path === '/shop',
-          'hover:bg-[#023e73]': $route.path !== '/shop',
-        }"
+        :class="getLinkClass('/shop')"
       >
         <!-- Shop Icon/Text -->
         <svg-icon
           type="mdi"
           :path="mdiShopping"
-          :class="{
-            'text-white': $route.path === '/shop',
-            'text-gray-400': $route.path !== '/shop',
-          }"
+          :class="getIconClass('/shop')"
         />
         <span class="select-none">Shop</span>
-        <!-- Prevent text selection -->
       </router-link>
 
       <router-link
         to="/event"
         class="flex items-center space-x-2 p-2 rounded-md transition-all duration-300"
-        :class="{
-          'bg-[#022d5a] text-white': $route.path === '/event',
-          'hover:bg-[#023e73]': $route.path !== '/event',
-        }"
+        :class="getLinkClass('/event')"
       >
         <!-- Event Icon/Text -->
-        <svg-icon
-          type="mdi"
-          :path="mdiEvent"
-          :class="{
-            'text-white': $route.path === '/event',
-            'text-gray-400': $route.path !== '/event',
-          }"
-        />
+        <svg-icon type="mdi" :path="mdiEvent" :class="getIconClass('/event')" />
         <span class="select-none">Event</span>
-        <!-- Prevent text selection -->
       </router-link>
 
       <router-link
         to="/faqs"
         class="flex items-center space-x-2 p-2 rounded-md transition-all duration-300"
-        :class="{
-          'bg-[#022d5a] text-white': $route.path === '/faqs',
-          'hover:bg-[#023e73]': $route.path !== '/faqs',
-        }"
+        :class="getLinkClass('/faqs')"
       >
         <!-- FAQ Icon/Text -->
-        <svg-icon
-          type="mdi"
-          :path="mdiHelp"
-          :class="{
-            'text-white': $route.path === '/faqs',
-            'text-gray-400': $route.path !== '/faqs',
-          }"
-        />
+        <svg-icon type="mdi" :path="mdiHelp" :class="getIconClass('/faqs')" />
         <span class="select-none">FAQs</span>
-        <!-- Prevent text selection -->
       </router-link>
-    </nav>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import SvgIcon from "@jamescoyle/vue-icon";
 import {
-mdiCalendarStar,
-mdiHelpCircleOutline,
-mdiHomeOutline,
-mdiStoreOutline,
+  mdiCalendarStar,
+  mdiHelpCircleOutline,
+  mdiHomeOutline,
+  mdiStoreOutline,
 } from "@mdi/js";
+import { useRoute } from "vue-router";
+
+const route = useRoute();
 
 const mdiHome = mdiHomeOutline;
 const mdiShopping = mdiStoreOutline;
 const mdiEvent = mdiCalendarStar;
 const mdiHelp = mdiHelpCircleOutline;
+
+const getLinkClass = (path: string) =>
+  route.path === path
+    ? "bg-[#022d5a] text-white"
+    : "hover:bg-[#023e73] text-gray-500";
+
+const getIconClass = (path: string) =>
+  route.path === path ? "text-white" : "text-gray-400 hover:text-white";
 </script>
 
 <style scoped>
-/* Prevent text selection on active items */
 .select-none {
   user-select: none;
 }
 
-/* Ensure a smooth color transition when hovering or changing active states */
 nav a {
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
 }
 
 nav a:hover {
