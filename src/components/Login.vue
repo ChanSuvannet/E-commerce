@@ -30,7 +30,7 @@
         </div>
         <button type="submit">Login</button>
       </form>
-      <p>Already have an account? <a href="/register">Sign in instead</a></p>
+      <p>New on our platform?  <a href="/register"> Create new account</a></p>
       <p style="text-align: center;">or</p>
       <div class="platform">
         <img src="../assets/icons/facebook.png" alt="Facebook" />
@@ -52,8 +52,8 @@ export default {
   },
   methods: {
     register() {
-      // Handle registration logic here
       console.log('User registered:', this.username, this.email, this.password);
+      this.$router.push('/');
     }
   }
 };
@@ -80,7 +80,6 @@ export default {
 }
 
 .form-side {
-  /* background-color: #0056b3; */
   flex: 1;
   padding: 20px;
 }
@@ -150,4 +149,5 @@ a {
 .remember-me input {
   margin-right: 5px;
 }
+
 </style>

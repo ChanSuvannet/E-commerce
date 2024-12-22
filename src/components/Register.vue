@@ -51,8 +51,8 @@ export default {
   },
   methods: {
     register() {
-      // Handle registration logic here
       console.log('User registered:', this.username, this.email, this.password);
+      this.$router.push('/');
     }
   }
 };
