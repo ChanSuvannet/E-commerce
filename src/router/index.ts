@@ -5,6 +5,9 @@ import Home from '../components/Home.vue';
 import Login from '../components/Login.vue';
 import Register from '../components/Register.vue';
 import Shop from '../components/Shop/Shop.vue';
+import ShopCardDetail from '../components/Shop/ShopCardDetail.vue';
+import ShopCard from '../components/Shop/ShopCard.vue';
+import CardList from '../components/Shop/CardList.vue';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -18,8 +21,26 @@ const router = createRouter({
     {
       path: '/shop',
       name: 'shop',
-      component: Shop
+      component: Shop,
+      children: [
+        {
+          path: '',
+          name: 'all',
+          component: ShopCard,
+        },
+        {
+          path: 'detail/:id',
+          name: 'detail',
+          component: ShopCardDetail,
+        },
+        {
+          path: 'list',
+          name: 'list',
+          component: CardList,
+        }
+      ],
     },
+    
     {
       path: '/event',
       name: 'event',

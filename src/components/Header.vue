@@ -10,7 +10,8 @@
         :path="darkMode"
         class="hover:scale-90 cursor-pointer"
       />
-      <svg-icon type="mdi" :path="shop" class="hover:scale-90 cursor-pointer" />
+      <!-- <svg-icon type="mdi" :path="shop" class="hover:scale-90 cursor-pointer" /> -->
+       <Icon />
       <div class="font-medium hover:scale-90 cursor-pointer">Register</div>
     </div>
   </div>
@@ -20,6 +21,7 @@
 <script setup lang="ts">
 import { mdiShoppingOutline, mdiThemeLightDark } from "@mdi/js";
 import Navigation from "../views/navigation.vue";
+import Icon from './Shop/Icon.vue'
 // Define the path of the icon
 const darkMode = mdiThemeLightDark;
 const shop = mdiShoppingOutline;
