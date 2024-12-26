@@ -1,71 +1,137 @@
 <template>
   <div class="home">
     <div class="intro">
-      <div class="title">
-        <h1>Best for products for your Education</h1>
-      </div>
-      <div class="imageIntro">
-        image
-      </div>
+      <div class="title">Best products for your Education</div>
+      <img class="introPic" src="../assets/photo/intro.jpg" alt="banner">
     </div>
-    <div class="bestSeller">
-      <h2>Best Sellers</h2>
+    <div class="bestSellerPro">
+      <div class="bestSellingPro">BEST SELLING PRODUCTS</div>
       <div class="productGrid">
-        <div class="product">Shappener</div>
-        <div class="product">Notebook</div>
-        <div class="product">Highlighter</div>
-        <div class="product">Pen</div>
-        <div class="product">Book</div>
-        <div class="product">Color Pen</div>
-        <div class="product">Ruler</div>
-        <div class="product">Pink Pen</div>
+        <div class="product">
+          <img class="proPic" src="../assets/photo/book.jpg" alt="book">
+          <div class="proName">BOOKS</div>
+        </div>
+        <div class="product">
+          <img class="proPic" src="../assets/photo/color.png" alt="book">
+          <div class="proName">CRAYON</div>
+        </div>
+        <div class="product">
+          <img class="proPic" src="../assets/photo/PEN.jpg" alt="book">
+          <div class="proName">PEN</div>
+        </div>
+        <div class="product">
+          <img class="proPic" src="../assets/photo/stickerNote.png" alt="book">
+          <div class="proName">STICKER NOTE</div>
+        </div>
+        <div class="product">
+          <img class="proPic" src="../assets/photo/pencialCase.png" alt="book">
+          <div class="proName">Pencial Case</div>
+        </div>
+        <div class="product">
+          <img class="proPic" src="../assets/photo/correctionPen.jpg" alt="book">
+          <div class="proName">Correction Pen</div>
+        </div>
+        <div class="product">
+          <img class="proPic" src="../assets/photo/keychain.png" alt="book">
+          <div class="proName">KEYCHAIN</div>
+        </div>
+        <div class="product">
+          <img class="proPic" src="../assets/photo/notebook.png" alt="book">
+          <div class="proName">NOTEBOOK</div>
+        </div>
       </div>
     </div>
+    <div class="bestSellingPro">BEST SELLING BOOKs</div>
+    <BestSellingBook />
+    
   </div>
 </template>
 
+<script> 
+
+import BestSellingBook from '../views/BestSellingBook.vue' 
+
+export default { 
+  components: { 
+    BestSellingBook,
+    
+  },
+} 
+</script>
 
 <style>
-.home{
+.proName {
+  text-align: center;
+  font-size: medium;
+  font-weight: 600;
+  font-family: sans-serif;
+}
+
+.proPic {
+  width: 100%;
+  height: 90%;
+  padding: 4%;
+}
+
+.bestSellingPro {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  font-size: 30px;
+  font-weight: 1000;
+  color: #1d3a4c;
+}
+
+.introPic {
+  width: 100%;
+  height: 100%;
+}
+
+.home {
   width: 100%;
   height: auto;
   padding: 2%;
-  border: solid black;
 }
-.intro{
+
+.intro {
   display: flex;
   justify-content: baseline;
   gap: 5px;
   width: 100%;
-  height: 230px;
-  border: solid black;
+  height: 450px;
 }
-.title{
+
+.title {
   padding: 2%;
-  width: 50%;
   width: 50%;
   height: 100%;
   justify-content: center;
   align-items: center;
-  display:flex;
+  display: flex;
+  font-size: 50px;
+  font-weight: 1000;
+  color: #1d3a4c;
 }
-.bestSeller{
+
+.bestSellerPro {
   padding: 1%;
-  
+  height:400px;
 }
-.productGrid{
+
+.productGrid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(8, 1fr);
   grid-template-rows: repeat(2, 1fr);
   gap: 10px;
   padding: 20px;
 }
-.product{
+
+.product {
   width: 100%;
-  height: 150px;
+  height: 250px;
   padding: 2%;
   align-items: center;
-  border: solid black;
+  border: solid #c3c0bd;
 }
-</style>
 
+</style>
