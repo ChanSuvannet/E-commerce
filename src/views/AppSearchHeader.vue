@@ -23,7 +23,7 @@ defineOptions({ inheritAttrs: false });
   <!-- 👉 Search Banner  -->
   <div
     flat
-    class="text-center search-header bg-slate-200 mx-2 rounded-md"
+    class="text-center search-header bg-slate-200 mx-5 rounded-xl"
     :style="`background: url(${AppSearchHeaderBg});`"
   >
     <div>

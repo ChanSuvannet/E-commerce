@@ -1,209 +1,109 @@
 <script setup lang="ts">
-import { ref, watch } from '@vue/runtime-dom';
-import AppSearchHeader from '../views/AppSearchHeader.vue';
+import { mdiMenuDown } from "@mdi/js";
+import { computed, ref } from "@vue/runtime-dom";
+import AppSearchHeader from "../views/AppSearchHeader.vue";
 
-const faqSearchQuery = ref('') // Search query for FAQs
-const faqs = ref([]) // FAQs data array
+// Search query for FAQs
+const faqSearchQuery = ref("");
 
-// Fetch FAQs based on the search query
-// const fetchFaqs = () => {
-//   axios.get('/pages/faqs', { params: { q: faqSearchQuery.value } })
-//     .then(response => {
-//       faqs.value = response.data
-//     })
-//     .catch(error => {
-//       console.error(error)
-//     })
-// }
-
-// Reactively update FAQs when the search query changes
-// watch(faqSearchQuery, fetchFaqs, { immediate: true })
-
-const activeTab = ref('Payment')
-const activeQuestion = ref(0)
-
-watch(activeTab, () => activeQuestion.value = 0)
-
-// Data for 'Contact Us' section
-const contactUs = [
+// FAQs data array
+const faqs = ref([
   {
-    icon: 'tabler-phone',
-    via: '+ (810) 2548 2568',
-    tagLine: 'We are always happy to help!',
+    title: "What is Material Tailwind?",
+    content:
+      "Material Tailwind is a framework that enhances Tailwind CSS with additional styles and components.",
   },
   {
-    icon: 'tabler-mail',
-    via: 'hello@help.com',
-    tagLine: 'Best way to get answer faster!',
+    title: "How to use Material Tailwind?",
+    content:
+      "You can use Material Tailwind by importing its components into your Tailwind CSS project.",
   },
-]
+  {
+    title: "What can I do with Material Tailwind?",
+    content:
+      "Material Tailwind allows you to quickly build modern, responsive websites with a focus on design.",
+  },
+  {
+    title: "How to customize Material Tailwind components?",
+    content:
+      "You can customize components by extending Tailwind CSS configuration and overriding default styles.",
+  },
+  {
+    title: "Does Material Tailwind support dark mode?",
+    content:
+      "Yes, Material Tailwind fully supports dark mode with easy-to-apply configurations.",
+  },
+]);
+
+const filteredFaqs = computed(() => {
+  return faqs.value.filter(
+    (faq) =>
+      faq.title.toLowerCase().includes(faqSearchQuery.value.toLowerCase()) ||
+      faq.content.toLowerCase().includes(faqSearchQuery.value.toLowerCase())
+  );
+});
+
+// Track the currently active accordion index
+const activeQuestion = ref<number | null>(null);
 </script>
 
 <template>
   <section>
-    <!-- 👉 Search -->
+    <!-- Search Header -->
     <AppSearchHeader
       v-model="faqSearchQuery"
       title="Hello, how can we help?"
       subtitle="or select a category to quickly find the help you require"
     />
 
-    <!-- 👉 FAQ sections and questions -->
-    <VRow>
-      <VCol
-        v-show="faqs.length"
-        cols="12"
-        sm="4"
-        lg="3"
-        class="position-relative"
-      >
-        <!-- 👉 Tabs -->
-        <VTabs
-          v-model="activeTab"
-          direction="vertical"
-          class="v-tabs-pill"
-          grow
-        >
-          <VTab
-            v-for="faq in faqs"
-            :key="faq.faqTitle"
-            :value="faq.faqTitle"
-            class="text-high-emphasis"
+    <!-- FAQ Section -->
+    <div class="px-5">
+      <div class="flex gap-0">
+        <div class="w-[30%]">
+          <br>
+          <h2 class="text-2xl font-bold text-slate-800 ">
+            Frequently Asked Questions
+          </h2>
+        </div>
+        <div class="flex flex-col w-[70%]">
+          <div
+            v-for="(faq, index) in filteredFaqs"
+            :key="index"
+            class="bg-gray-100 rounded-xl mt-3 px-3"
           >
-            <VIcon
-              :icon="faq.faqIcon"
-              :size="20"
-              start
-            />
-            {{ faq.faqTitle }}
-          </VTab>
-        </VTabs>
-        <VImg
-          :width="245"
-          :src="sittingGirlWithLaptop"
-          class="d-none d-sm-block mt-10 mx-auto"
-        />
-      </VCol>
-
-      <VCol
-        cols="12"
-        sm="8"
-        lg="9"
-      >
-        <!-- 👉 Windows -->
-        <VWindow
-          v-model="activeTab"
-          class="faq-v-window disable-tab-transition"
-        >
-          <VWindowItem
-            v-for="faq in faqs"
-            :key="faq.faqTitle"
-            :value="faq.faqTitle"
-          >
-            <div class="d-flex align-center mb-6">
-              <VAvatar
-                rounded
-                color="primary"
-                variant="tonal"
-                class="me-3"
-                size="large"
+            <!-- Accordion Header -->
+            <button
+              @click="activeQuestion = activeQuestion === index ? null : index"
+              class="w-full flex justify-between items-center py-5 text-slate-800"
+            >
+              <span>{{ faq.title }}</span>
+              <span
+                class="text-slate-800 transition-transform duration-300"
+                :class="{ 'rotate-180': activeQuestion === index }"
               >
-                <VIcon
-                  :size="32"
-                  :icon="faq.faqIcon"
-                />
-              </VAvatar>
+                <svg-icon type="mdi" :path="mdiMenuDown" class="w-4 h-4" />
+              </span>
+            </button>
 
-              <div>
-                <h6 class="text-h6">
-                  {{ faq.faqTitle }}
-                </h6>
-                <span class="text-sm">{{ faq.faqSubtitle }}</span>
+            <!-- Accordion Content -->
+            <div
+              v-show="activeQuestion === index"
+              class="overflow-hidden transition-all duration-300 ease-in-out"
+              :style="{ maxHeight: activeQuestion === index ? '200px' : '0' }"
+            >
+              <div class="pb-5 text-sm text-slate-500">
+                {{ faq.content }}
               </div>
             </div>
-
-            <VExpansionPanels
-              v-model="activeQuestion"
-              multiple
-            >
-              <VExpansionPanel
-                v-for="item in faq.faqs"
-                :key="item.question"
-                :title="item.question"
-                :text="item.answer"
-              />
-            </VExpansionPanels>
-          </VWindowItem>
-        </VWindow>
-      </VCol>
-
-      <VCol
-        v-show="!faqs.length"
-        cols="12"
-        :class="!faqs.length ? 'd-flex justify-center align-center' : ''"
-      >
-        <VIcon
-          icon="tabler-help"
-          start
-          size="20"
-        />
-        <span class="text-base font-weight-medium">
-          No Results Found!!
-        </span>
-      </VCol>
-    </VRow>
-
-    <!-- 👉 You still have a question? -->
-    <div class="text-center pt-15">
-      <VChip
-        label
-        color="primary"
-        size="small"
-        class="mb-2"
-      >
-        QUESTION?
-      </VChip>
-
-      <h5 class="text-h5 mb-2">
-        You still have a question?
-      </h5>
-      <p>
-        If you can't find your question in our FAQ, you can contact us. We'll answer you shortly!
-      </p>
-
-      <!-- contacts -->
-      <VRow class="mt-4">
-        <VCol
-          v-for="contact in contactUs"
-          :key="contact.icon"
-          sm="6"
-          cols="12"
-        >
-          <VCard
-            flat
-            class="bg-var-theme-background"
-          >
-            <VCardText>
-              <VAvatar
-                rounded
-                color="primary"
-                variant="tonal"
-                class="me-3"
-              >
-                <VIcon :icon="contact.icon" />
-              </VAvatar>
-            </VCardText>
-            <VCardText>
-              <h6 class="text-h6 mb-2">
-                {{ contact.via }}
-              </h6>
-              <span>{{ contact.tagLine }}</span>
-            </VCardText>
-          </VCard>
-        </VCol>
-      </VRow>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 </template>
 
-
+<style scoped>
+.rotate-180 {
+  transform: rotate(180deg);
+}
+</style>
