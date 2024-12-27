@@ -12,29 +12,17 @@
         type="mdi"
         :path="darkMode"
         class="hover:scale-90 cursor-pointer"
+        @click="toggleTheme"
       />
-<<<<<<< HEAD
-      <!-- <svg-icon type="mdi" :path="shop" class="hover:scale-90 cursor-pointer" /> -->
-       <Icon />
-      <div class="font-medium hover:scale-90 cursor-pointer">Register</div>
-=======
-      <svg-icon type="mdi" :path="shop" class="hover:scale-99 cursor-pointer" />
-
-      <!-- Conditional Button for Register/Profile -->
+      <!-- Shop Icon -->
+      <Icon class="hover:scale-90 cursor-pointer" />
+      <!-- Register Button -->
       <div
-        v-if="!userId"
+        class="font-medium hover:scale-90 cursor-pointer"
         @click="navigateToRegister"
-        class="font-medium hover:scale-90 cursor-pointer px-3 pt-2 pb-2 bg-[#022d5a] rounded-md text-white"
       >
         Register
       </div>
-      <div
-        v-else
-        class="font-medium hover:scale-90 cursor-pointer px-3 pt-2 pb-2 bg-[#023e73] rounded-md text-white"
-      >
-        Profile
-      </div>
->>>>>>> 85eb1d443ce0574d5db382960854449993734070
     </div>
   </div>
   <Navigation />
@@ -42,20 +30,26 @@
 
 <script setup lang="ts">
 import { mdiShoppingOutline, mdiThemeLightDark } from "@mdi/js";
-import { ref } from "@vue/runtime-dom";
+import { ref } from "vue";
 import { useRouter } from "vue-router";
 import Navigation from "../views/navigation.vue";
-<<<<<<< HEAD
-import Icon from './Shop/Icon.vue'
-// Define the path of the icon
-=======
-const router = useRouter();
+import Icon from "./Shop/Icon.vue";
+
 // Define the path of the icons
->>>>>>> 85eb1d443ce0574d5db382960854449993734070
 const darkMode = mdiThemeLightDark;
 const shop = mdiShoppingOutline;
+
+// Router instance for navigation
+const router = useRouter();
 const navigateToRegister = () => {
   router.push("/register");
+};
+
+// Theme toggle function (example implementation)
+const isDarkMode = ref(false);
+const toggleTheme = () => {
+  isDarkMode.value = !isDarkMode.value;
+  document.body.classList.toggle("dark", isDarkMode.value);
 };
 
 // User authentication state
