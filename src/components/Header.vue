@@ -39,7 +39,7 @@ import Icon from "./Shop/Icon.vue";
 const darkMode = mdiThemeLightDark;
 const shop = mdiShoppingOutline;
 
-// Router instance for navigation
+// Router instance for navigation to rigister
 const router = useRouter();
 const navigateToRegister = () => {
   router.push("/register");
