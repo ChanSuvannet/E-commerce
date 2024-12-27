@@ -1,5 +1,5 @@
 import SvgIcon from '@jamescoyle/vue-icon';
-import { createApp } from 'vue';
+import { createApp } from '@vue/runtime-dom';
 import App from './App.vue';
 import router from './router';
 import './style.css';
