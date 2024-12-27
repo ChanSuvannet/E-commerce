@@ -6,16 +6,16 @@ export const useCartstore = defineStore("cart", {
     NotificationMessage: '',
   }),
   actions: {
-    addItemToCart(title){
-      this.cartCount+=1;
-    },  
-    setNotificationMessage(message){
-        this.NotificationMessage = message;
-        //Automatically class within 3 seconds
-        setTimeout(() => {
-            this.NotificationMessage = '';
-        }, 3000);
+    addItemToCart(title) {
+      this.cartCount += 1;
+    },
+    setNotificationMessage(message) {
+      this.NotificationMessage = message;
+      //Automatically class within 3 seconds
+      setTimeout(() => {
+        this.NotificationMessage = '';
+      }, 3000);
     }
   },
- 
+
 })

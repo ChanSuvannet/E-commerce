@@ -1,71 +1,84 @@
 <script setup lang="ts">
 import { mdiMenuDown } from "@mdi/js";
 import { computed, ref } from "@vue/runtime-dom";
-import AppSearchHeader from "../views/AppSearchHeader.vue";
+import { useFaqStore } from "../stores/faqStore";
 
-// Search query for FAQs
+// Access the FAQ store
+const faqStore = useFaqStore();
+
+const selectedCategory = ref<string | null>(null);
 const faqSearchQuery = ref("");
 
-// FAQs data array
-const faqs = ref([
-  {
-    title: "What is Material Tailwind?",
-    content:
-      "Material Tailwind is a framework that enhances Tailwind CSS with additional styles and components.",
-  },
-  {
-    title: "How to use Material Tailwind?",
-    content:
-      "You can use Material Tailwind by importing its components into your Tailwind CSS project.",
-  },
-  {
-    title: "What can I do with Material Tailwind?",
-    content:
-      "Material Tailwind allows you to quickly build modern, responsive websites with a focus on design.",
-  },
-  {
-    title: "How to customize Material Tailwind components?",
-    content:
-      "You can customize components by extending Tailwind CSS configuration and overriding default styles.",
-  },
-  {
-    title: "Does Material Tailwind support dark mode?",
-    content:
-      "Yes, Material Tailwind fully supports dark mode with easy-to-apply configurations.",
-  },
-]);
-
 const filteredFaqs = computed(() => {
-  return faqs.value.filter(
-    (faq) =>
-      faq.title.toLowerCase().includes(faqSearchQuery.value.toLowerCase()) ||
-      faq.content.toLowerCase().includes(faqSearchQuery.value.toLowerCase())
+  return faqStore.faqs.filter(
+    (faq: any) =>
+      (!selectedCategory.value || faq.category === selectedCategory.value) &&
+      (faq.title.toLowerCase().includes(faqSearchQuery.value.toLowerCase()) ||
+        faq.content.toLowerCase().includes(faqSearchQuery.value.toLowerCase()))
   );
 });
 
-// Track the currently active accordion index
+const categories = computed(() => {
+  const allCategories = faqStore.faqs.map((faq: any) => faq.category);
+  return Array.from(new Set(allCategories));
+});
+
 const activeQuestion = ref<number | null>(null);
 </script>
 
 <template>
   <section>
-    <!-- Search Header -->
-    <AppSearchHeader
-      v-model="faqSearchQuery"
-      title="Hello, how can we help?"
-      subtitle="or select a category to quickly find the help you require"
-    />
+    <!-- Heading -->
+    <div class="flex justify-center items-center py-5 flex-col mt-10">
+      <h2 class="text-[50px] font-bold text-slate-800 moulpali-regular">
+        Frequently Asked Questions
+      </h2>
+      <span class="font-cr-regular">
+        If you can't find an answer that you're looking for, feel free to drop
+        us a line.
+      </span>
+    </div>
+
+    <!-- Category Buttons -->
+    <div class="flex justify-center items-center gap-4 mt-1 mb-2">
+      <div
+        v-for="(category, index) in categories"
+        :key="index"
+        @click="selectedCategory = category"
+        class="relative pt-2 pb-2 px-4 rounded-full cursor-pointer custom-button transition-transform group"
+        :class="{
+          'bg-gray-100': selectedCategory === category,
+        }"
+      >
+        <span class="font-semibold relative z-10">{{ category }}</span>
+        <!-- Border Effect -->
+        <div
+          class="absolute inset-0 border-2 border-black rounded-full transition-transform transform scale-100 group-hover:scale-[1.03]"
+          :class="{ 'border-black': selectedCategory === category }"
+        ></div>
+      </div>
+
+      <!-- Show All Button -->
+      <div
+        @click="selectedCategory = null"
+        class="relative pt-2 pb-2 px-4 rounded-full cursor-pointer custom-button transition-transform group"
+        :class="{
+          'bg-gray-100': selectedCategory === null,
+        }"
+      >
+        <span class="font-semibold relative z-10">Show All</span>
+        <!-- Border Effect -->
+        <div
+          class="absolute inset-0 border-2 border-black rounded-full transition-transform transform scale-100 group-hover:scale-[1.03]"
+          :class="{ 'border-black': selectedCategory === null }"
+        ></div>
+      </div>
+    </div>
 
     <!-- FAQ Section -->
     <div class="px-5">
-      <div class="flex gap-0">
-        <div class="w-[30%]">
-          <br>
-          <h2 class="text-2xl font-bold text-slate-800 ">
-            Frequently Asked Questions
-          </h2>
-        </div>
-        <div class="flex flex-col w-[70%]">
+      <div class="flex justify-center gap-0">
+        <div class="flex flex-col w-[50%]">
           <div
             v-for="(faq, index) in filteredFaqs"
             :key="index"
@@ -76,7 +89,7 @@ const activeQuestion = ref<number | null>(null);
               @click="activeQuestion = activeQuestion === index ? null : index"
               class="w-full flex justify-between items-center py-5 text-slate-800"
             >
-              <span>{{ faq.title }}</span>
+              <span class="font-semibold">{{ faq.title }}</span>
               <span
                 class="text-slate-800 transition-transform duration-300"
                 :class="{ 'rotate-180': activeQuestion === index }"
@@ -103,7 +116,19 @@ const activeQuestion = ref<number | null>(null);
 </template>
 
 <style scoped>
+@import url("https://fonts.googleapis.com/css2?family=Moulpali&family=Playwrite+NG+Modern+Guides&display=swap");
+
 .rotate-180 {
   transform: rotate(180deg);
+}
+
+.custom-button {
+  transition: border-width 0.3s ease;
+}
+
+.moulpali-regular {
+  font-family: "Moulpali", serif;
+  font-weight: 400;
+  font-style: normal;
 }
 </style>
