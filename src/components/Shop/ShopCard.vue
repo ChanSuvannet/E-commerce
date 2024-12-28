@@ -2,7 +2,7 @@
     <div id="app">
       <div v-for="product in products" :key="product.title" class="card">
         <img :src="product.image" :alt="product.title" class="product-image"/>
-        <h3 class="title">{{product.title}}</h3>
+        <div class="title-container"><h3 class="title">{{product.title}}</h3></div>
         <div class="rating">
           <div class="stars">
             <span v-for="n in 5" :key="n" class="star" :class="{ 'filled': n <= product.rating }">★</span>
@@ -25,8 +25,7 @@
             Add to cart
           </button>
           <!-- Show the Cart Notification -->
-          <!-- Show the Cart Notification -->
-           <CartNotification v-if="cartStore.notificationMessage" :message="cartStore.setNotificationMessage" />
+           <!-- <CartNotification v-if="cartStore.notificationMessage" :message="cartStore.setNotificationMessage" /> -->
         </div>
       </div>
     </div>
@@ -36,8 +35,10 @@
 import { computed } from 'vue';
 import book from '../../assets/shop/book.png'
 import caculator from '../../assets/shop/caculator.png'
+// import {useCartstore} from '../../stores/counter'
 import {useCartstore} from '../../stores/counter'
 import CartNotification from './CartNotification.vue'
+import {useProductStore } from '../../stores/useProductStore'
   
   export default {
     name: 'ShopCard',
@@ -60,240 +61,297 @@ import CartNotification from './CartNotification.vue'
       },
 
     },
-    data() {
-      return {
-        products: [
-          {
-            id: 1,
-            image: book,
-            title: 'Black Notebook',
-            rating: 4,
-            reviews: '4,778',
-            currentPrice: '1.60',
-            originalPrice: '2.00',
-            discount: '20% Off',
-          },
-          {
-            id: 2,
-            image: book,
-            title: 'Black Notebook',
-            rating: 4,
-            reviews: '4,778',
-            currentPrice: '1.60',
-            originalPrice: '2.00',
-            discount: '20% Off',
-          },
-          {
-            id: 3,
-            image: book,
-            title: 'Black Notebook',
-            rating: 4,
-            reviews: '4,778',
-            currentPrice: '1.60',
-            originalPrice: '2.00',
-            discount: '20% Off',
-          },
-          {
-            id: 4,
-            image: book,
-            title: 'Black Notebook',
-            rating: 4,
-            reviews: '4,778',
-            currentPrice: '1.60',
-            originalPrice: '2.00',
-            discount: '20% Off',
-          },
-          {
-            id: 5,
-            image: book,
-            title: 'Black Notebook',
-            rating: 4,
-            reviews: '4,778',
-            currentPrice: '1.60',
-            originalPrice: '2.00',
-            discount: '20% Off',
-          },
-          {
-            id: 6,
-            image: caculator,
-            title: 'Black Notebook',
-            rating: 4,
-            reviews: '4,778',
-            currentPrice: '1.60',
-            originalPrice: '2.00',
-            discount: '20% Off',
-          },
-          {
-            id: 7,
-            image: caculator,
-            title: 'Black Notebook',
-            rating: 4,
-            reviews: '4,778',
-            currentPrice: '1.60',
-            originalPrice: '2.00',
-            discount: '20% Off',
-          },
-          {
-            id: 8,
-            image: caculator,
-            title: 'Black Notebook',
-            rating: 4,
-            reviews: '4,778',
-            currentPrice: '1.60',
-            originalPrice: '2.00',
-            discount: '20% Off',
-          },
-          {
-            id: 9,
-            image: caculator,
-            title: 'Black Notebook',
-            rating: 4,
-            reviews: '4,778',
-            currentPrice: '1.60',
-            originalPrice: '2.00',
-            discount: '20% Off',
-          },
-  
-        ],
-      }
+    computed: {
+    // Use the store to get the products
+    products() {
+      const productStore = useProductStore();
+      return productStore.getAllProducts;  // Access the products from the store
     },
+  },
+    // data() {
+    //   return {
+    //     products: [
+    //       {
+    //         id: 1,
+    //         image: book,
+    //         title: 'Black Notebook is the most popular',
+    //         rating: 4,
+    //         reviews: '4,778',
+    //         currentPrice: '1.60',
+    //         originalPrice: '2.00',
+    //         discount: '20% Off',
+    //       },
+    //       {
+    //         id: 2,
+    //         image: book,
+    //         title: 'Black Notebook',
+    //         rating: 4,
+    //         reviews: '4,778',
+    //         currentPrice: '1.60',
+    //         originalPrice: '2.00',
+    //         discount: '20% Off',
+    //       },
+    //       {
+    //         id: 3,
+    //         image: book,
+    //         title: 'Black Notebook',
+    //         rating: 4,
+    //         reviews: '4,778',
+    //         currentPrice: '1.60',
+    //         originalPrice: '2.00',
+    //         discount: '20% Off',
+    //       },
+    //       {
+    //         id: 4,
+    //         image: book,
+    //         title: 'Black Notebook',
+    //         rating: 4,
+    //         reviews: '4,778',
+    //         currentPrice: '1.60',
+    //         originalPrice: '2.00',
+    //         discount: '20% Off',
+    //       },
+    //       {
+    //         id: 5,
+    //         image: book,
+    //         title: 'Black Notebook',
+    //         rating: 4,
+    //         reviews: '4,778',
+    //         currentPrice: '1.60',
+    //         originalPrice: '2.00',
+    //         discount: '20% Off',
+    //       },
+    //       {
+    //         id: 6,
+    //         image: caculator,
+    //         title: 'Black Notebook',
+    //         rating: 4,
+    //         reviews: '4,778',
+    //         currentPrice: '1.60',
+    //         originalPrice: '2.00',
+    //         discount: '20% Off',
+    //       },
+    //       // {
+    //       //   id: 7,
+    //       //   image: caculator,
+    //       //   title: 'Black Notebook',
+    //       //   rating: 4,
+    //       //   reviews: '4,778',
+    //       //   currentPrice: '1.60',
+    //       //   originalPrice: '2.00',
+    //       //   discount: '20% Off',
+    //       // },
+    //       // {
+    //       //   id: 8,
+    //       //   image: caculator,
+    //       //   title: 'Black Notebook',
+    //       //   rating: 4,
+    //       //   reviews: '4,778',
+    //       //   currentPrice: '1.60',
+    //       //   originalPrice: '2.00',
+    //       //   discount: '20% Off',
+    //       // },
+    //       // {
+    //       //   id: 9,
+    //       //   image: caculator,
+    //       //   title: 'Black Notebook',
+    //       //   rating: 4,
+    //       //   reviews: '4,778',
+    //       //   currentPrice: '1.60',
+    //       //   originalPrice: '2.00',
+    //       //   discount: '20% Off',
+    //       // },
+  
+    //     ],
+    //   }
+    // },
     
   }
   </script>
   
-  <style scoped>
-  #app {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
+<style scoped>
   
-  .card {
-    width: calc(25% - 15px); 
-    padding: 16px;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  }
   
-  .product-image {
-    width: 100%;
-    height: 180px;
-    object-fit: contain;
-    margin-bottom: 12px;
-  }
-  
-  .title {
-    font-size: 16px;
-    font-weight: 500;
-    color: #333;
-    margin-bottom: 8px;
-  }
-  
-  .rating {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 8px;
-  }
-  
-  .stars {
-    display: flex;
-    gap: 2px;
-  }
-  
-  .star {
-    color: #ddd;
-    font-size: 18px;
-  }
-  
-  .star.filled {
-    color: #ff9800;
-  }
-  
-  .reviews {
-    color: #666;
-    font-size: 14px;
-  }
-  
-  .price {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 16px;
-  }
-  
-  .current {
-    font-size: 18px;
-    font-weight: 600;
-    color: #333;
-  }
-  
-  .original {
-    color: #999;
-    text-decoration: line-through;
-    font-size: 14px;
-  }
-  
-  .discount {
-    color: #e53935;
-    font-size: 14px;
-    font-weight: 500;
-  }
-  
-  .buttons {
-    display: flex;
-    gap: 8px;
-  }
-  
-  .buy-now {
-    background: #002966;
-    padding: 2px 2px;
-    padding: 8px 10px;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-weight: 500;
-    cursor: pointer;
-  }
-  
-  .add-cart {
-    flex: 1;
-    padding: 8px;
-    background: rgb(231, 228, 228);
-    color: #333;
-    border-radius: 4px;
-    font-weight: 500;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
 
+#app {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px; 
+}
+@media (max-width: 768px) {
+  #app{
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); 
+    gap: 5px;
   }
-  
+
+  .buy-now, .add-cart {
+    font-size: 10px;
+    padding: 4px 6px;
+  }
+
   .add-cart svg {
-    width: 16px;
-    height: 16px;
+    width: 12px;
+    height: 12px;
   }
-  
-  .buy-now:hover {
-    background: #001f4d;
+}
+/* .card {
+  width: 250px; 
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+} */
+
+.card {
+  width: 100%; 
+  max-width: 220px; 
+  margin: 0 auto; 
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+} 
+
+
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.product-image {
+  width: 100%;
+  height: 150px; 
+  object-fit: contain ;
+}
+.title-container{
+  width: 100%;
+}
+
+.title {
+  font-size: 13px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   }
-  
-  .add-cart:hover {
-    background: #f5f5f5;
+
+.stars {
+  display: flex;
+  gap: 2px;
+}
+
+.star {
+  color: #ddd;
+  font-size: 14px; 
+}
+
+.star.filled {
+  color: #ffa41b;
+}
+
+.reviews {
+  font-size: 12px;
+  color: #888;
+}
+
+.price {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.current {
+  font-size: 16px; 
+  font-weight: bold;
+  color: #1a73e8; 
+}
+
+.original {
+  font-size: 12px; 
+  text-decoration: line-through;
+  color: #999;
+}
+
+.discount {
+  font-size: 12px;
+  color: #e63946; 
+}
+
+.buttons {
+  display: flex;
+  gap: 6px;
+  width: 100%;
+  justify-content: space-around ;
+}
+
+.buy-now {
+  flex: 1;
+  text-align: center;
+  padding: 8px 4px; /* Reduced padding */
+  background-color: #1a73e8;
+  color: white;
+  border-radius: 4px;
+  font-size: 10px; /* Reduced font size */
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+  font-size: small;
+
+}
+
+.buy-now:hover {
+  background-color: #155bb5;
+}
+
+.add-cart {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 10px; /* Reduced padding */
+  border: 1px solid #1a73e8;
+  color: #1a73e8;
+  background-color: white;
+  border-radius: 4px;
+  font-size: 10px; /* Reduced font size */
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.add-cart:hover {
+  background-color: #1a73e8;
+  color: white;
+}
+
+.add-cart svg {
+  stroke: currentColor;
+}
+
+@media (max-width: 480px) {
+  #app {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); 
   }
-  
-  @media (max-width: 768px) {
-    .card-container {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .card-container {
-      grid-template-columns: 1fr;
-    }
-  }
-  </style>
+}
+
+</style>

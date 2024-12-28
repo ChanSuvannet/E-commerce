@@ -14,7 +14,9 @@
     import { ref } from "vue";
     import { mdiShoppingOutline } from "@mdi/js";
     import SvgIcon from '@jamescoyle/vue-icon';
-    import  {useCartstore} from '../../stores/counter'
+    // import  {useCartstore} from '../../stores/counter'
+    import {useCartstore} from '../../stores/counter'
+
 
 
     export default {
