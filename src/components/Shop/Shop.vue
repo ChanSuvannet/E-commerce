@@ -21,15 +21,13 @@
         </div>
       </div>
       <div class="card-container">
-        <!-- <ShopCardDetail/> -->
-        <!-- <ShopCard /> -->
-        <router-view  @addToCart="handleAddToCart(title)" />
-        <!-- <CartNotification v-if="catStore.notificationMessage" :message="catStore.notificationMessage" /> -->
-        
+        <router-view  @addToCart="handleAddToCart(title)"/>        
       </div>
     </div>
+    <!-- <div class="right-side">
+      <CardIcon />
+    </div> -->
   </div>
- 
 </template>
 
 <script>
@@ -39,16 +37,19 @@ import Sidebar from './Sidebar.vue'
 import book from '../../assets/shop/book.png'
 import ShopCardDetail from './ShopCardDetail.vue'
 import CartNotification from './CartNotification.vue'
+// import {useCartstore} from '../../stores/counter'
 import {useCartstore} from '../../stores/counter'
 
-export default {
+import CardIcon from './CardIcon.vue'
+ export default {
   name: 'Shop',
   components: {
     ShopCard,
     SearchBox,
     Sidebar,
     ShopCardDetail,
-    CartNotification
+    CartNotification,
+    CardIcon
   },
   data() {
     return {
@@ -79,9 +80,10 @@ export default {
   margin-left: -20px;
 }
 
+
 .contain {
   display: grid;
-  grid-template-columns: 500px auto;
+  grid-template-columns: 500px auto ;
   align-items: center;
   gap: 16px;
   width: 100%;
@@ -102,6 +104,11 @@ a {
 a:hover {
   text-decoration: underline;
   color: red;
+}
+
+.card-container{
+  padding: 0px;
+  margin: 0px;
 }
 
 </style>
