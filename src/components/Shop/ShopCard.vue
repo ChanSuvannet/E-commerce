@@ -233,6 +233,7 @@ import {useProductStore } from '../../stores/useProductStore'
   width: 100%;
   height: 150px; 
   object-fit: contain ;
+  background: #f8f8f8;
 }
 .title-container{
   width: 100%;

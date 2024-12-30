@@ -6,7 +6,6 @@ import './style.css';
 import { createPinia } from 'pinia';
 
 
-
 const app = createApp(App);
 const pinia = createPinia();
 
@@ -14,6 +13,7 @@ const pinia = createPinia();
 app.component('svg-icon', SvgIcon);
 //use store with pinia
 app.use(pinia);
+
 // Use the router
 app.use(router);
 
