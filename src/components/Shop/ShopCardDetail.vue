@@ -2,6 +2,7 @@
   <div class="shop-detail-container">
     <h1 class="header">Product Details</h1>
     <div class="product-details">
+
       <div class="product-image">
         <div class="main-image">
           <img :src="product.image" alt="Product Image" />
@@ -23,6 +24,7 @@
           </button>
         </div>
       </div>
+
       <div class="product-info">
         <h1 class="title">
           <strong>{{ product.name }}</strong>
@@ -71,8 +73,9 @@
           <span>{{ product.stock }} pieces available</span>
         </div>
         <div class="actions">
+          <Loading v-if="isLoading" />
           <button class="btn buy-now" id="buynow">Buy Now</button>
-          <button class="btn add-to-cart">
+          <button class="btn add-to-cart" @click="addToCart()">
             <RouterLink :to="`/shop/list`">Add to Cart</RouterLink>
           </button>
         </div>
@@ -90,6 +93,7 @@
 </template>
 <script>
 import book from '../../assets/shop/book.png'
+import higglightor from '../../assets/shop/higglightor.png'
 import caculator from '../../assets/shop/caculator.png'
 import SvgIcon from '@jamescoyle/vue-icon';
 import { mdiGreaterThan, mdiTagHidden } from '@mdi/js';
@@ -125,17 +129,19 @@ export default {
       const currentIndex = this.product.thumbnails.indexOf(this.product.image);
       if (currentIndex === -1) return; 
       this.product.image = this.product.thumbnails[(currentIndex + 1) % this.product.thumbnails.length];
-    } 
+    },
+    
   },
   data() {
     return {
+      isLoading : false,
       pathlesser: mdiLessThan,
       pathgreater: mdiGreaterThan,
       product: {
         name: "Leo Sodales Varius",
         brand: "Chair",
         image: book,
-        thumbnails: [book, caculator, caculator],
+        thumbnails: [book, caculator, caculator, higglightor],
         discountedPrice: 220,
         originalPrice: 180,
         discount: 30,
@@ -173,16 +179,18 @@ export default {
 .product-image {
   display: flex;
   flex-direction: column;
-
+  align-items: center;
+  justify-content: center;
   gap: 1rem;
-  border: 1px solid black;
+  background: #f8f8f8;
 }
 
 .main-image {
   background: #f8f8f8;
+  height: 400px;
+  width: 100%;
   padding: 2rem;
   border-radius: 8px;
-  border: 1px solid black;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -220,13 +228,12 @@ export default {
 .product-info {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .title {
   font-size: 2rem;
   color: #1f2937;
-  margin-bottom: 0.5rem;
 }
 
 .ratings {
