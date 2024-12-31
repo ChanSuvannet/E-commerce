@@ -21,7 +21,8 @@
         </div>
       </div>
       <div class="card-container">
-        <router-view  @addToCart="handleAddToCart(title)"/>        
+        <router-view />   
+        <!-- @addToCart="handleAddToCart(title)"      -->
       </div>
     </div>
     <!-- <div class="right-side">

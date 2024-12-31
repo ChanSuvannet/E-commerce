@@ -23,19 +23,16 @@
               <path d="M16 10a4 4 0 0 1-8 0"/>
             </svg>
             Add to cart
-          </button>
-          <!-- Show the Cart Notification -->
-           <!-- <CartNotification v-if="cartStore.notificationMessage" :message="cartStore.setNotificationMessage" /> -->
+          </button>   
         </div>
       </div>
+       <!-- Show the Cart Notification -->
+      <CartNotification v-if="message" :message="message"  />
     </div>
   </template>
   
 <script>
 import { computed } from 'vue';
-import book from '../../assets/shop/book.png'
-import caculator from '../../assets/shop/caculator.png'
-// import {useCartstore} from '../../stores/counter'
 import {useCartstore} from '../../stores/counter'
 import CartNotification from './CartNotification.vue'
 import {useProductStore } from '../../stores/useProductStore'
@@ -45,126 +42,32 @@ import {useProductStore } from '../../stores/useProductStore'
     components: {
       CartNotification
     },
+    data() {
+        return {
+          notificationMessage : false,
+          setNotificationMessage: '',
+        }
+    },
+    methods: {
+      addToCart(title) {
+        this.cartStore.addItemToCart();
+        this.cartStore.showNotifications(title);
+        this.cartStore.hideNotifications(title); 
+      }
+    },
     computed: {
       cartStore() {
         return useCartstore();
+      },
+      products() {
+        const productStore = useProductStore();
+        return productStore.getAllProducts;
+      },
+      message() {
+        return this.cartStore.message; 
       }
     },
 
-    methods: {
-      addToCart(title) {
-        // console.log(`Added to cart: ${title}`);
-        let message = 'Added to cart: ' + title ;
-        const cartStore = useCartstore();
-        cartStore.setNotificationMessage(message);  // Set the notification message
-        cartStore.addItemToCart(); // Update the global store count
-      },
-
-    },
-    computed: {
-    // Use the store to get the products
-    products() {
-      const productStore = useProductStore();
-      return productStore.getAllProducts;  // Access the products from the store
-    },
-  },
-    // data() {
-    //   return {
-    //     products: [
-    //       {
-    //         id: 1,
-    //         image: book,
-    //         title: 'Black Notebook is the most popular',
-    //         rating: 4,
-    //         reviews: '4,778',
-    //         currentPrice: '1.60',
-    //         originalPrice: '2.00',
-    //         discount: '20% Off',
-    //       },
-    //       {
-    //         id: 2,
-    //         image: book,
-    //         title: 'Black Notebook',
-    //         rating: 4,
-    //         reviews: '4,778',
-    //         currentPrice: '1.60',
-    //         originalPrice: '2.00',
-    //         discount: '20% Off',
-    //       },
-    //       {
-    //         id: 3,
-    //         image: book,
-    //         title: 'Black Notebook',
-    //         rating: 4,
-    //         reviews: '4,778',
-    //         currentPrice: '1.60',
-    //         originalPrice: '2.00',
-    //         discount: '20% Off',
-    //       },
-    //       {
-    //         id: 4,
-    //         image: book,
-    //         title: 'Black Notebook',
-    //         rating: 4,
-    //         reviews: '4,778',
-    //         currentPrice: '1.60',
-    //         originalPrice: '2.00',
-    //         discount: '20% Off',
-    //       },
-    //       {
-    //         id: 5,
-    //         image: book,
-    //         title: 'Black Notebook',
-    //         rating: 4,
-    //         reviews: '4,778',
-    //         currentPrice: '1.60',
-    //         originalPrice: '2.00',
-    //         discount: '20% Off',
-    //       },
-    //       {
-    //         id: 6,
-    //         image: caculator,
-    //         title: 'Black Notebook',
-    //         rating: 4,
-    //         reviews: '4,778',
-    //         currentPrice: '1.60',
-    //         originalPrice: '2.00',
-    //         discount: '20% Off',
-    //       },
-    //       // {
-    //       //   id: 7,
-    //       //   image: caculator,
-    //       //   title: 'Black Notebook',
-    //       //   rating: 4,
-    //       //   reviews: '4,778',
-    //       //   currentPrice: '1.60',
-    //       //   originalPrice: '2.00',
-    //       //   discount: '20% Off',
-    //       // },
-    //       // {
-    //       //   id: 8,
-    //       //   image: caculator,
-    //       //   title: 'Black Notebook',
-    //       //   rating: 4,
-    //       //   reviews: '4,778',
-    //       //   currentPrice: '1.60',
-    //       //   originalPrice: '2.00',
-    //       //   discount: '20% Off',
-    //       // },
-    //       // {
-    //       //   id: 9,
-    //       //   image: caculator,
-    //       //   title: 'Black Notebook',
-    //       //   rating: 4,
-    //       //   reviews: '4,778',
-    //       //   currentPrice: '1.60',
-    //       //   originalPrice: '2.00',
-    //       //   discount: '20% Off',
-    //       // },
-  
-    //     ],
-    //   }
-    // },
     
   }
   </script>
@@ -183,6 +86,17 @@ import {useProductStore } from '../../stores/useProductStore'
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); 
     gap: 5px;
   }
+
+  .notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
 
   .buy-now, .add-cart {
     font-size: 10px;
