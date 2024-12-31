@@ -1,18 +1,20 @@
 <template>
-    <div class="notification">
+    <div v-if="message" class="notification">
       {{ message }}
     </div>
   </template>
   
   <script>
+  import { computed } from 'vue';
+import { useCartstore} from '../../stores/counter'
   export default {
     name: 'CartNotification',
     props: {
-      message: {
+      message:{
         type: String,
-        required: true,
-      },
-    },
+        required: true, 
+      }
+    }
   };
   </script>
   
