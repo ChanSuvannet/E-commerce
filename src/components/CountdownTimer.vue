@@ -31,7 +31,7 @@ export default {
     },
     date() {
       // Format the date (Day Month Date Year)
-      const deadline = new Date("2025-01-01T00:00:00");
+      const deadline = new Date("2025-01-31T00:00:00");
       const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
       return deadline.toLocaleDateString('en-US', options);
     }
@@ -40,7 +40,7 @@ export default {
     updateCountdown() {
       const now = new Date().getTime();
       // Set deadline to January 1, 2025, at midnight
-      const deadline = new Date("2025-01-01T00:00:00").getTime();
+      const deadline = new Date("2025-01-31T00:00:00").getTime();
       this.remainingTime = Math.max(Math.floor((deadline - now) / 1000), 0);
 
       if (this.remainingTime <= 0) {

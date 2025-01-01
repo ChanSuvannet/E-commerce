@@ -8,21 +8,21 @@
           src="/src/image/pro.png"
           alt="Christmas Image 1"
           class="image"
-          @click="navigateTo('page1')"
+          @click="navigateTo('shop')"
         />
         <img
           id="slider2"
           src="/src/image/pro1.png"
           alt="Christmas Image 2"
           class="image"
-          @click="navigateTo('page2')"
+          @click="navigateTo('shop')"
         />
         <img
           id="slider3"
-          src="/src/image/x-mas.jpg"
+          src="/src/image/pro2.png"
           alt="Christmas Image 3"
           class="image"
-          @click="navigateTo('page3')"
+          @click="navigateTo('shop')"
         />
       </div>
       <div class="slider-nav">
@@ -43,57 +43,76 @@
         ></a>
       </div>
     </div>
-  </div>
 
-  <div class="discount">
-    <p>Promotion and Discount</p>
-    <button>
-      <ul class="countdown-list">
-        <li @click="handleClick('buyOneGetOne')">Buy one get one</li>
-        <li @click="handleClick('discount20')">Discount 20%</li>
-        <li @click="handleClick('discount10')">Discount 10%</li>
-      </ul>
-    </button>
-    <filtter />
+    <!-- Promotion and Discount Section -->
+    <div class="discount">
+      <p>Promotion and Discount</p>
+      <button>
+        <ul class="countdown-list">
+          <li @click="handleClick('20% Off')">Discount 20%</li>
+          <li @click="handleClick('10% Off')">Discount 10%</li>
+          <li @click="handleClick('Buy One Get One')">Buy One Get One</li>
+        </ul>
+      </button>
+    </div>
+
+    <!-- Discounted Products List -->
+    <div class="product-list">
+      <div v-if="filteredProducts.length > 0">
+        <div v-for="product in filteredProducts" :key="product.id" class="product-item">
+          <img :src="product.image" :alt="product.title" class="product-image" />
+          <div class="product-details">
+            <h4>{{ product.title }}</h4>
+            <p>Price: ${{ product.currentPrice }} <span class="original-price">${{ product.originalPrice }}</span></p>
+            <p>Discount: {{ product.discount }}</p>
+            <button @click="addToCart(product)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div v-else>
+        <p>No products found for this discount.</p>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import CountdownTimer from "./CountdownTimer.vue";
-import PromoSection from "./PromoSection.vue";
-// import Filtter from "./filtter.vue";
-
+import { computed } from 'vue';
+import { useCartstore } from '../stores/counter';
+import PromoSection from './PromoSection.vue';
+import { useProductStore } from '../stores/useProductStore';
 export default {
-  name: "Event",
+  name: 'Event',
   components: {
-    CountdownTimer,
     PromoSection,
-    // Filtter
   },
   data() {
     return {
-      currentSlide: 0, // Track the current slide
+      
+      selectedDiscount: '',  // Store selected discount type
+      filteredProducts: [],  // Store filtered products
     };
   },
   methods: {
-    // Scroll to the specified slide index
-    scrollToSlide(index) {
-      const slider = this.$refs.slider;
-      const width = slider.offsetWidth;
-      slider.scrollTo({
-        left: index * width,
-        behavior: "smooth",
-      });
-      this.currentSlide = index;
+    // Handle discount selection and filter products accordingly
+    handleClick(discount) {
+      this.selectedDiscount = discount;
+      this.filterProductsByDiscount(discount);
     },
-    // Handle the scroll event to update the current slide
-    handleScroll() {
-      const slider = this.$refs.slider;
-      const width = slider.offsetWidth;
-      const index = Math.round(slider.scrollLeft / width);
-      this.currentSlide = index;
+
+    // Filter products based on the selected discount
+    filterProductsByDiscount(discount) {
+      const productStore = useProductStore();
+      if (discount === '20% Off') {
+        this.filteredProducts = productStore.getProductsByDiscount('20% Off');
+      } else if (discount === '10% Off') {
+        this.filteredProducts = productStore.getProductsByDiscount('10% Off');
+      } else if (discount === 'Buy One Get One') {
+        this.filteredProducts = productStore.getProductsByDiscount('Buy One Get One');
+      }
     },
-    // Navigate to a specific route
+
+    // Navigate to another page when image is clicked
     navigateTo(routeName) {
       this.$router.push({ name: routeName });
     },
@@ -102,12 +121,6 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  padding: 10%; /* Adjust padding for responsiveness */
-  width: fit-content;
-}
-
-/* Slider wrapper styling */
 .slider-wrapper {
   position: relative;
   max-width: 90%;
@@ -115,41 +128,36 @@ export default {
   overflow: hidden;
 }
 
-/* Slider styling */
 .slider {
   display: flex;
-  width: 100%; /* Full-width */
-  height: auto; /* Adjust height based on content */
+  width: 100%;
+  height: auto;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25);
-  -webkit-overflow-scrolling: touch; /* WebKit-based browsers */
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
-/* Hide scrollbar for all browsers */
 .slider::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, WebKit */
+  display: none;
 }
 
-/* Image styling inside the slider */
 .slider img {
-  flex: 0 0 100%; /* Full slide width */
+  flex: 0 0 100%;
   scroll-snap-align: start;
-  object-fit: cover; /* Make the image cover the container */
+  object-fit: cover;
   width: 100%;
   height: 90%;
-  transition: transform 0.3s ease; /* Smooth zoom effect */
+  transition: transform 0.3s ease;
 }
 
-/* Optional: zoom effect on hover */
 .slider img:hover {
-  transform: scale(1.1); /* Slight zoom effect */
+  transform: scale(1.1);
 }
 
-/* Scroll navigation dots styling */
 .slider-nav {
   display: flex;
   column-gap: 0.5rem;
@@ -160,7 +168,6 @@ export default {
   z-index: 1;
 }
 
-/* Styling for individual dots */
 .slider-nav a {
   width: 0.8rem;
   height: 0.8rem;
@@ -172,60 +179,51 @@ export default {
   cursor: pointer;
 }
 
-/* Active dot styling */
 .slider-nav a.active {
   opacity: 1;
   background-color: #ffff;
 }
 
-/* Hover effect for dots */
-.slider-nav a:hover {
-  opacity: 1;
-}
-
 .discount {
-  font-size: 36px;
   font-family: Arial, Helvetica, sans-serif;
   color: #0f1253;
-  text-decoration: bold;
+  font-weight: bold;
+  font-size: 48px;
 }
 
 .countdown-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
   display: flex;
-  gap: 20px;
+  flex-direction: row; /* Arrange items in a row */
+  gap: 20px; /* Adds space between items */
+  justify-content: center; /* Center the items horizontally */
+  overflow-x: auto; /* Add horizontal scrolling if needed */
 }
 
 .countdown-list li {
   color: rgb(0, 0, 0);
-  font-size: 18px;
-  padding: 10px 20px;
+  font-size: 28px;
   border-radius: 5px;
   text-align: center;
+  padding: 10px;
+  background-color: #f0f0f0; /* Optional for visibility */
 }
 
-/* Responsive Breakpoints */
 
-/* For screens less than 600px */
 @media (max-width: 600px) {
   .slider img {
-    max-height: 250px; /* Limit the image size for smaller screens */
+    max-height: 250px;
   }
 }
 
-/* For screens 600px to 1024px */
 @media (min-width: 600px) and (max-width: 1024px) {
   .slider img {
-    max-height: 400px; /* Adjust image size for medium screens */
+    max-height: 400px;
   }
 }
 
-/* For screens greater than 1024px */
 @media (min-width: 1024px) {
   .slider img {
-    max-height: 600px; /* Larger images for wider screens */
+    max-height: 1000px;
   }
 }
 </style>

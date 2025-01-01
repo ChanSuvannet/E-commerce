@@ -1,8 +1,8 @@
 <template>
   <section class="promo">
     <div class="banner">
-      <h1>HAPPY NEW YEAR 2025</h1>
-      <CountdownTimer deadline="2025-1-1T23:59:59" />
+      <h1>HAPPY CHINESE NEW YEAR 2025</h1>
+      <CountdownTimer deadline="2025-1-31T23:59:59" />
     </div>
   </section>
 </template>
