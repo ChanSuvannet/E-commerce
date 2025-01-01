@@ -5,6 +5,8 @@ import Home from '../components/Home.vue';
 import Login from '../components/Login.vue';
 import Register from '../components/Register.vue';
 import Shop from '../components/Shop/Shop.vue';
+import Page1 from '../views/page1.vue'; // Ensure this line has the correct closing quote
+
 
 const router = createRouter({
   history: createWebHistory(),
@@ -51,7 +53,8 @@ const router = createRouter({
     {
       path: '/:catchAll(.*)',
       redirect: '/home',
-    }
+    },
+    { path: '/page1', name: 'page1', component: Page1 }
   ]
 })
 

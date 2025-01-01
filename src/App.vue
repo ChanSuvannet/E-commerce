@@ -3,6 +3,7 @@ import { computed } from "@vue/runtime-dom";
 import { useRoute } from "vue-router";
 import Header from "./components/Header.vue";
 
+
 // Get the current route
 const route = useRoute();
 
@@ -10,7 +11,10 @@ const route = useRoute();
 const hiddenHeaderPaths = ["/register", "/login"];
 
 const isHeaderHidden = computed(() => hiddenHeaderPaths.includes(route.path));
+
+
 </script>
+
 
 <template>
   <div :class="{ hidden: isHeaderHidden }">
