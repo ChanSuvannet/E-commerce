@@ -2,6 +2,7 @@
   <section class="promo">
     <div class="banner">
       <h1>HAPPY CHINESE NEW YEAR 2025</h1>
+      <p>From 29th January till 31st January</p>
       <CountdownTimer deadline="2025-1-31T23:59:59" />
     </div>
   </section>
