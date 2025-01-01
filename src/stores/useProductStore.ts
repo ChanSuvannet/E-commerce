@@ -124,13 +124,13 @@ export const useProductStore = defineStore('product', {
     getAllProducts: (state) => state.products,
     // Filter products by discount
     getProductsByDiscount: (state) => (discount: string) => {
-      return state.products.filter((product) => product.discount === discount);
+      return state.products.filter((product: any) => product.discount === discount);
     },
     // Get the total number of products
     totalProducts: (state) => state.products.length,
     // Get products with a rating of 4 or above
     getTopRatedProducts: (state) => {
-      return state.products.filter((product) => product.rating >= 4);
+      return state.products.filter((product: any) => product.rating >= 4);
     },
   },
 
@@ -143,12 +143,12 @@ export const useProductStore = defineStore('product', {
 
     // Remove a product by its ID
     removeProduct(id: number) {
-      this.products = this.products.filter((product) => product.id !== id);
+      this.products = this.products.filter((product: any) => product.id !== id);
     },
 
     // Update an existing product by its ID
     updateProduct(id: number, updatedProduct: Partial<Product>) {
-      const productIndex = this.products.findIndex((product) => product.id === id);
+      const productIndex = this.products.findIndex((product: any) => product.id === id);
       if (productIndex !== -1) {
         this.products[productIndex] = {
           ...this.products[productIndex],

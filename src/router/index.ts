@@ -4,11 +4,10 @@ import Faqs from '../components/Faqs.vue';
 import Home from '../components/Home.vue';
 import Login from '../components/Login.vue';
 import Register from '../components/Register.vue';
-import Shop from '../components/Shop/Shop.vue';
-import ShopCardDetail from '../components/Shop/ShopCardDetail.vue';
-import ShopCard from '../components/Shop/ShopCard.vue';
 import CardList from '../components/Shop/CardList.vue';
-
+import Shop from '../components/Shop/Shop.vue';
+import ShopCard from '../components/Shop/ShopCard.vue';
+import ShopCardDetail from '../components/Shop/ShopCardDetail.vue';
 
 const router = createRouter({
   history: createWebHistory(),

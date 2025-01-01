@@ -32,10 +32,9 @@
 </template>
 
 <script>
-import { computed } from 'vue';
-import {useCartstore} from '../../stores/counter'
-import CartNotification from './CartNotification.vue'
-import {useProductStore } from '../../stores/useProductStore'
+import { useCartstore } from '../../stores/counter';
+import { useProductStore } from '../../stores/useProductStore';
+import CartNotification from './CartNotification.vue';
 
 export default {
   name: 'ShopCard',

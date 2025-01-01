@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import book from '../assets/shop/book.png'
+import book from '../assets/shop/book.png';
 
 interface Product {
   id: number;

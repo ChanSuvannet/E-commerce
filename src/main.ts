@@ -1,10 +1,10 @@
 import SvgIcon from '@jamescoyle/vue-icon';
-import 'font-awesome/css/font-awesome.css';
 import { createApp } from '@vue/runtime-dom';
+// import 'font-awesome/css/font-awesome.css';
+import { createPinia } from 'pinia';
 import App from './App.vue';
 import router from './router';
 import './style.css';
-import { createPinia } from 'pinia';
 
 
 const app = createApp(App);
