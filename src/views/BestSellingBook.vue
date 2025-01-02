@@ -35,15 +35,17 @@
 
 
   <style scoped>
-
+  .bestSellingBook{
+  }
   
   .banner {
-    
+    margin-top: 15px;
     width: 100%;
-    height: 100vh;
+    height: 60vh;
     text-align: center;
     overflow: hidden;
     position: relative;
+    
     
     
   }

@@ -10,8 +10,7 @@
       <div class="productGrid">
         <div class="product" @click="navigateTo('shop')">
           <img class="proPic" src="../assets/photo/book.jpg" alt="book">
-          <div class="proName">BOOKS</div>
-          
+          <div class="proName">BOOKS</div> 
         </div>
         <div class="product" @click="navigateTo('shop')">
           <img class="proPic" src="../assets/photo/color.png" alt="book">
@@ -45,12 +44,13 @@
     </div>
     <div class="bestSellingPro">BEST SELLING BOOKs</div>
     <BestSellingBook />
+    <homeCard/>
     
   </div>
 </template>
 
 <script> 
-
+import homeCard from '../views/homeCard.vue';
 import BestSellingBook from '../views/BestSellingBook.vue' 
 import { useRouter } from 'vue-router'
 
@@ -58,6 +58,7 @@ import { useRouter } from 'vue-router'
 export default { 
   components: { 
     BestSellingBook,
+    homeCard,
     
   },
   setup() { 
