@@ -2,21 +2,38 @@
     <div class="bestSellingBook">
       <div class="banner">
         <div class="slider" style="--quantity: 10">
-          <div class="item" style="--position: 1"><img src="../assets/photo/book1.jpg" alt=""></div>
-          <div class="item" style="--position: 2"><img src="../assets/photo/book2.jpg" alt=""></div>
-          <div class="item" style="--position: 3"><img src="../assets/photo/book3.jpg" alt=""></div>
-          <div class="item" style="--position: 4"><img src="../assets/photo/book4.jpg" alt=""></div>
-          <div class="item" style="--position: 5"><img src="../assets/photo/book5.jpg" alt=""></div>
-          <div class="item" style="--position: 6"><img src="../assets/photo/book6.jpg" alt=""></div>
-          <div class="item" style="--position: 7"><img src="../assets/photo/book7.jpg" alt=""></div>
-          <div class="item" style="--position: 8"><img src="../assets/photo/book8.jpg" alt=""></div>
-          <div class="item" style="--position: 9"><img src="../assets/photo/book9.jpg" alt=""></div>
-          <div class="item" style="--position: 10"><img src="../assets/photo/book10.jpg" alt=""></div>
+          <div class="item" style="--position: 1"><img src="../assets/photo/book1.jpg" alt="" @click="navigateTo('shop')"></div>
+          <div class="item" style="--position: 2"><img src="../assets/photo/book2.jpg" alt="" @click="navigateTo('shop')"></div>
+          <div class="item" style="--position: 3"><img src="../assets/photo/book3.jpg" alt="" @click="navigateTo('shop')"></div>
+          <div class="item" style="--position: 4"><img src="../assets/photo/book4.jpg" alt="" @click="navigateTo('shop')"></div>
+          <div class="item" style="--position: 5"><img src="../assets/photo/book5.jpg" alt="" @click="navigateTo('shop')"></div>
+          <div class="item" style="--position: 6"><img src="../assets/photo/book6.jpg" alt="" @click="navigateTo('shop')"></div>
+          <div class="item" style="--position: 7"><img src="../assets/photo/book7.jpg" alt="" @click="navigateTo('shop')"></div>
+          <div class="item" style="--position: 8"><img src="../assets/photo/book8.jpg" alt="" @click="navigateTo('shop')"></div>
+          <div class="item" style="--position: 9"><img src="../assets/photo/book9.jpg" alt="" @click="navigateTo('shop')"></div>
+          <div class="item" style="--position: 10"><img src="../assets/photo/book10.jpg" alt="" @click="navigateTo('shop')"></div>
         </div>
       </div>
     </div>
   </template>
-  
+  <script>
+  import { useRouter } from 'vue-router'; // Import Vue Router 
+  export default { 
+    setup() { 
+      const router = useRouter(); // Initialize router 
+      // // Define navigateTo method 
+      const navigateTo = (page) => { 
+        router.push({ name: page }); // Navigate to the specified page 
+        }; 
+
+        return { navigateTo, 
+
+        }; 
+      }, 
+    };
+  </script>
+
+
   <style scoped>
 
   

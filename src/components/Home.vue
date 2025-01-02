@@ -3,39 +3,41 @@
     <div class="intro">
       <div class="title">Best products for your Education</div>
       <img class="introPic" src="../assets/photo/intro.jpg" alt="banner">
+      
     </div>
     <div class="bestSellerPro">
       <div class="bestSellingPro">BEST SELLING PRODUCTS</div>
       <div class="productGrid">
-        <div class="product">
+        <div class="product" @click="navigateTo('shop')">
           <img class="proPic" src="../assets/photo/book.jpg" alt="book">
           <div class="proName">BOOKS</div>
+          
         </div>
-        <div class="product">
+        <div class="product" @click="navigateTo('shop')">
           <img class="proPic" src="../assets/photo/color.png" alt="book">
           <div class="proName">CRAYON</div>
         </div>
-        <div class="product">
+        <div class="product" @click="navigateTo('shop')">
           <img class="proPic" src="../assets/photo/PEN.jpg" alt="book">
           <div class="proName">PEN</div>
         </div>
-        <div class="product">
+        <div class="product" @click="navigateTo('shop')">
           <img class="proPic" src="../assets/photo/stickerNote.png" alt="book">
           <div class="proName">STICKER NOTE</div>
         </div>
-        <div class="product">
+        <div class="product" @click="navigateTo('shop')">
           <img class="proPic" src="../assets/photo/pencialCase.png" alt="book">
           <div class="proName">Pencial Case</div>
         </div>
-        <div class="product">
+        <div class="product" @click="navigateTo('shop')">
           <img class="proPic" src="../assets/photo/correctionPen.jpg" alt="book">
           <div class="proName">Correction Pen</div>
         </div>
-        <div class="product">
+        <div class="product" @click="navigateTo('shop')">
           <img class="proPic" src="../assets/photo/keychain.png" alt="book">
           <div class="proName">KEYCHAIN</div>
         </div>
-        <div class="product">
+        <div class="product" @click="navigateTo('shop')">
           <img class="proPic" src="../assets/photo/notebook.png" alt="book">
           <div class="proName">NOTEBOOK</div>
         </div>
@@ -50,11 +52,19 @@
 <script> 
 
 import BestSellingBook from '../views/BestSellingBook.vue' 
+import { useRouter } from 'vue-router'
+
 
 export default { 
   components: { 
     BestSellingBook,
     
+  },
+  setup() { 
+    const router = useRouter() 
+    const navigateTo = (page) => { router.push({ name: page }) // Use router.push to navigate 
+    } 
+    return { navigateTo, } 
   },
 } 
 </script>
