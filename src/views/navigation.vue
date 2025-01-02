@@ -43,7 +43,7 @@
       >
         <!-- FAQ Icon/Text -->
         <svg-icon type="mdi" :path="mdiHelp" :class="getIconClass('/faqs')" />
-        <span class="select-none">FAQs</span>
+        <span class="select-none">FAQ</span>
       </router-link>
     </div>
   </div>
@@ -52,10 +52,10 @@
 <script setup lang="ts">
 import SvgIcon from "@jamescoyle/vue-icon";
 import {
-mdiCalendarStar,
-mdiHelpCircleOutline,
-mdiHomeOutline,
-mdiStoreOutline,
+  mdiCalendarStar,
+  mdiHelpCircleOutline,
+  mdiHomeOutline,
+  mdiStoreOutline,
 } from "@mdi/js";
 import { useRoute } from "vue-router";
 
