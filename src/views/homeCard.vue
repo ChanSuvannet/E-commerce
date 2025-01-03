@@ -1,68 +1,66 @@
 <template>
-<div class="card-group">
-  <div class="card">
-    <img class= "pic" src="../assets/photo/card.jpg" alt="Image Description">
+  <div class="card-group">
+    <div class="HomeCard">
+      <img class="pic" src="../assets/photo/card.jpg" alt="Image Description">
+    </div>
+    <div class="HomeCard">
+      <img class="pic" src="../assets/photo/card.jpg" alt="Image Description">
+    </div>
+    <div class="HomeCard">
+      <img class="pic" src="../assets/photo/card.jpg" alt="Image Description">
+    </div>
+    <div class="HomeCard">
+      <img class="pic" src="../assets/photo/card.jpg" alt="Image Description">
+    </div>
+    <div class="HomeCard">
+      <img class="pic" src="../assets/photo/card.jpg" alt="Image Description">
+    </div>
+    <div class="HomeCard">
+      <img class="pic" src="../assets/photo/card.jpg" alt="Image Description">
+    </div>
+    <div class="HomeCard">
+      <img class="pic" src="../assets/photo/card.jpg" alt="Image Description">
+    </div>
+    <div class="HomeCard">
+      <img class="pic" src="../assets/photo/card.jpg" alt="Image Description">
+    </div>
+    <div class="HomeCard">
+      <img class="pic" src="../assets/photo/card.jpg" alt="Image Description">
+    </div>
+    <div class="HomeCard">
+      <img class="pic" src="../assets/photo/card.jpg" alt="Image Description">
+    </div>
+    <div class="HomeCard">
+      <img class="pic" src="../assets/photo/card.jpg" alt="Image Description">
+    </div>
+    <div class="HomeCard">
+      <img class="pic" src="../assets/photo/card.jpg" alt="Image Description">
+    </div>
+    <div class="HomeCard">
+      <img class="pic" src="../assets/photo/card.jpg" alt="Image Description">
+    </div>
+    <div class="HomeCard">
+      <img class="pic" src="../assets/photo/card.jpg" alt="Image Description">
+    </div>
+    <div class="HomeCard">
+      <img class="pic" src="../assets/photo/card.jpg" alt="Image Description">
+    </div>
+    <div class="HomeCard">
+      <img class="pic" src="../assets/photo/card.jpg" alt="Image Description">
+    </div>
+    <div class="HomeCard">
+      <img class="pic" src="../assets/photo/card.jpg" alt="Image Description">
+    </div>
+    <div class="HomeCard">
+      <img class="pic" src="../assets/photo/card.jpg" alt="Image Description">
+    </div>
+    <div class="HomeCard">
+      <img class="pic" src="../assets/photo/card.jpg" alt="Image Description">
+    </div>
+    <div class="HomeCard">
+      <img class="pic" src="../assets/photo/card.jpg" alt="Image Description">
+    </div>
   </div>
-
-  <div class="card">
-    <img class= "pic" src="../assets/photo/card.jpg" alt="Image Description">
-  </div>
-  <div class="card">
-    <img class= "pic" src="../assets/photo/card.jpg" alt="Image Description">
-  </div>
-  <div class="card">
-    <img class= "pic" src="../assets/photo/card.jpg" alt="Image Description">
-  </div>
-  <div class="card">
-    <img class= "pic" src="../assets/photo/card.jpg" alt="Image Description">
-  </div>
-  <div class="card">
-    <img class= "pic" src="../assets/photo/card.jpg" alt="Image Description">
-  </div>
-  <div class="card">
-    <img class= "pic" src="../assets/photo/card.jpg" alt="Image Description">
-  </div>
-  <div class="card">
-    <img class= "pic" src="../assets/photo/card.jpg" alt="Image Description">
-  </div>
-  <div class="card">
-    <img class= "pic" src="../assets/photo/card.jpg" alt="Image Description">
-  </div>
-  <div class="card">
-    <img class= "pic" src="../assets/photo/card.jpg" alt="Image Description">
-  </div>
-  <div class="card">
-    <img class= "pic" src="../assets/photo/card.jpg" alt="Image Description">
-  </div>
-  <div class="card">
-  <img class="pic" src="../assets/photo/card.jpg" alt="Image Description">
-  </div>
-  <div class="card">
-    <img class="pic" src="../assets/photo/card.jpg" alt="Image Description">
-  </div>
-  <div class="card">
-    <img class="pic" src="../assets/photo/card.jpg" alt="Image Description">
-  </div>
-  <div class="card">
-    <img class="pic" src="../assets/photo/card.jpg" alt="Image Description">
-  </div>
-  <div class="card">
-    <img class="pic" src="../assets/photo/card.jpg" alt="Image Description">
-  </div>
-  <div class="card">
-    <img class="pic" src="../assets/photo/card.jpg" alt="Image Description">
-  </div>
-  <div class="card">
-    <img class="pic" src="../assets/photo/card.jpg" alt="Image Description">
-  </div>
-  <div class="card">
-    <img class="pic" src="../assets/photo/card.jpg" alt="Image Description">
-  </div>
-
- 
-</div>
-
-
 </template>
 
 <script>
@@ -70,20 +68,18 @@
   export default { 
     setup() { 
       const router = useRouter(); // Initialize router 
-      // // Define navigateTo method 
+      // Define navigateTo method 
       const navigateTo = (page) => { 
         router.push({ name: page }); // Navigate to the specified page 
-        }; 
+      }; 
 
-        return { navigateTo, 
-
-        }; 
-      }, 
-    };
+      return { navigateTo }; 
+    }, 
+  };
 </script>
 
 <style>
-.pic{
+.pic {
   width: 100%;
   height: 100%;
   margin: 0;
@@ -97,7 +93,7 @@
   overflow-x: scroll;
 }
 
-.card {
+.HomeCard {
   margin-top: 20px;
   flex: 0 0 200px;
   display: flex;
@@ -110,16 +106,15 @@
   transition: transform 250ms;
 }
 
-.card:not(:first-child) {
+.HomeCard:not(:first-child) {
   margin-left: -130px;
 }
 
-.card:hover {
+.HomeCard:hover {
   transform: translate(-8px, -16px) rotate(3deg);
 }
 
-.card:hover ~ .card {
+.HomeCard:hover ~ .HomeCard {
   transform: translateX(130px);
 }
-
 </style>
