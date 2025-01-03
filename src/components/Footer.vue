@@ -1,6 +1,9 @@
 <template>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    rel="stylesheet"
+  />
+  <br />
   <footer class="footer">
     <div class="footer-container">
       <!-- Learn More Section -->
@@ -11,21 +14,25 @@
           <li><a href="/service" class="footer-link">Service</a></li>
           <li><a href="/discount" class="footer-link">Discount</a></li>
           <li><a href="/payment" class="footer-link">Payment</a></li>
-          <li><a href="/privacy-policy" class="footer-link">Privacy Policy</a></li>
+          <li>
+            <a href="/privacy-policy" class="footer-link">Privacy Policy</a>
+          </li>
         </ul>
       </div>
-      
+
       <!-- Service Section -->
       <div class="footer-column">
         <h4 class="footer-title">Service</h4>
         <ul class="footer-list">
           <li><a href="/pen" class="footer-link">Pen</a></li>
           <li><a href="/book" class="footer-link">Book</a></li>
-          <li><a href="/office-material" class="footer-link">Office Material</a></li>
+          <li>
+            <a href="/office-material" class="footer-link">Office Material</a>
+          </li>
           <li><a href="/more" class="footer-link">More...</a></li>
         </ul>
       </div>
-      
+
       <!-- Contact Us Section -->
       <div class="footer-column">
         <h4 class="footer-title">Contact Us</h4>
@@ -33,24 +40,44 @@
         <p class="footer-text">Email: example@domain.com</p>
         <p class="footer-text">Address: 123 Street Name, City</p>
       </div>
-      
+
       <!-- Social Section -->
       <div class="footer-column">
         <h4 class="footer-title">Social</h4>
         <div class="footer-social-icons">
-          <a href="https://www.facebook.com" target="_blank" class="footer-social-link">
+          <a
+            href="https://www.facebook.com"
+            target="_blank"
+            class="footer-social-link"
+          >
             <i class="fab fa-facebook"></i>
           </a>
-          <a href="https://www.instagram.com" target="_blank" class="footer-social-link">
+          <a
+            href="https://www.instagram.com"
+            target="_blank"
+            class="footer-social-link"
+          >
             <i class="fab fa-instagram"></i>
           </a>
-          <a href="https://twitter.com" target="_blank" class="footer-social-link">
+          <a
+            href="https://twitter.com"
+            target="_blank"
+            class="footer-social-link"
+          >
             <i class="fab fa-twitter"></i>
           </a>
-          <a href="https://www.linkedin.com" target="_blank" class="footer-social-link">
+          <a
+            href="https://www.linkedin.com"
+            target="_blank"
+            class="footer-social-link"
+          >
             <i class="fab fa-linkedin"></i>
           </a>
-          <a href="https://www.youtube.com" target="_blank" class="footer-social-link">
+          <a
+            href="https://www.youtube.com"
+            target="_blank"
+            class="footer-social-link"
+          >
             <i class="fab fa-youtube"></i>
           </a>
         </div>
@@ -60,9 +87,9 @@
 </template>
 
 <script>
-  export default {
-    name: 'Footer'
-  };
+export default {
+  name: "Footer",
+};
 </script>
 
 <style scoped>
@@ -72,11 +99,11 @@
   padding: 40px 20px;
   width: 100%;
   display: flex;
-  justify-content:center;
+  justify-content: center;
   align-items: center;
   position: relative;
-  
-  gap:50px;
+
+  gap: 50px;
 }
 
 .footer-container {
@@ -96,7 +123,6 @@
   font-size: 28px;
   font-weight: bold;
   margin-bottom: 10px;
-  
 }
 
 .footer-list {
