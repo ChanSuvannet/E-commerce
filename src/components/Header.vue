@@ -14,14 +14,38 @@
         class="hover:scale-90 cursor-pointer"
         @click="toggleTheme"
       />
+
       <!-- Shop Icon -->
-      <Icon class="hover:scale-90 cursor-pointer" />
-      <!-- Register Button -->
-      <div
-        class="font-medium hover:scale-90 cursor-pointer"
-        @click="navigateToRegister"
-      >
-        Register
+      <div class="p-2 bg-gray-100 rounded-full">
+        <Icon class="hover:scale-95 cursor-pointer" />
+      </div>
+
+      <!-- Dynamic User Section -->
+      <div class="flex items-center gap-2">
+        <template v-if="userId">
+          <!-- User Profile Icon -->
+          <img
+            :src="userProfilePicture"
+            alt="User Profile"
+            class="w-8 h-8 rounded-full cursor-pointer hover:scale-90"
+            @click="goToAccount"
+          />
+        </template>
+        <template v-else>
+          <!-- Sign In and Sign Up Buttons -->
+          <button
+            class="px-3 pt-2 pb-2 border rounded-xl hover:scale-95"
+            @click="goToSignIn"
+          >
+            Sign In
+          </button>
+          <button
+            class="px-3 pt-2 pb-2 border rounded-xl hover:scale-95 text-white bg-[#022d5a]"
+            @click="goToSignUp"
+          >
+            Sign Up
+          </button>
+        </template>
       </div>
     </div>
   </div>
@@ -29,23 +53,19 @@
 </template>
 
 <script setup lang="ts">
-import { mdiShoppingOutline, mdiThemeLightDark } from "@mdi/js";
-import { ref } from "vue";
+import { mdiThemeLightDark } from "@mdi/js";
+import { ref } from "@vue/runtime-dom";
 import { useRouter } from "vue-router";
 import Navigation from "../views/navigation.vue";
 import Icon from "./Shop/Icon.vue";
 
 // Define the path of the icons
 const darkMode = mdiThemeLightDark;
-const shop = mdiShoppingOutline;
 
-// Router instance for navigation to rigister
+// Router instance for navigation
 const router = useRouter();
-const navigateToRegister = () => {
-  router.push("/register");
-};
 
-// Theme toggle function (example implementation)
+// Theme toggle function
 const isDarkMode = ref(false);
 const toggleTheme = () => {
   isDarkMode.value = !isDarkMode.value;
@@ -54,4 +74,23 @@ const toggleTheme = () => {
 
 // User authentication state
 const userId = ref(localStorage.getItem("userId") || null);
+
+// User profile picture (default image if no profile picture is available)
+const userProfilePicture = ref(
+  localStorage.getItem("userProfilePicture") ||
+    "https://via.placeholder.com/150"
+);
+
+// Navigation actions
+const goToSignIn = () => {
+  router.push("/login");
+};
+
+const goToSignUp = () => {
+  router.push("/register");
+};
+
+const goToAccount = () => {
+  router.push("/account");
+};
 </script>
