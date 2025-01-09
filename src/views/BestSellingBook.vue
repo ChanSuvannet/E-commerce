@@ -17,13 +17,12 @@
     </div>
   </template>
   <script>
-  import { useRouter } from 'vue-router'; // Import Vue Router 
+  import { useRouter } from 'vue-router'; 
   export default { 
     setup() { 
-      const router = useRouter(); // Initialize router 
-      // // Define navigateTo method 
+      const router = useRouter();  
       const navigateTo = (page) => { 
-        router.push({ name: page }); // Navigate to the specified page 
+        router.push({ name: page }); 
         }; 
 
         return { navigateTo, 
@@ -36,6 +35,8 @@
 
   <style scoped>
   .bestSellingBook{
+    margin-top: 5px;
+    margin-bottom: 5px;
   }
   
   .banner {
