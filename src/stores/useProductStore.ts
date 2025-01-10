@@ -14,8 +14,7 @@ import ruller4 from '../assets/shop/ruller/ruller4.png'
 import ruller5 from '../assets/shop/ruller/ruller5.png'
 
 // Product of Office material 
-import board1 from '../assets/shop/office_material/board1.jpg'
-import board2 from '../assets/shop/office_material/board1.jpg'
+import { default as board1, default as board2 } from '../assets/shop/office_material/board1.jpg'
 import chair from '../assets/shop/office_material/chair.jpg'
 import chair2 from '../assets/shop/office_material/chair2.jpg'
 import printer1 from '../assets/shop/office_material/printer1.jpg'
@@ -51,10 +50,6 @@ import sticker5 from '../assets/shop/sticker/sticker5.jpg'
 import sticker6 from '../assets/shop/sticker/sticker6.jpg'
 import sticker7 from '../assets/shop/sticker/sticker7.jpg'
 
-import { stat } from 'fs';
-import { getMaxListeners } from 'events';
-import { get } from 'http';
-import { start } from 'repl';
 
 
 interface Product {
@@ -546,6 +541,7 @@ export const useProductStore = defineStore('product', {
     getAllProducts: (state) => state.products,
     getLimitProducts: (state) =>(start: number, end: number) =>  {
       return state.products.slice(start,end)
+    },
 
     // Filter products by discount
     getProductsByDiscount: (state) => (discount: string) => {
