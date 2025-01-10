@@ -28,7 +28,6 @@ const categories = computed(() => {
 // Active question state
 const activeQuestion = ref<number | null>(null);
 
-// Contact form state
 const form = ref({
   name: "",
   email: "",
@@ -36,37 +35,52 @@ const form = ref({
   message: "",
 });
 
-// Function to submit the contact form to Telegram
-const submitForm = async () => {
-  const data = form.value;
+const sendTelegramMessage = async () => {
+  const telegramBotToken = "7593739467:AAENNf38VttIRP0VMWaq1R2Aq-uMIaF26OQ";
+  const chatId = "-1002334502755";
 
-  const telegramMessage = `
-    New Contact Form Submission:
-    Name: ${data.name}
-    Email: ${data.email}
-    Address: ${data.address}
-    Message: ${data.message}
-  `;
+const telegramMessage = `
+New Contact Form Submission
+Name     : ${form.value.name}
+Email    : ${form.value.email}
+Address  : ${form.value.address}
+Message  : ${form.value.message}
+`;
 
-  const botApiKey = "<YOUR_BOT_API_KEY>";
-  const chatId = "<YOUR_CHAT_ID>";
-
-  const telegramUrl = `https://api.telegram.org/bot${botApiKey}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(
-    telegramMessage
-  )}`;
-
-  try {
-    const response = await fetch(telegramUrl);
-
-    if (response.ok) {
-      alert("Message sent to Telegram!");
-      form.value = { name: "", email: "", address: "", message: "" }; // Reset form
-    } else {
-      alert("Error sending message to Telegram.");
+  const response = await fetch(
+    `https://api.telegram.org/bot${telegramBotToken}/sendMessage`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        chat_id: chatId,
+        text: telegramMessage,
+        parse_mode: "HTML",
+      }),
     }
+  );
+
+  if (response.ok) {
+    alert("Message sent successfully to Telegram!");
+  } else {
+    alert("Failed to send message.");
+  }
+};
+
+const submitForm = async () => {
+  try {
+    await sendTelegramMessage();
+    form.value = {
+      name: "",
+      email: "",
+      address: "",
+      message: "",
+    };
   } catch (error) {
-    alert("Error sending message.");
     console.error(error);
+    alert("Something went wrong.");
   }
 };
 </script>
@@ -196,13 +210,15 @@ const submitForm = async () => {
         ></iframe>
 
         <!-- Form -->
+        <!-- Form -->
         <div
           class="absolute -top-[350px] left-1/2 transform -translate-x-1/2 z-10 bg-white p-9 rounded-xl shadow-lg w-[90%] md:w-[50%]"
         >
-          <form>
+          <form @submit.prevent="submitForm">
             <!-- Name -->
             <div class="relative z-0 w-full mb-5 group">
               <input
+                v-model="form.name"
                 type="text"
                 name="floating_name"
                 id="floating_name"
@@ -221,6 +237,7 @@ const submitForm = async () => {
             <!-- Email -->
             <div class="relative z-0 w-full mb-5 group">
               <input
+                v-model="form.email"
                 type="email"
                 name="floating_email"
                 id="floating_email"
@@ -239,6 +256,7 @@ const submitForm = async () => {
             <!-- Address -->
             <div class="relative z-0 w-full mb-5 group">
               <input
+                v-model="form.address"
                 type="text"
                 name="floating_address"
                 id="floating_address"
@@ -257,6 +275,7 @@ const submitForm = async () => {
             <!-- Message -->
             <div class="relative z-0 w-full mb-5 group">
               <textarea
+                v-model="form.message"
                 name="floating_message"
                 id="floating_message"
                 class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
