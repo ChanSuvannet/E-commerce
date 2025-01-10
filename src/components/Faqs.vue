@@ -27,7 +27,7 @@ const activeQuestion = ref<number | null>(null);
 </script>
 
 <template>
-  <section>
+  <section class="h-screen">
     <!-- Heading -->
     <div class="flex justify-center items-center py-5 flex-col mt-10">
       <h2 class="text-[50px] font-bold text-slate-800 moulpali-regular">
