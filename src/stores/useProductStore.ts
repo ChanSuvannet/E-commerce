@@ -531,11 +531,6 @@ export const useProductStore = defineStore('product', {
   originalPrice: "2.50",
   discount: "20%"
 }
-
-
-
-
-
     ] as Product[],
   }),
   getters: {
