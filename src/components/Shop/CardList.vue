@@ -225,7 +225,8 @@
   
   <style scoped>
   .shopping-cart {
-    @apply max-w-7xl mx-auto px-4 py-8;
+    padding: 10px;
+    margin: 20px;
   }
   </style>
   
