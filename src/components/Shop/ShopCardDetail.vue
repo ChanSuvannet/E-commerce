@@ -79,7 +79,7 @@
             <RouterLink :to="`/shop/list`">Add to Cart</RouterLink>
           </button>
         </div>
-        <div class="meta">
+        <div class="meta">  
           <p>
             <strong>Category:</strong> {{ product.category }}
           </p>

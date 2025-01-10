@@ -1,80 +1,118 @@
 <template>
-    <div class="sidebar-container">
-      <h2 class="sidebar-header">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
-        </svg>
-        Filters
-      </h2>
-  
-      <div class="filter-section">
-        <h3 class="section-title">Price Range</h3>
-        <div class="price-range-labels">
-          <span class="price-label">$0</span>
-          <span class="price-label">$600</span>
-        </div>
-        <input type="range" min="0" max="600" v-model="priceRange" class="range-slider" />
-        <div class="price-display">${{ priceRange }}</div>
+  <div class="sidebar-container">
+    <h2 class="sidebar-header">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+      </svg>
+      Filters
+    </h2>
+
+    <!-- Price Range Filter -->
+    <div class="filter-section">
+      <h3 class="section-title">Price Range</h3>
+      <div class="price-range-labels">
+        <span class="price-label">$0</span>
+        <span class="price-label">$600</span>
       </div>
-  
-      <div class="filter-section">
-        <h3 class="section-title">Category</h3>
-        <ul class="category-list">
-          <li
-v-for="(count, category) in categories" :key="category"
-              class="category-item"
-              :class="{ 'selected-category': category === selectedCategory }"
-              @click="selectCategory(category)">
-            <span>{{ category }}</span>
-            <span class="category-count">{{ count }}</span>
-          </li>
-        </ul>
-      </div>
-  
-      <div class="filter-section">
-        <h3 class="section-title">Ratings</h3>
-        <ul class="rating-list">
-          <li v-for="rating in 5" :key="rating" class="rating-item">
-            <input type="checkbox" :id="`rating-${rating}`" v-model="selectedRatings" :value="rating" class="rating-checkbox" />
-            <label :for="`rating-${rating}`" class="rating-label">
-              <span v-for="star in 5" :key="star" class="star-icon">
-                {{ star <= rating ? '★' : '☆' }}
-              </span>
-            </label>
-          </li>
-        </ul>
-      </div>
+      <input type="range" min="0" max="600" v-model="priceRange" class="range-slider" />
+      <div class="price-display">${{ priceRange }}</div>
     </div>
-  </template>
-  
+
+    <!-- Category Filter -->
+    <div class="filter-section">
+      <h3 class="section-title">Category</h3>
+      <ul class="category-list">
+        <router-link
+          to='/shop/category/book'
+          class="category-item"
+        >
+          <span>Book</span>
+          <span class="category-count">{{ categoryCounts.book }}</span>
+        </router-link>
+
+        <router-link
+          to='/shop/category/pen'
+          class="category-item"
+        >
+          <span>Pen</span>
+          <span class="category-count">{{ categoryCounts.pen }}</span>
+        </router-link>
+
+        <router-link
+          to="/shop/category/pencil"
+          class="category-item"
+        >
+          <span>Pencil</span>
+          <span class="category-count">{{ categoryCounts.pencil }}</span>
+        </router-link>
+
+        <router-link
+          to='/shop/category/ruler'
+          class="category-item"
+        >
+          <span>Ruler</span>
+          <span class="category-count">{{ categoryCounts.ruler }}</span>
+        </router-link>
+
+        <router-link
+          to="/shop/category/sticker"
+          class="category-item"
+        >
+          <span>Sticker</span>
+          <span class="category-count">{{ categoryCounts.sticker }}</span>
+        </router-link>
+
+        <router-link
+          to="/shop/category/officematerial"
+          class="category-item"
+        >
+          <span>Office Material</span>
+          <span class="category-count">{{ categoryCounts.officematerial }}</span>
+        </router-link>
+      </ul>
+    </div>
+
+    <!-- Ratings Filter -->
+    <div class="filter-section">
+      <h3 class="section-title">Ratings</h3>
+      <ul class="rating-list">
+        <li v-for="rating in 5" :key="rating" class="rating-item">
+          <input type="checkbox" :id="`rating-${rating}`" v-model="selectedRatings" :value="rating" class="rating-checkbox" />
+          <label :for="`rating-${rating}`" class="rating-label">
+            <span v-for="star in 5" :key="star" class="star-icon">
+              {{ star <= rating ? '★' : '☆' }}
+            </span>
+          </label>
+        </li>
+      </ul>
+    </div>
+  </div>
+</template>
+
 <script>
 export default {
   name: 'Sidebar',
-  // eslint-disable-next-line vue/component-api-style
   data() {
     return {
       priceRange: 300,
-      categories: {
-        'All': 250,
-        'Book': 25,
-        'Pen': 40,
-        'Pencil': 25,
-        'Ruler': 25,
-        'Sticker': 25,
-        'Office Material': 25,
+      categories: ['Book', 'Pen', 'Pencil', 'Ruler', 'Sticker', 'OfficeMaterial'],
+      categoryCounts: {
+        book: 25,
+        pen: 40,
+        pencil: 25,
+        ruler: 25,
+        sticker: 25,
+        officematerial: 25
       },
-      selectedCategory: 'All',
-      selectedRatings: [],
-    }
-  },
-  // eslint-disable-next-line vue/component-api-style
-  methods: {
-    selectCategory(category) {
-      this.selectedCategory = category
-    },
-  },
-}
+      selectedRatings: []
+    };  
+  }
+};
 </script>
+
+
+
+
   
   <style scoped>
   /* Sidebar container */
