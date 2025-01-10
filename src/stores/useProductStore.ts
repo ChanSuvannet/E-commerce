@@ -80,7 +80,7 @@ export const useProductStore = defineStore('product', {
       },
       {
         id: 2,
-        image: caculator,  
+        image: caculator,
         title: 'Black Notebook',
         rating: 4,
         reviews: '3,200',
@@ -90,7 +90,7 @@ export const useProductStore = defineStore('product', {
       },
       {
         id: 3,
-        image: higglightor,  
+        image: higglightor,
         title: 'Black Notebook',
         rating: 4,
         reviews: '4,778',
@@ -100,7 +100,7 @@ export const useProductStore = defineStore('product', {
       },
       {
         id: 4,
-        image: pen,  
+        image: pen,
         title: 'Black Notebook',
         rating: 4,
         reviews: '4,778',
@@ -110,7 +110,7 @@ export const useProductStore = defineStore('product', {
       },
       {
         id: 5,
-        image: pencil,  
+        image: pencil,
         title: 'Black Notebook',
         rating: 4,
         reviews: '4,778',
@@ -120,7 +120,7 @@ export const useProductStore = defineStore('product', {
       },
       {
         id: 6,
-        image: ruler,  
+        image: ruler,
         title: 'Black Notebook',
         rating: 4,
         reviews: '2,000',
@@ -172,7 +172,7 @@ export const useProductStore = defineStore('product', {
       // Products Ruler
       {
         id: 11,
-        image: ruller1,  
+        image: ruller1,
         title: 'Ruller line',
         rating: 4,
         reviews: '4,778',
@@ -182,7 +182,7 @@ export const useProductStore = defineStore('product', {
       },
       {
         id: 12,
-        image: ruller2,  
+        image: ruller2,
         title: 'Ruller line',
         rating: 4,
         reviews: '4,778',
@@ -192,7 +192,7 @@ export const useProductStore = defineStore('product', {
       },
       {
         id: 13,
-        image: ruller3,  
+        image: ruller3,
         title: 'Ruller line',
         rating: 4,
         reviews: '4,778',
@@ -202,7 +202,7 @@ export const useProductStore = defineStore('product', {
       },
       {
         id: 14,
-        image: ruller4,  
+        image: ruller4,
         title: 'Ruller line',
         rating: 4,
         reviews: '4,778',
@@ -212,7 +212,7 @@ export const useProductStore = defineStore('product', {
       },
       {
         id: 15,
-        image: ruller5,  
+        image: ruller5,
         title: 'Ruller line',
         rating: 4,
         reviews: '4,778',
@@ -231,8 +231,8 @@ export const useProductStore = defineStore('product', {
         currentPrice: "0.00",
         originalPrice: "0.00",
         discount: "0%"
-    },
-    {
+      },
+      {
         id: 17,
         image: board2,
         title: "Board 2",
@@ -241,8 +241,8 @@ export const useProductStore = defineStore('product', {
         currentPrice: "0.00",
         originalPrice: "0.00",
         discount: "0%"
-    },
-    {
+      },
+      {
         id: 18,
         image: chair,
         title: "Chair",
@@ -251,8 +251,8 @@ export const useProductStore = defineStore('product', {
         currentPrice: "0.00",
         originalPrice: "0.00",
         discount: "0%"
-    },
-    {
+      },
+      {
         id: 19,
         image: chair2,
         title: "Chair 2",
@@ -261,8 +261,8 @@ export const useProductStore = defineStore('product', {
         currentPrice: "0.00",
         originalPrice: "0.00",
         discount: "0%"
-    },
-    {
+      },
+      {
         id: 20,
         image: printer1,
         title: "Printer 1",
@@ -271,8 +271,8 @@ export const useProductStore = defineStore('product', {
         currentPrice: "0.00",
         originalPrice: "0.00",
         discount: "0%"
-    },
-    {
+      },
+      {
         id: 21,
         image: printer2,
         title: "Printer 2",
@@ -281,8 +281,8 @@ export const useProductStore = defineStore('product', {
         currentPrice: "0.00",
         originalPrice: "0.00",
         discount: "0%"
-    },
-    {
+      },
+      {
         id: 22,
         image: printer3,
         title: "Printer 3",
@@ -291,8 +291,8 @@ export const useProductStore = defineStore('product', {
         currentPrice: "0.00",
         originalPrice: "0.00",
         discount: "0%"
-    },
-    {
+      },
+      {
         id: 23,
         image: table1,
         title: "Table 1",
@@ -301,8 +301,8 @@ export const useProductStore = defineStore('product', {
         currentPrice: "0.00",
         originalPrice: "0.00",
         discount: "0%"
-    },
-    {
+      },
+      {
         id: 24,
         image: table2,
         title: "Table 2",
@@ -311,223 +311,223 @@ export const useProductStore = defineStore('product', {
         currentPrice: "0.00",
         originalPrice: "0.00",
         discount: "0%"
-    },
+      },
 
-    // Products of Pencil
-    {
-      id: 25,
-      image: pencil1,
-      title: "Pencil 1",
-      rating: 0,
-      reviews: "0",
-      currentPrice: "1.50",
-      originalPrice: "2.00",
-      discount: "25%"
-  },
-  {
-      id: 26,
-      image: pencil2,
-      title: "Pencil 2",
-      rating: 0,
-      reviews: "0",
-      currentPrice: "1.30",
-      originalPrice: "1.80",
-      discount: "28%"
-  },
-  {
-      id: 27,
-      image: pencil3,
-      title: "Pencil 3",
-      rating: 0,
-      reviews: "0",
-      currentPrice: "1.75",
-      originalPrice: "2.20",
-      discount: "20%"
-  },
-  {
-      id: 28,
-      image: pencil4,
-      title: "Pencil 4",
-      rating: 0,
-      reviews: "0",
-      currentPrice: "1.40",
-      originalPrice: "1.90",
-      discount: "26%"
-  },
-  {
-      id: 29,
-      image: pencil5,
-      title: "Pencil 5",
-      rating: 0,
-      reviews: "0",
-      currentPrice: "1.60",
-      originalPrice: "2.10",
-      discount: "24%"
-  },
-  {
-      id: 30,
-      image: pencil6,
-      title: "Pencil 6",
-      rating: 0,
-      reviews: "0",
-      currentPrice: "1.20",
-      originalPrice: "1.50",
-      discount: "20%"
-  },
-  {
-      id: 31,
-      image: pencil7,
-      title: "Pencil 7",
-      rating: 0,
-      reviews: "0",
-      currentPrice: "1.00",
-      originalPrice: "1.30",
-      discount: "23%"
-  },
+      // Products of Pencil
+      {
+        id: 25,
+        image: pencil1,
+        title: "Pencil 1",
+        rating: 0,
+        reviews: "0",
+        currentPrice: "1.50",
+        originalPrice: "2.00",
+        discount: "25%"
+      },
+      {
+        id: 26,
+        image: pencil2,
+        title: "Pencil 2",
+        rating: 0,
+        reviews: "0",
+        currentPrice: "1.30",
+        originalPrice: "1.80",
+        discount: "28%"
+      },
+      {
+        id: 27,
+        image: pencil3,
+        title: "Pencil 3",
+        rating: 0,
+        reviews: "0",
+        currentPrice: "1.75",
+        originalPrice: "2.20",
+        discount: "20%"
+      },
+      {
+        id: 28,
+        image: pencil4,
+        title: "Pencil 4",
+        rating: 0,
+        reviews: "0",
+        currentPrice: "1.40",
+        originalPrice: "1.90",
+        discount: "26%"
+      },
+      {
+        id: 29,
+        image: pencil5,
+        title: "Pencil 5",
+        rating: 0,
+        reviews: "0",
+        currentPrice: "1.60",
+        originalPrice: "2.10",
+        discount: "24%"
+      },
+      {
+        id: 30,
+        image: pencil6,
+        title: "Pencil 6",
+        rating: 0,
+        reviews: "0",
+        currentPrice: "1.20",
+        originalPrice: "1.50",
+        discount: "20%"
+      },
+      {
+        id: 31,
+        image: pencil7,
+        title: "Pencil 7",
+        rating: 0,
+        reviews: "0",
+        currentPrice: "1.00",
+        originalPrice: "1.30",
+        discount: "23%"
+      },
 
-  // Products of Pen
-  {
-    id: 32,
-    image: pen1,
-    title: "Pen 1",
-    rating: 0,
-    reviews: "0",
-    currentPrice: "2.00",
-    originalPrice: "2.50",
-    discount: "20%"
-},
-{
-    id: 33,
-    image: pen2,
-    title: "Pen 2",
-    rating: 0,
-    reviews: "0",
-    currentPrice: "1.80",
-    originalPrice: "2.20",
-    discount: "18%"
-},
-{
-    id: 34,
-    image: pen3,
-    title: "Pen 3",
-    rating: 0,
-    reviews: "0",
-    currentPrice: "1.90",
-    originalPrice: "2.30",
-    discount: "17%"
-},
-{
-    id: 35,
-    image: pen4,
-    title: "Pen 4",
-    rating: 0,
-    reviews: "0",
-    currentPrice: "2.10",
-    originalPrice: "2.50",
-    discount: "16%"
-},
-{
-    id: 36,
-    image: pen5,
-    title: "Pen 5",
-    rating: 0,
-    reviews: "0",
-    currentPrice: "2.30",
-    originalPrice: "2.80",
-    discount: "18%"
-},
-{
-    id: 37,
-    image: pen6,
-    title: "Pen 6",
-    rating: 0,
-    reviews: "0",
-    currentPrice: "2.50",
-    originalPrice: "3.00",
-    discount: "17%"
-},
-{
-    id: 38,
-    image: pen7,
-    title: "Pen 7",
-    rating: 0,
-    reviews: "0",
-    currentPrice: "1.70",
-    originalPrice: "2.10",
-    discount: "19%"
-},
+      // Products of Pen
+      {
+        id: 32,
+        image: pen1,
+        title: "Pen 1",
+        rating: 0,
+        reviews: "0",
+        currentPrice: "2.00",
+        originalPrice: "2.50",
+        discount: "20%"
+      },
+      {
+        id: 33,
+        image: pen2,
+        title: "Pen 2",
+        rating: 0,
+        reviews: "0",
+        currentPrice: "1.80",
+        originalPrice: "2.20",
+        discount: "18%"
+      },
+      {
+        id: 34,
+        image: pen3,
+        title: "Pen 3",
+        rating: 0,
+        reviews: "0",
+        currentPrice: "1.90",
+        originalPrice: "2.30",
+        discount: "17%"
+      },
+      {
+        id: 35,
+        image: pen4,
+        title: "Pen 4",
+        rating: 0,
+        reviews: "0",
+        currentPrice: "2.10",
+        originalPrice: "2.50",
+        discount: "16%"
+      },
+      {
+        id: 36,
+        image: pen5,
+        title: "Pen 5",
+        rating: 0,
+        reviews: "0",
+        currentPrice: "2.30",
+        originalPrice: "2.80",
+        discount: "18%"
+      },
+      {
+        id: 37,
+        image: pen6,
+        title: "Pen 6",
+        rating: 0,
+        reviews: "0",
+        currentPrice: "2.50",
+        originalPrice: "3.00",
+        discount: "17%"
+      },
+      {
+        id: 38,
+        image: pen7,
+        title: "Pen 7",
+        rating: 0,
+        reviews: "0",
+        currentPrice: "1.70",
+        originalPrice: "2.10",
+        discount: "19%"
+      },
 
- // Products of Sticker
- {
-  id: 39,
-  image: sticker1,
-  title: "Sticker 1",
-  rating: 0,
-  reviews: "0",
-  currentPrice: "1.00",
-  originalPrice: "1.50",
-  discount: "33%"
-},
-{
-  id: 40,
-  image: sticker2,
-  title: "Sticker 2",
-  rating: 0,
-  reviews: "0",
-  currentPrice: "1.20",
-  originalPrice: "1.60",
-  discount: "25%"
-},
-{
-  id: 41,
-  image: sticker3,
-  title: "Sticker 3",
-  rating: 0,
-  reviews: "0",
-  currentPrice: "1.30",
-  originalPrice: "1.70",
-  discount: "24%"
-},
-{
-  id: 42,
-  image: sticker4,
-  title: "Sticker 4",
-  rating: 0,
-  reviews: "0",
-  currentPrice: "1.50",
-  originalPrice: "2.00",
-  discount: "25%"
-},
-{
-  id: 43,
-  image: sticker5,
-  title: "Sticker 5",
-  rating: 0,
-  reviews: "0",
-  currentPrice: "1.70",
-  originalPrice: "2.20",
-  discount: "23%"
-},
-{
-  id: 44,
-  image: sticker6,
-  title: "Sticker 6",
-  rating: 0,
-  reviews: "0",
-  currentPrice: "1.90",
-  originalPrice: "2.40",
-  discount: "21%"
-},
-{
-  id: 45,
-  image: sticker7,
-  title: "Sticker 7",
-  rating: 0,
-  reviews: "0",
-  currentPrice: "2.00",
-  originalPrice: "2.50",
-  discount: "20%"
-}
+      // Products of Sticker
+      {
+        id: 39,
+        image: sticker1,
+        title: "Sticker 1",
+        rating: 0,
+        reviews: "0",
+        currentPrice: "1.00",
+        originalPrice: "1.50",
+        discount: "33%"
+      },
+      {
+        id: 40,
+        image: sticker2,
+        title: "Sticker 2",
+        rating: 0,
+        reviews: "0",
+        currentPrice: "1.20",
+        originalPrice: "1.60",
+        discount: "25%"
+      },
+      {
+        id: 41,
+        image: sticker3,
+        title: "Sticker 3",
+        rating: 0,
+        reviews: "0",
+        currentPrice: "1.30",
+        originalPrice: "1.70",
+        discount: "24%"
+      },
+      {
+        id: 42,
+        image: sticker4,
+        title: "Sticker 4",
+        rating: 0,
+        reviews: "0",
+        currentPrice: "1.50",
+        originalPrice: "2.00",
+        discount: "25%"
+      },
+      {
+        id: 43,
+        image: sticker5,
+        title: "Sticker 5",
+        rating: 0,
+        reviews: "0",
+        currentPrice: "1.70",
+        originalPrice: "2.20",
+        discount: "23%"
+      },
+      {
+        id: 44,
+        image: sticker6,
+        title: "Sticker 6",
+        rating: 0,
+        reviews: "0",
+        currentPrice: "1.90",
+        originalPrice: "2.40",
+        discount: "21%"
+      },
+      {
+        id: 45,
+        image: sticker7,
+        title: "Sticker 7",
+        rating: 0,
+        reviews: "0",
+        currentPrice: "2.00",
+        originalPrice: "2.50",
+        discount: "20%"
+      }
 
 
 
@@ -539,15 +539,15 @@ export const useProductStore = defineStore('product', {
   // Getters to filter and retrieve product data
   getters: {
     getAllProducts: (state) => state.products,
-    getLimitProducts: (state) =>(start: number, end: number) =>  {
-      return state.products.slice(start,end)
+    getLimitProducts: (state) => (start: number, end: number) => {
+      return state.products.slice(start, end)
     },
 
     // Filter products by discount
     getProductsByDiscount: (state) => (discount: string) => {
       return state.products.filter((product: any) => product.discount === discount);
     },
-     
+
     // Get the total number of products
     totalProducts: (state) => state.products.length,
     // Get products with a rating of 4 or above
@@ -556,7 +556,7 @@ export const useProductStore = defineStore('product', {
     },
   },
 
-  // Actions for managing the product data
+  // Actions for managing the product data d
   actions: {
     // Add a new product to the products list
     addProduct(product: Product) {

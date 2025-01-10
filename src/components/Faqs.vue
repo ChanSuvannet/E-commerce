@@ -9,6 +9,7 @@ const faqStore = useFaqStore();
 const selectedCategory = ref<string | null>(null);
 const faqSearchQuery = ref("");
 
+// Computed property to filter the FAQs based on selected category and search query
 const filteredFaqs = computed(() => {
   return faqStore.faqs.filter(
     (faq: any) =>
@@ -18,16 +19,60 @@ const filteredFaqs = computed(() => {
   );
 });
 
+// Computed property to get the unique categories from FAQs
 const categories = computed(() => {
   const allCategories = faqStore.faqs.map((faq: any) => faq.category);
   return Array.from(new Set(allCategories));
 });
 
+// Active question state
 const activeQuestion = ref<number | null>(null);
+
+// Contact form state
+const form = ref({
+  name: "",
+  email: "",
+  address: "",
+  message: "",
+});
+
+// Function to submit the contact form to Telegram
+const submitForm = async () => {
+  const data = form.value;
+
+  const telegramMessage = `
+    New Contact Form Submission:
+    Name: ${data.name}
+    Email: ${data.email}
+    Address: ${data.address}
+    Message: ${data.message}
+  `;
+
+  const botApiKey = "<YOUR_BOT_API_KEY>";
+  const chatId = "<YOUR_CHAT_ID>";
+
+  const telegramUrl = `https://api.telegram.org/bot${botApiKey}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(
+    telegramMessage
+  )}`;
+
+  try {
+    const response = await fetch(telegramUrl);
+
+    if (response.ok) {
+      alert("Message sent to Telegram!");
+      form.value = { name: "", email: "", address: "", message: "" }; // Reset form
+    } else {
+      alert("Error sending message to Telegram.");
+    }
+  } catch (error) {
+    alert("Error sending message.");
+    console.error(error);
+  }
+};
 </script>
 
 <template>
-  <section class="h-screen">
+  <section class="h-auto">
     <!-- Heading -->
     <div class="flex justify-center items-center py-5 flex-col mt-10">
       <h2 class="text-[50px] font-bold text-slate-800 moulpali-regular">
@@ -112,31 +157,134 @@ const activeQuestion = ref<number | null>(null);
         </div>
       </div>
     </div>
-  </section>
-  <br>
-  <div class="flex flex-col justify-center">
-    <div>Have Any Question?</div>
-    <span
-      >It is a long established fact that a reader will be distracted content of
-      a page when looking.</span
-    >
-  </div>
-  <div class="flex px-3 justify-center">
-    <div>Hello</div>
-    <div class="mapouter">
-      <div class="gmap_canvas">
-        <iframe
-          class="gmap_iframe"
-          frameborder="0"
-          scrolling="no"
-          marginheight="0"
-          marginwidth="0"
-          src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=Institute of Technology of Cambodia&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
-        ></iframe
-        ><a href="https://sprunkiplay.com/">Sprunki Game</a>
+
+    <!-- message to admin -->
+    <div class="flex justify-center items-center gap-4 mt-1 mb-2">
+      <div class="flex flex-col justify-center w-full">
+        <div class="flex justify-center p-5">
+          <span class="p-5 rounded-lg text-3xl font-semibold"
+            >Have Any Question?</span
+          >
+        </div>
+        <span class="flex justify-center text-gray-600"
+          >It is a long established fact that a reader will be distracted
+          content of a page when looking.</span
+        >
+        <br />
       </div>
     </div>
-  </div>
+    <div>
+      <br /><br />
+      <br /><br />
+      <br /><br />
+      <br /><br />
+      <br /><br />
+      <br /><br />
+      <br /><br />
+      <br /><br />
+    </div>
+    <div>
+      <div class="relative w-full h-[500px]">
+        <!-- Google Map -->
+        <iframe
+          class="absolute top-0 left-0 w-full h-full"
+          src="https://maps.google.com/maps?width=3000&amp;height=400&amp;hl=en&amp;q=Institute%20of%20Technology%20of%20Cambodia&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+          frameborder="0"
+          style="border: 0"
+          aria-hidden="false"
+          tabindex="0"
+        ></iframe>
+
+        <!-- Form -->
+        <div
+          class="absolute -top-[350px] left-1/2 transform -translate-x-1/2 z-10 bg-white p-9 rounded-xl shadow-lg w-[90%] md:w-[50%]"
+        >
+          <form>
+            <!-- Name -->
+            <div class="relative z-0 w-full mb-5 group">
+              <input
+                type="text"
+                name="floating_name"
+                id="floating_name"
+                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                placeholder=" "
+                required
+              />
+              <label
+                for="floating_name"
+                class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+              >
+                Name
+              </label>
+            </div>
+
+            <!-- Email -->
+            <div class="relative z-0 w-full mb-5 group">
+              <input
+                type="email"
+                name="floating_email"
+                id="floating_email"
+                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                placeholder=" "
+                required
+              />
+              <label
+                for="floating_email"
+                class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+              >
+                Email Address
+              </label>
+            </div>
+
+            <!-- Address -->
+            <div class="relative z-0 w-full mb-5 group">
+              <input
+                type="text"
+                name="floating_address"
+                id="floating_address"
+                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                placeholder=" "
+                required
+              />
+              <label
+                for="floating_address"
+                class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+              >
+                Address
+              </label>
+            </div>
+
+            <!-- Message -->
+            <div class="relative z-0 w-full mb-5 group">
+              <textarea
+                name="floating_message"
+                id="floating_message"
+                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                placeholder=" "
+                required
+              ></textarea>
+              <label
+                for="floating_message"
+                class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+              >
+                Message
+              </label>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="flex justify-center">
+              <button
+                type="submit"
+                class="text-white bg-blue-800 hover:bg-blue-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-xl text-lg w-full sm:w-auto px-5 py-5 text-center"
+              >
+                Get In Touch
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
 </template>
 
 <style scoped>
