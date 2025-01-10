@@ -56,6 +56,7 @@ import { getMaxListeners } from 'events';
 import { get } from 'http';
 import { start } from 'repl';
 
+
 interface Product {
   id: number;
   image: string;
@@ -69,11 +70,12 @@ interface Product {
 
 export const useProductStore = defineStore('product', {
   state: () => ({
+    // Array of products with diverse information
     products: [
       // Products Book
       {
         id: 1,
-        image: book,  
+        image: book,
         title: 'Black Notebook is the most popular',
         rating: 4,
         reviews: '4,778',
@@ -86,10 +88,10 @@ export const useProductStore = defineStore('product', {
         image: caculator,  
         title: 'Black Notebook',
         rating: 4,
-        reviews: '4,778',
-        currentPrice: '1.60',
+        reviews: '3,200',
+        currentPrice: '1.50',
         originalPrice: '2.00',
-        discount: '20% Off',
+        discount: '25% Off',
       },
       {
         id: 3,
@@ -119,57 +121,57 @@ export const useProductStore = defineStore('product', {
         reviews: '4,778',
         currentPrice: '1.60',
         originalPrice: '2.00',
-        discount: '20% Off',
+        discount: '5% Off',
       },
       {
         id: 6,
         image: ruler,  
         title: 'Black Notebook',
         rating: 4,
-        reviews: '4,778',
-        currentPrice: '1.60',
+        reviews: '2,000',
+        currentPrice: '1.70',
         originalPrice: '2.00',
-        discount: '20% Off',
+        discount: '15% Off',
       },
       {
         id: 7,
-        image: book,  
-        title: 'Black Notebook',
-        rating: 4,
-        reviews: '4,778',
+        image: book,
+        title: 'Pink Notebook',
+        rating: 3,
+        reviews: '1,000',
         currentPrice: '1.60',
         originalPrice: '2.00',
-        discount: '20% Off',
+        discount: '10% Off',
       },
       {
         id: 8,
-        image: book,  
-        title: 'Black Notebook',
+        image: book,
+        title: 'Orange Notebook',
         rating: 4,
-        reviews: '4,778',
-        currentPrice: '1.60',
-        originalPrice: '2.00',
-        discount: '20% Off',
+        reviews: '3,000',
+        currentPrice: '1.80',
+        originalPrice: '2.50',
+        discount: '30% Off',
       },
       {
         id: 9,
-        image: book,  
-        title: 'Black Notebook',
-        rating: 4,
-        reviews: '4,778',
-        currentPrice: '1.60',
-        originalPrice: '2.00',
-        discount: '20% Off',
+        image: book,
+        title: 'Purple Notebook',
+        rating: 5,
+        reviews: '4,500',
+        currentPrice: '2.10',
+        originalPrice: '2.50',
+        discount: '5% Off',
       },
       {
         id: 10,
-        image: book,  
-        title: 'Black Notebook',
-        rating: 4,
-        reviews: '4,778',
-        currentPrice: '1.60',
-        originalPrice: '2.00',
-        discount: '20% Off',
+        image: book,
+        title: 'White Notebook',
+        rating: 3,
+        reviews: '1,200',
+        currentPrice: '1.50',
+        originalPrice: '1.80',
+        discount: '15% Off',
       },
 
       // Products Ruler
@@ -533,15 +535,51 @@ export const useProductStore = defineStore('product', {
 }
     ] as Product[],
   }),
+
+  // Getters to filter and retrieve product data
   getters: {
     getAllProducts: (state) => state.products,
     getLimitProducts: (state) =>(start: number, end: number) =>  {
-      return state.products.slice(start,end)
-    },
+      return state.products.slice(start,end),
+
+    getProductsByDiscount: (state) => (discount: string) => {
+      return state.products.filter((product) => product.discount === discount);
+    }
+
+    // // Filter products by discount
+    // getProductsByDiscount: (state) => (discount: string) => {
+    //   return state.products.filter((product: any) => product.discount === discount);
+    // },
+     
+    // // Get the total number of products
+    // totalProducts: (state) => state.products.length,
+    // // Get products with a rating of 4 or above
+    // getTopRatedProducts: (state) => {
+    //   return state.products.filter((product: any) => product.rating >= 4);
+    // },
   },
+
+  // Actions for managing the product data
   actions: {
+    // Add a new product to the products list
     addProduct(product: Product) {
       this.products.push(product);
+    },
+
+    // Remove a product by its ID
+    removeProduct(id: number) {
+      this.products = this.products.filter((product: any) => product.id !== id);
+    },
+
+    // Update an existing product by its ID
+    updateProduct(id: number, updatedProduct: Partial<Product>) {
+      const productIndex = this.products.findIndex((product: any) => product.id === id);
+      if (productIndex !== -1) {
+        this.products[productIndex] = {
+          ...this.products[productIndex],
+          ...updatedProduct,
+        };
+      }
     },
   },
 });

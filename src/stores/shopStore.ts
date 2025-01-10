@@ -1,20 +1,128 @@
-import { defineStore } from "pinia";
+import { defineStore } from 'pinia';
+import book from '../assets/shop/book.png';
 
-export const useCartStore = defineStore("cart", {
+interface Product {
+  id: number;
+  image: string;
+  title: string;
+  rating: number;
+  reviews: string;
+  currentPrice: string;
+  originalPrice: string;
+  discount: string;
+}
+
+export const useProductStore = defineStore('product', {
   state: () => ({
-    cartCount: 0 as number,
-    NotificationMessage: '' as string,
+    products: [
+      {
+        id: 1,
+        image: book,  
+        title: 'Black Notebook is the most popular',
+        rating: 4,
+        reviews: '4,778',
+        currentPrice: '1.60',
+        originalPrice: '2.00',
+        discount: '20% Off',
+      },
+      {
+        id: 2,
+        image: book,  
+        title: 'Black Notebook',
+        rating: 4,
+        reviews: '4,778',
+        currentPrice: '1.60',
+        originalPrice: '2.00',
+        discount: '20% Off',
+      },
+      {
+        id: 3,
+        image: book,  
+        title: 'Black Notebook',
+        rating: 4,
+        reviews: '4,778',
+        currentPrice: '1.60',
+        originalPrice: '2.00',
+        discount: '20% Off',
+      },
+      {
+        id: 4,
+        image: book,  
+        title: 'Black Notebook',
+        rating: 4,
+        reviews: '4,778',
+        currentPrice: '1.60',
+        originalPrice: '2.00',
+        discount: '20% Off',
+      },
+      {
+        id: 5,
+        image: book,  
+        title: 'Black Notebook',
+        rating: 4,
+        reviews: '4,778',
+        currentPrice: '1.60',
+        originalPrice: '2.00',
+        discount: '20% Off',
+      },
+      {
+        id: 6,
+        image: book,  
+        title: 'Black Notebook',
+        rating: 4,
+        reviews: '4,778',
+        currentPrice: '1.60',
+        originalPrice: '2.00',
+        discount: '20% Off',
+      },
+      {
+        id: 7,
+        image: book,  
+        title: 'Black Notebook',
+        rating: 4,
+        reviews: '4,778',
+        currentPrice: '1.60',
+        originalPrice: '2.00',
+        discount: '20% Off',
+      },
+      {
+        id: 8,
+        image: book,  
+        title: 'Black Notebook',
+        rating: 4,
+        reviews: '4,778',
+        currentPrice: '1.60',
+        originalPrice: '2.00',
+        discount: '20% Off',
+      },
+      {
+        id: 9,
+        image: book,  
+        title: 'Black Notebook',
+        rating: 4,
+        reviews: '4,778',
+        currentPrice: '1.60',
+        originalPrice: '2.00',
+        discount: '20% Off',
+      },
+      {
+        id: 10,
+        image: book,  
+        title: 'Black Notebook',
+        rating: 4,
+        reviews: '4,778',
+        currentPrice: '1.60',
+        originalPrice: '2.00',
+        discount: '20% Off',
+      },
+    ] as Product[],
   }),
+  getters: {
+    getAllProducts: (state) => state.products,
+  },
   actions: {
-    addItemToCart(title: string): void {
-      this.cartCount += 1;
+    addProduct(product: Product) {
+      this.products.push(product);
     },
-    setNotificationMessage(message: string): void {
-      this.NotificationMessage = message;
-      // Automatically clear after 3 seconds
-      setTimeout(() => {
-        this.NotificationMessage = '';
-      }, 3000);
-    }
   },
 });

@@ -5,29 +5,29 @@
     </div>
     <div class="form-side">
       <div style="font-size: 35px;">
-      <span style="color: #022D5A;">EduMaterial</span>
-      <span style="color: #FF6A00;">Shop</span>
+        <span style="color: #022D5A;">EduMaterial</span>
+        <span style="color: #FF6A00;">Shop</span>
       </div>
       <div style="font-size: 25px; color: #022D5A;">
-      <span>Adventure in Learning Here 🚀</span>
+        <span>Adventure in Learning Here 🚀</span>
       </div>
-      <div style="font-size: 15px; color: #022D5A;margin: 15px 0px;">
-      <span>Revolutionizing School Supply Management</span>
+      <div style="font-size: 15px; color: #022D5A; margin: 15px 0px;">
+        <span>Revolutionizing School Supply Management</span>
       </div>
       <form @submit.prevent="register">
-      <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" id="username" v-model="username" required />
-      </div>
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" v-model="email" required />
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" v-model="password" required />
-      </div>
-      <button type="submit">Register</button>
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" v-model="username" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" v-model="email" required />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" v-model="password" required />
+        </div>
+        <button type="submit">Register</button>
       </form>
       <p>Already have an account? <a href="/login">Sign in instead</a></p>
       <p style="text-align: center;">or</p>
@@ -51,8 +51,19 @@ export default {
   },
   methods: {
     register() {
-      console.log('User registered:', this.username, this.email, this.password);
-      this.$router.push('/');
+      // Prepare user data
+      const userData = {
+        username: this.username,
+        email: this.email,
+        password: this.password
+      };
+
+      // Store data in localStorage
+      localStorage.setItem('userData', JSON.stringify(userData));
+      console.log('User registered:', userData);
+
+      // Redirect to homepage or login page
+      this.$router.push('/login');
     }
   }
 };
@@ -61,7 +72,6 @@ export default {
 <style scoped>
 .register-container {
   display: flex;
-  /* justify-content: space-between; */
   align-items: center;
   padding: 20px;
 }
@@ -79,7 +89,6 @@ export default {
 }
 
 .form-side {
-  /* background-color: #0056b3; */
   flex: 1;
   padding: 20px;
 }
@@ -117,22 +126,26 @@ button {
 button:hover {
   background-color: #0056b3;
 }
-p{
+
+p {
   margin-top: 25px;
   text-align: center;
   color: #8C8C8C;
 }
-a{
+
+a {
   color: #0056b3;
   text-decoration: none;
 }
-.platform{
+
+.platform {
   display: flex;
   padding-top: 30px;
   justify-self: center;
   gap: 30px;
 }
-.platform img{
+
+.platform img {
   width: 40px;
   height: 40px;
   cursor: pointer;

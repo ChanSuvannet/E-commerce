@@ -11,10 +11,18 @@
       <div style="font-size: 25px; color: #022D5A;">
         <span>Welcome to EduMaterialShop!👋🏻</span>
       </div>
-      <div style="font-size: 15px; color: #022D5A;margin: 15px 0px;">
+      <div style="font-size: 15px; color: #022D5A; margin: 15px 0px;">
         <span>Please sign-in to your account and start the adventure</span>
       </div>
-      <form @submit.prevent="register">
+      <!-- Error Alert -->
+      <div
+        v-if="errorMessage"
+        class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50"
+        role="alert"
+      >
+        <span class="font-medium">Error!</span> {{ errorMessage }}
+      </div>
+      <form @submit.prevent="login">
         <div class="form-group">
           <label for="email">Email</label>
           <input type="email" id="email" v-model="email" required />
@@ -30,7 +38,7 @@
         </div>
         <button type="submit">Login</button>
       </form>
-      <p>New on our platform?  <a href="/register"> Create new account</a></p>
+      <p>New on our platform? <a href="/register">Create new account</a></p>
       <p style="text-align: center;">or</p>
       <div class="platform">
         <img src="../assets/icons/facebook.png" alt="Facebook" />
@@ -45,24 +53,58 @@
 export default {
   data() {
     return {
-      username: '',
-      email: '',
-      password: ''
+      email: "",
+      password: "",
+      rememberMe: false,
+      errorMessage: null,
     };
   },
   methods: {
-    register() {
-      console.log('User registered:', this.username, this.email, this.password);
-      this.$router.push('/');
-    }
-  }
+    login() {
+      // Get user data from localStorage
+      const storedUserData = JSON.parse(localStorage.getItem("userData"));
+
+      // Check if user data exists and matches
+      if (
+        storedUserData &&
+        storedUserData.email === this.email &&
+        storedUserData.password === this.password
+      ) {
+        // Generate a token
+        const token = this.generateToken();
+
+        // Store the token in localStorage or sessionStorage
+        if (this.rememberMe) {
+          localStorage.setItem("authToken", token);
+        } else {
+          sessionStorage.setItem("authToken", token);
+        }
+
+        console.log("Login successful, token generated:", token);
+
+        // Redirect to homepage or dashboard
+        this.$router.push("/");
+      } else {
+        // Show error message
+        this.errorMessage = "Invalid email or password. Please try again.";
+      }
+    },
+    generateToken() {
+      // Generate a random token (for demonstration purposes)
+      return btoa(
+        JSON.stringify({
+          email: this.email,
+          timestamp: new Date().toISOString(),
+        })
+      );
+    },
+  },
 };
 </script>
 
 <style scoped>
 .register-container {
   display: flex;
-  /* justify-content: space-between; */
   align-items: center;
   padding: 20px;
 }
@@ -141,6 +183,7 @@ a {
   height: 40px;
   cursor: pointer;
 }
+
 .remember-me {
   display: flex;
   align-items: center;
@@ -149,5 +192,4 @@ a {
 .remember-me input {
   margin-right: 5px;
 }
-
 </style>
