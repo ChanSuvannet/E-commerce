@@ -2,36 +2,36 @@
     <div class="bestSellerPro">
         <div class="productGrid">
             <div class="product" @click="navigateTo('shop')">
-            <img class="proPic" src="../assets/photo/book.jpg" alt="book">
-            <div class="proName">BOOKS</div> 
+                <img class="proPic" src="../assets/photo/book.jpg" alt="book">
+                <div class="proName">BOOKS</div> 
             </div>
             <div class="product" @click="navigateTo('shop')">
-            <img class="proPic" src="../assets/photo/color.png" alt="book">
-            <div class="proName">CRAYON</div>
+                <img class="proPic" src="../assets/photo/color.png" alt="book">
+                <div class="proName">CRAYON</div>
             </div>
             <div class="product" @click="navigateTo('shop')">
-            <img class="proPic" src="../assets/photo/PEN.jpg" alt="book">
-            <div class="proName">PEN</div>
+                <img class="proPic" src="../assets/photo/PEN.jpg" alt="book">
+                <div class="proName">PEN</div>
             </div>
             <div class="product" @click="navigateTo('shop')">
-            <img class="proPic" src="../assets/photo/stickerNote.png" alt="book">
-            <div class="proName">STICKER NOTE</div>
+                <img class="proPic" src="../assets/photo/stickerNote.png" alt="book">
+                <div class="proName">STICKER NOTE</div>
             </div>
             <div class="product" @click="navigateTo('shop')">
-            <img class="proPic" src="../assets/photo/pencialCase.png" alt="book">
-            <div class="proName">Pencial Case</div>
+                <img class="proPic" src="../assets/photo/pencialCase.png" alt="book">
+                <div class="proName">Pencial Case</div>
             </div>
             <div class="product" @click="navigateTo('shop')">
-            <img class="proPic" src="../assets/photo/correctionPen.jpg" alt="book">
-            <div class="proName">Correction Pen</div>
+                <img class="proPic" src="../assets/photo/correctionPen.jpg" alt="book">
+                <div class="proName">Correction Pen</div>
             </div>
             <div class="product" @click="navigateTo('shop')">
-            <img class="proPic" src="../assets/photo/keychain.png" alt="book">
-            <div class="proName">KEYCHAIN</div>
+                <img class="proPic" src="../assets/photo/keychain.png" alt="book">
+                <div class="proName">KEYCHAIN</div>
             </div>
             <div class="product" @click="navigateTo('shop')">
-            <img class="proPic" src="../assets/photo/notebook.png" alt="book">
-            <div class="proName">NOTEBOOK</div>
+                <img class="proPic" src="../assets/photo/notebook.png" alt="book">
+                <div class="proName">NOTEBOOK</div>
             </div>
         </div>
     </div>
@@ -54,7 +54,7 @@
 <style>
 .bestSellerPro {
   padding: 1%;
-  height:350px;
+  height:300px;
   width: 100%;
 
 }
@@ -71,20 +71,6 @@
   padding: 4%;
 }
 
-.bestSellingPro {
-  margin-top: 15px;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  font-size: 30px;
-  font-weight: 1000;
-  color: #1d3a4c;
-}
-.home {
-  width: 100%;
-  height: auto;
-  padding: 2%;
-}
 .productGrid {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
@@ -99,6 +85,7 @@
   padding: 2%;
   align-items: center;
   border: solid #c3c0bd;
+  box-shadow: 1px 1px 10px gray;
 }
 
 </style>
