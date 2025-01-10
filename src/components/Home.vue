@@ -23,19 +23,16 @@ import BestSellingBook from '../views/BestSellingBook.vue'
 import BestSellingPro from '../views/BestSellingPro.vue'
 import { useRouter } from 'vue-router'
 
-
 export default { 
   components: { 
     BestSellingBook,
     homeCard,
     BestSellingPro,
-    
   },
 } 
 </script>
 
-<style>
-
+<style scoped>
 .titleCategory {
   margin-top: 15px;
   justify-content: center;
@@ -48,7 +45,7 @@ export default {
 
 .introPic {
   width: 100%;
-  height: 100%;
+  height: auto;
 }
 
 .home {
@@ -59,16 +56,16 @@ export default {
 
 .intro {
   display: flex;
-  justify-content: baseline;
-  gap: 5px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  height: 450px;
+  height: auto;
 }
 
 .title {
   padding: 2%;
-  width: 50%;
-  height: 100%;
+  width: 100%;
   justify-content: center;
   align-items: center;
   display: flex;
@@ -77,4 +74,19 @@ export default {
   color: #1d3a4c;
 }
 
+@media (min-width: 768px) {
+  .intro {
+    flex-direction: row;
+    height: 450px;
+  }
+
+  .title {
+    width: 50%;
+  }
+
+  .introPic {
+    width: 50%;
+    height: 100%;
+  }
+}
 </style>
