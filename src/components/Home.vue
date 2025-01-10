@@ -3,47 +3,15 @@
     <div class="intro">
       <div class="title">Best products for your Education</div>
       <img class="introPic" src="../assets/photo/intro.jpg" alt="banner">
-      
     </div>
-    <div class="bestSellerPro">
-      <div class="bestSellingPro">BEST SELLING PRODUCTS</div>
-      <div class="productGrid">
-        <div class="product" @click="navigateTo('shop')">
-          <img class="proPic" src="../assets/photo/book.jpg" alt="book">
-          <div class="proName">BOOKS</div> 
-        </div>
-        <div class="product" @click="navigateTo('shop')">
-          <img class="proPic" src="../assets/photo/color.png" alt="book">
-          <div class="proName">CRAYON</div>
-        </div>
-        <div class="product" @click="navigateTo('shop')">
-          <img class="proPic" src="../assets/photo/PEN.jpg" alt="book">
-          <div class="proName">PEN</div>
-        </div>
-        <div class="product" @click="navigateTo('shop')">
-          <img class="proPic" src="../assets/photo/stickerNote.png" alt="book">
-          <div class="proName">STICKER NOTE</div>
-        </div>
-        <div class="product" @click="navigateTo('shop')">
-          <img class="proPic" src="../assets/photo/pencialCase.png" alt="book">
-          <div class="proName">Pencial Case</div>
-        </div>
-        <div class="product" @click="navigateTo('shop')">
-          <img class="proPic" src="../assets/photo/correctionPen.jpg" alt="book">
-          <div class="proName">Correction Pen</div>
-        </div>
-        <div class="product" @click="navigateTo('shop')">
-          <img class="proPic" src="../assets/photo/keychain.png" alt="book">
-          <div class="proName">KEYCHAIN</div>
-        </div>
-        <div class="product" @click="navigateTo('shop')">
-          <img class="proPic" src="../assets/photo/notebook.png" alt="book">
-          <div class="proName">NOTEBOOK</div>
-        </div>
-      </div>
-    </div>
-    <div class="bestSellingPro">BEST SELLING BOOKs</div>
+
+    <div class="titleCategory">BEST SELLING PRODUCTS</div>
+    <BestSellingPro/>
+    
+    <div class="titleCategory">BEST SELLING BOOKs</div>
     <BestSellingBook />
+
+    <div class="titleCategory">NEW PRODUCTS INSTOCK</div>
     <homeCard/>
     
   </div>
@@ -52,6 +20,7 @@
 <script> 
 import homeCard from '../views/homeCard.vue';
 import BestSellingBook from '../views/BestSellingBook.vue' 
+import BestSellingPro from '../views/BestSellingPro.vue'
 import { useRouter } from 'vue-router'
 
 
@@ -59,13 +28,8 @@ export default {
   components: { 
     BestSellingBook,
     homeCard,
+    BestSellingPro,
     
-  },
-  setup() { 
-    const router = useRouter() 
-    const navigateTo = (page) => { router.push({ name: page }) // Use router.push to navigate 
-    } 
-    return { navigateTo, } 
   },
 } 
 </script>
@@ -84,7 +48,8 @@ export default {
   padding: 4%;
 }
 
-.bestSellingPro {
+.titleCategory {
+  margin-top: 15px;
   justify-content: center;
   align-items: center;
   display: flex;
@@ -124,10 +89,7 @@ export default {
   color: #1d3a4c;
 }
 
-.bestSellerPro {
-  padding: 1%;
-  height:400px;
-}
+
 
 .productGrid {
   display: grid;
