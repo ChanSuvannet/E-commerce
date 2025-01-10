@@ -17,13 +17,12 @@
     </div>
   </template>
   <script>
-  import { useRouter } from 'vue-router'; // Import Vue Router 
+  import { useRouter } from 'vue-router'; 
   export default { 
     setup() { 
-      const router = useRouter(); // Initialize router 
-      // // Define navigateTo method 
+      const router = useRouter();  
       const navigateTo = (page) => { 
-        router.push({ name: page }); // Navigate to the specified page 
+        router.push({ name: page }); 
         }; 
 
         return { navigateTo, 
@@ -35,25 +34,21 @@
 
 
   <style scoped>
-  .bestSellingBook{
-  }
   
   .banner {
-    margin-top: 15px;
+    margin-top: 20px;
     width: 100%;
-    height: 60vh;
+    height: 65vh;
     text-align: center;
     overflow: hidden;
-    position: relative;
-    
-    
-    
+    position: relative;    
   }
+
   .banner .slider {
     position: absolute;
     width: 140px; /*adjust width of picture*/
     height: 190px; /*adjust height of picture*/
-    top: 10%;
+    top: 15%;
     left: calc(50% - 100px);
     transform-style: preserve-3d;
     transform: perspective(1000px);
