@@ -8,7 +8,7 @@
     <div class="titleCategory">BEST SELLING PRODUCTS</div>
     <BestSellingPro/>
     
-    <div class="titleCategory">BEST SELLING BOOKs</div>
+    <div class="titleCategory">BEST SELLING BOOKS</div>
     <BestSellingBook />
 
     <div class="titleCategory">NEW PRODUCTS INSTOCK</div>
@@ -35,18 +35,6 @@ export default {
 </script>
 
 <style>
-.proName {
-  text-align: center;
-  font-size: medium;
-  font-weight: 600;
-  font-family: sans-serif;
-}
-
-.proPic {
-  width: 100%;
-  height: 90%;
-  padding: 4%;
-}
 
 .titleCategory {
   margin-top: 15px;
@@ -87,24 +75,6 @@ export default {
   font-size: 50px;
   font-weight: 1000;
   color: #1d3a4c;
-}
-
-
-
-.productGrid {
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  gap: 10px;
-  padding: 20px;
-}
-
-.product {
-  width: 100%;
-  height: 250px;
-  padding: 2%;
-  align-items: center;
-  border: solid #c3c0bd;
 }
 
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="left-bar">
-      <Sidebar />
+      <Sidebar  />
     </div>
     <div class="side-bar">
       <div class="contain">
@@ -22,26 +22,22 @@
       </div>
       <div class="card-container">
         <router-view />   
-        <!-- @addToCart="handleAddToCart(title)"      -->
       </div>
     </div>
-    <!-- <div class="right-side">
-      <CardIcon />
-    </div> -->
   </div>
 </template>
 
 <script>
-import ShopCard from './ShopCard.vue'
-import SearchBox from './searchbox.vue'
-import Sidebar from './Sidebar.vue'
-import book from '../../assets/shop/book.png'
-import ShopCardDetail from './ShopCardDetail.vue'
-import CartNotification from './CartNotification.vue'
+import ShopCard from '../views/Shop/ShopCard.vue'
+import SearchBox from '../views/Shop/searchbox.vue'
+import Sidebar from '../views/Shop/Sidebar.vue'
+import ShopCardDetail from '../views/Shop/ShopCardDetail.vue'
+import CartNotification from '../views/Shop/CartNotification.vue'
 // import {useCartstore} from '../../stores/counter'
-import {useCartstore} from '../../stores/counter'
+import { useRouter } from 'vue-router';
+import {useCartstore} from '../stores/counter'
 
-import CardIcon from './CardIcon.vue'
+import CardIcon from '../views/Shop/CardIcon.vue'
  export default {
   name: 'Shop',
   components: {
@@ -66,7 +62,6 @@ import CardIcon from './CardIcon.vue'
     handleAddToCart(title){
       this.catStore.addItemToCart(title);
     }
-    
   },
 };
 </script>
@@ -75,7 +70,8 @@ import CardIcon from './CardIcon.vue'
 #app {
   display: flex;
   gap: 20px;
-  margin: 20px;
+  margin-left: 60px;
+  background-color:   rgb(241, 241, 241);
 }
 .left-bar {
   margin-left: -20px;

@@ -101,7 +101,7 @@ import { mdiCreditCardOutline, mdiLogout, mdiThemeLightDark } from "@mdi/js";
 import { ref } from "@vue/runtime-dom";
 import { useRouter } from "vue-router";
 import Navigation from "../views/navigation.vue";
-import Icon from "./Shop/Icon.vue";
+import Icon from "./Icon.vue";
 // Define the path of the icons
 const darkMode = mdiThemeLightDark;
 
