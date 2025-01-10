@@ -4,17 +4,18 @@ import Faqs from '../components/Faqs.vue';
 import Home from '../components/Home.vue';
 import Login from '../components/Login.vue';
 import Register from '../components/Register.vue';
-import CardList from '../components/Shop/CardList.vue';
-import Shop from '../components/Shop/Shop.vue';
-import ShopCard from '../components/Shop/ShopCard.vue';
-import ShopCardDetail from '../components/Shop/ShopCardDetail.vue';
+import Shop from '../components/Shop.vue';
 
-import Book from '../components/Shop/Category/Book.vue';
-import Sticker from '../components/Shop/Category/Sticker.vue'
-import OfficeMaterial from '../components/Shop/Category/OfficeMaterial.vue'
-import Pen from '../components/Shop/Category/Pen.vue';
-import Pencil from '../components/Shop/Category/Pencil.vue';
-import Ruler from '../components/Shop/Category/Ruler.vue';
+
+import CardList from '../views/Shop/CardList.vue';
+import ShopCard from '../views/Shop/ShopCard.vue';
+import ShopCardDetail from '../views/Shop/ShopCardDetail.vue';
+import Book from '../views/Shop/Category/Book.vue';
+import Sticker from '../views/Shop/Category/Sticker.vue'
+import OfficeMaterial from '../views/Shop/Category/OfficeMaterial.vue'
+import Pen from '../views/Shop/Category/Pen.vue';
+import Pencil from '../views/Shop/Category/Pencil.vue';
+import Ruler from '../views/Shop/Category/Ruler.vue';
 
 
 const router = createRouter({
