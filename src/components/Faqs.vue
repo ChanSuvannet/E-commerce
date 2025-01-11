@@ -1,90 +1,3 @@
-<script setup lang="ts">
-import { mdiMenuDown } from "@mdi/js";
-import { computed, ref } from "@vue/runtime-dom";
-import { useFaqStore } from "../stores/faqStore";
-
-// Access the FAQ store
-const faqStore = useFaqStore();
-
-const selectedCategory = ref<string | null>(null);
-const faqSearchQuery = ref("");
-
-// Computed property to filter the FAQs based on selected category and search query
-const filteredFaqs = computed(() => {
-  return faqStore.faqs.filter(
-    (faq: any) =>
-      (!selectedCategory.value || faq.category === selectedCategory.value) &&
-      (faq.title.toLowerCase().includes(faqSearchQuery.value.toLowerCase()) ||
-        faq.content.toLowerCase().includes(faqSearchQuery.value.toLowerCase()))
-  );
-});
-
-// Computed property to get the unique categories from FAQs
-const categories = computed(() => {
-  const allCategories = faqStore.faqs.map((faq: any) => faq.category);
-  return Array.from(new Set(allCategories));
-});
-
-// Active question state
-const activeQuestion = ref<number | null>(null);
-
-const form = ref({
-  name: "",
-  email: "",
-  address: "",
-  message: "",
-});
-
-const sendTelegramMessage = async () => {
-  const telegramBotToken = "7593739467:AAENNf38VttIRP0VMWaq1R2Aq-uMIaF26OQ";
-  const chatId = "-1002334502755";
-
-const telegramMessage = `
-New Contact Form Submission
-Name     : ${form.value.name}
-Email    : ${form.value.email}
-Address  : ${form.value.address}
-Message  : ${form.value.message}
-`;
-
-  const response = await fetch(
-    `https://api.telegram.org/bot${telegramBotToken}/sendMessage`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        chat_id: chatId,
-        text: telegramMessage,
-        parse_mode: "HTML",
-      }),
-    }
-  );
-
-  if (response.ok) {
-    alert("Message sent successfully to Telegram!");
-  } else {
-    alert("Failed to send message.");
-  }
-};
-
-const submitForm = async () => {
-  try {
-    await sendTelegramMessage();
-    form.value = {
-      name: "",
-      email: "",
-      address: "",
-      message: "",
-    };
-  } catch (error) {
-    console.error(error);
-    alert("Something went wrong.");
-  }
-};
-</script>
-
 <template>
   <section class="h-auto">
     <!-- Heading -->
@@ -306,6 +219,90 @@ const submitForm = async () => {
   </section>
 </template>
 
+<script setup lang="ts">
+import { mdiMenuDown } from "@mdi/js";
+import { computed, ref } from "@vue/runtime-dom";
+import { useFaqStore } from "../stores/faqStore";
+// Access the FAQ store
+const faqStore = useFaqStore();
+const selectedCategory = ref<string | null>(null);
+const faqSearchQuery = ref("");
+
+// Computed property to filter the FAQs based on selected category and search query
+const filteredFaqs = computed(() => {
+  return faqStore.faqs.filter(
+    (faq: any) =>
+      (!selectedCategory.value || faq.category === selectedCategory.value) &&
+      (faq.title.toLowerCase().includes(faqSearchQuery.value.toLowerCase()) ||
+        faq.content.toLowerCase().includes(faqSearchQuery.value.toLowerCase()))
+  );
+});
+
+// Computed property to get the unique categories from FAQs
+const categories = computed(() => {
+  const allCategories = faqStore.faqs.map((faq: any) => faq.category);
+  return Array.from(new Set(allCategories));
+});
+
+// Active question state
+const activeQuestion = ref<number | null>(null);
+
+const form = ref({
+  name: "",
+  email: "",
+  address: "",
+  message: "",
+});
+
+const sendTelegramMessage = async () => {
+  const telegramBotToken = "7593739467:AAENNf38VttIRP0VMWaq1R2Aq-uMIaF26OQ";
+  const chatId = "-1002334502755";
+
+  const telegramMessage = `
+New Contact Form Submission
+Name     : ${form.value.name}
+Email    : ${form.value.email}
+Address  : ${form.value.address}
+Message  : ${form.value.message}
+`;
+
+  const response = await fetch(
+    `https://api.telegram.org/bot${telegramBotToken}/sendMessage`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        chat_id: chatId,
+        text: telegramMessage,
+        parse_mode: "HTML",
+      }),
+    }
+  );
+
+  if (response.ok) {
+    alert("Message sent successfully to Telegram!");
+  } else {
+    alert("Failed to send message.");
+  }
+};
+
+const submitForm = async () => {
+  try {
+    await sendTelegramMessage();
+    form.value = {
+      name: "",
+      email: "",
+      address: "",
+      message: "",
+    };
+  } catch (error) {
+    console.error(error);
+    alert("Something went wrong.");
+  }
+};
+</script>
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Moulpali&family=Playwrite+NG+Modern+Guides&display=swap");
 
