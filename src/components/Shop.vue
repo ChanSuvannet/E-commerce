@@ -11,7 +11,6 @@
 </template>
 
 <script>
-import { useCartstore } from "../stores/counter";
 import { useProductStore } from "../stores/productStore";
 import Filters from "../views/Product/Filters.vue";
 import ProductList from "../views/Product/ProductList.vue";
@@ -24,47 +23,32 @@ export default {
   },
   data() {
     return {
-      products: [],
-      categories: [],
       filters: {
-        priceRange: 300,
-        selectedRatings: [],
+        searchTitle: "",
+        selectedCategoryId: 0,
+        minPrice: null,
+        maxPrice: null,
+        minRating: 0,
       },
     };
   },
   computed: {
-    cartStore() {
-      return useCartstore();
+    store() {
+      return useProductStore();
     },
     filteredProducts() {
-      return this.products.filter(product => {
-        // Apply price filter
-        const priceMatches = product.currentPrice <= this.filters.priceRange;
-        
-        // Apply rating filter
-        const ratingMatches = this.filters.selectedRatings.length
-          ? this.filters.selectedRatings.includes(product.rating)
-          : true;
-
-        return priceMatches && ratingMatches;
-      });
+      return this.store.filteredProducts;
     },
   },
   methods: {
     updateFilters(newFilters) {
       this.filters = { ...this.filters, ...newFilters };
+      this.store.searchTitle = this.filters.searchTitle;
+      this.store.selectedCategoryId = this.filters.selectedCategoryId;
+      this.store.minPrice = this.filters.minPrice;
+      this.store.maxPrice = this.filters.maxPrice;
+      this.store.minRating = this.filters.minRating;
     },
-    handleAddToCart(title) {
-      this.cartStore.addItemToCart(title);
-    },
-  },
-  mounted() {
-    this.fetchData();
-  },
-  async fetchData() {
-    const store = useProductStore();
-    this.products = await store.fetchProducts();
-    this.categories = await store.fetchCategories(); 
   },
 };
 </script>
