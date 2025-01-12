@@ -28,8 +28,8 @@ const router = createRouter({
       component: Home
     },
     {
-      path: '/shop/list',
-      name: 'list',
+      path: '/checkout',
+      name: 'checkout',
       component: CardList,
     },
     {
