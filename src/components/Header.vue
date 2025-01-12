@@ -17,7 +17,7 @@
       />
 
       <!-- Shop Icon -->
-      <div class="p-2 bg-gray-100 rounded-full">
+      <div class="p-2 bg-gray-100 rounded-full" @click="goToCheckout">
         <Icon class="hover:scale-95 cursor-pointer" />
       </div>
 
@@ -102,6 +102,8 @@ import { ref } from "@vue/runtime-dom";
 import { useRouter } from "vue-router";
 import Navigation from "../views/navigation.vue";
 import Icon from "./Icon.vue";
+import { useCartstore } from "../stores/counter.js"; // Ensure the path is correct
+
 // Define the path of the icons
 const darkMode = mdiThemeLightDark;
 
@@ -136,6 +138,11 @@ const toggleDropdown = () => {
 // Navigation actions
 const goToSignIn = () => {
   router.push("/login");
+};
+
+// Navigation actions
+const goToCheckout = () => {
+  router.push("/checkout");
 };
 
 const goToSignUp = () => {
