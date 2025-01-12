@@ -1,11 +1,11 @@
 <template>
-  <div class="w-full h-screen flex justify-center items-center">
+  <div class="w-full h-screen flex justify-center items-center z-999">
     <div class="loader"></div>
   </div>
 </template>
 
 <script setup lang="ts"></script>
-<style scoped>
+<style >
 .loader {
   width: 40px;
   aspect-ratio: 1;

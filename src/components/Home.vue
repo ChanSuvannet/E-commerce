@@ -1,92 +1,85 @@
 <template>
-  <div class="home">
-    <div class="intro">
-      <div class="title">Best products for your Education</div>
-      <img class="introPic" src="../assets/photo/intro.jpg" alt="banner">
+  <div v-if="loading">
+    <div class="w-full h-screen flex justify-center items-center z-999">
+      <div class="loader"></div>
     </div>
+  </div>
+  <div v-if="!loading">
+    <div>
+      <!-- section one  -->
+      <div class="flex justify-between items-center py-12 px-20">
+        <div
+          class="w-full md:w-[50%] flex flex-col items-center md:items-start"
+        >
+          <div
+            class="text-3xl sm:text-4xl lg:text-5xl font-semibold font-serif text-center md:text-left mb-4"
+          >
+            <div class="flex flex-col gap-5">
+              <span>Best Products for</span>
+              <span class="text-yellow-400">Your Education</span>
+            </div>
+          </div>
+          <div class="text-lg sm:text-xl mb-8 text-center md:text-left">
+            Exclusive Discounts for Students!
+          </div>
+          <div class="flex gap-6 justify-center md:justify-start">
+            <div
+              class="inline-block px-8 py-4 bg-yellow-400 text-black font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:bg-yellow-500 cursor-pointer"
+            >
+              20% Off
+            </div>
+            <div
+              class="inline-block px-8 py-4 bg-[#022d5a] text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:bg-[#01467b] cursor-pointer"
+            >
+              Shop Now
+            </div>
+          </div>
+        </div>
+        <div class="w-full md:w-[50%] mt-10 md:mt-0">
+          <img
+            class="w-full h-auto rounded-xl bg-transparent"
+            src="../assets/photo/intro.jpg"
+            alt="banner"
+          />
+        </div>
+      </div>
 
-    <div class="titleCategory">BEST SELLING PRODUCTS</div>
-    <BestSellingPro/>
-    
-    <div class="titleCategory">BEST SELLING BOOKS</div>
-    <BestSellingBook />
+      <div class="titleCategory">BEST SELLING PRODUCTS</div>
+      <BestSellingPro />
 
-    <div class="titleCategory">NEW PRODUCTS INSTOCK</div>
-    <homeCard/>
-    
+      <div class="titleCategory">BEST SELLING BOOKS</div>
+      <BestSellingBook />
+
+      <div class="titleCategory">NEW PRODUCTS INSTOCK</div>
+      <homeCard />
+    </div>
   </div>
 </template>
 
-<script> 
-import homeCard from '../views/homeCard.vue';
-import BestSellingBook from '../views/BestSellingBook.vue' 
-import BestSellingPro from '../views/BestSellingPro.vue'
-import { useRouter } from 'vue-router'
+<script>
+import { onMounted, ref } from "vue";
+import BestSellingBook from "../views/BestSellingBook.vue";
+import BestSellingPro from "../views/BestSellingPro.vue";
+import homeCard from "../views/homeCard.vue";
 
-export default { 
-  components: { 
+export default {
+  components: {
     BestSellingBook,
     homeCard,
     BestSellingPro,
   },
-} 
+  setup() {
+    const loading = ref(true);
+    // Simulate loading with setTimeout
+    onMounted(() => {
+      setTimeout(() => {
+        loading.value = false;
+      }, 2000);
+    });
+
+    return {
+      loading,
+    };
+  },
+};
 </script>
-
-<style scoped>
-.titleCategory {
-  margin-top: 15px;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  font-size: 30px;
-  font-weight: 1000;
-  color: #1d3a4c;
-}
-
-.introPic {
-  width: 100%;
-  height: auto;
-}
-
-.home {
-  width: 100%;
-  height: auto;
-  padding: 2%;
-}
-
-.intro {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: auto;
-}
-
-.title {
-  padding: 2%;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  font-size: 50px;
-  font-weight: 1000;
-  color: #1d3a4c;
-}
-
-@media (min-width: 768px) {
-  .intro {
-    flex-direction: row;
-    height: 450px;
-  }
-
-  .title {
-    width: 50%;
-  }
-
-  .introPic {
-    width: 50%;
-    height: 100%;
-  }
-}
-</style>
