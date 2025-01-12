@@ -9,42 +9,53 @@ export const useProductStore = defineStore("product", {
     currentPage: 1, // Default page is 1
     searchTitle: "", // Title search filter
     selectedCategoryId: null as number | null, // Selected category filter
-    minPrice: 0, // Min price for filtering
-    maxPrice: 1000, // Max price for filtering
-    minRating: 0, // Min rating for filtering
+    minPrice: 0, // Minimum price for filtering
+    maxPrice: 1000, // Maximum price for filtering
+    minRating: 0, // Minimum rating for filtering
   }),
 
   getters: {
-    // Get filtered products with pagination
+    // Filter products based on all applied filters
     filteredProducts: (state) => {
       return state.products.filter((product: Product) => {
         // Filter by title
-        if (state.searchTitle && !product.title.toLowerCase().includes(state.searchTitle.toLowerCase())) {
+        if (
+          state.searchTitle &&
+          !product.title.toLowerCase().includes(state.searchTitle.toLowerCase())
+        ) {
           return false;
         }
-        // Filter by category
-        if (state.selectedCategoryId && product.categoryId !== state.selectedCategoryId) {
+
+        // Filter by category (ignore if none selected)
+        if (
+          state.selectedCategoryId &&
+          product.categoryId !== state.selectedCategoryId
+        ) {
           return false;
         }
+
         // Filter by price range
         const currentPrice = parseFloat(product.currentPrice);
         if (currentPrice < state.minPrice || currentPrice > state.maxPrice) {
           return false;
         }
-        // Filter by rating
-        if (product.rating < state.minRating) {
+
+        // Filter by minimum rating
+        if (product.rating <= state.minRating) {
           return false;
         }
+
         return true;
       });
     },
 
-    // Get products for the current page
+    // Paginate the filtered products
     currentPageProducts: (state) => {
       const startIndex = (state.currentPage - 1) * state.pageSize;
       return state.filteredProducts.slice(startIndex, startIndex + state.pageSize);
     },
 
+    // Calculate total pages based on filtered products
     totalPages: (state) => {
       const filteredCount = state.filteredProducts.length;
       return Math.ceil(filteredCount / state.pageSize);
@@ -52,33 +63,42 @@ export const useProductStore = defineStore("product", {
   },
 
   actions: {
-    // Method to fetch products (async)
+    // Simulate fetching products (can be replaced with real API calls)
     async fetchProducts() {
-      // Simulate a delay for data fetching (e.g., API call)
+      // Simulate a delay
       await new Promise((resolve) => setTimeout(resolve, 1000));
-      this.products = products; // In real-world scenario, fetch data from an API
+      this.products = products; // Replace with API data if needed
     },
 
+    // Go to the next page if within range
     nextPage() {
       if (this.currentPage < this.totalPages) {
         this.currentPage++;
       }
     },
 
+    // Go to the previous page if within range
     previousPage() {
       if (this.currentPage > 1) {
         this.currentPage--;
       }
     },
 
+    // Jump to a specific page if valid
     goToPage(page: number) {
       if (page >= 1 && page <= this.totalPages) {
         this.currentPage = page;
       }
     },
+
+    // Method to reset filters
+    resetFilters() {
+      this.searchTitle = "";
+      this.selectedCategoryId = null;
+      this.minPrice = 0;
+      this.maxPrice = 1000;
+      this.minRating = 0;
+      this.currentPage = 1;
+    },
   },
 });
-
-  
-
-

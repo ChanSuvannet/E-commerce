@@ -1,10 +1,10 @@
 <template>
-  <div class="flex gap-5">
+  <div class="flex gap-5 ml-5">
     <!-- Sidebar component for filters -->
     <Filters @filter-changed="updateFilters" />
 
     <!-- Product List component to display filtered products -->
-    <div class="w-full px-10">
+    <div class="w-full px-2">
       <ProductList :products="filteredProducts" />
     </div>
   </div>
@@ -47,7 +47,7 @@ export default {
       this.store.selectedCategoryId = this.filters.selectedCategoryId;
       this.store.minPrice = this.filters.minPrice;
       this.store.maxPrice = this.filters.maxPrice;
-      this.store.minRating = this.filters.minRating;
+      this.store.rating = this.filters.minRating;
     },
   },
 };
