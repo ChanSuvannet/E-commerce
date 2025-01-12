@@ -44,14 +44,19 @@
         </div>
       </div>
 
-      <div class="titleCategory">BEST SELLING PRODUCTS</div>
-      <BestSellingPro />
+      <!-- section two -->
+      <div>
 
-      <div class="titleCategory">BEST SELLING BOOKS</div>
-      <BestSellingBook />
+      </div>
+      <!-- section three -->
+       <div>
 
-      <div class="titleCategory">NEW PRODUCTS INSTOCK</div>
-      <homeCard />
+       </div>
+      <!-- section four -->
+       <div>
+        
+       </div>
+      <!-- section five -->
     </div>
   </div>
 </template>
