@@ -1,5 +1,5 @@
 <template>
-  <footer v-if="!loading" class="bg-gray-50">
+  <footer class="bg-gray-50">
     <div class="mx-auto w-full px-10 p-4 py-8">
       <div class="md:flex md:justify-between">
         <div class="mb-6 md:mb-0">
@@ -157,18 +157,5 @@
 <script>
 export default {
   name: "Footer",
-  setup() {
-    const loading = ref(true);
-    // Simulate loading with setTimeout
-    onMounted(() => {
-      setTimeout(() => {
-        loading.value = false;
-      }, 2000);
-    });
-
-    return {
-      loading,
-    };
-  },
 };
 </script>
