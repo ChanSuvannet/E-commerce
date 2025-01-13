@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import { categories, Product, products } from "../db/products";
 
-export const useProductStore = defineStore("product", {
+export const ProductStore = defineStore("product", {
   state: () => ({
     products: products, // List of products
     categories: categories, // List of categories
@@ -68,6 +68,16 @@ export const useProductStore = defineStore("product", {
       // Simulate a delay
       await new Promise((resolve) => setTimeout(resolve, 1000));
       this.products = products; // Replace with API data if needed
+    },
+
+    // Fetch a product by its ID
+    async fetchProductById(id: number) {
+      const product = this.products.find((product: any) => product.id === id);
+      if (product) {
+        return product;
+      } else {
+        throw new Error("Product not found");
+      }
     },
 
     // Go to the next page if within range

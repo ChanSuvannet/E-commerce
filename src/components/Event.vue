@@ -80,7 +80,7 @@
 import { computed } from 'vue';
 import { useCartstore } from '../stores/counter';
 import PromoSection from './PromoSection.vue';
-import { useProductStore } from '../stores/useProductStore';
+// import { useProductStore } from '../stores/useProductStore';
 export default {
   name: 'Event',
   components: {

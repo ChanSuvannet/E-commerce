@@ -1,3 +1,5 @@
+
+
 <template>
   <div>
     <Loading v-if="loading"></Loading>
@@ -13,7 +15,7 @@
       <div v-for="product in currentPageProducts" :key="product.id">
         <div
           class="w-auto min-h-[435px] h-auto cursor-pointer space-y-4 overflow-hidden rounded-lg border border-gray-200 bg-white p-4 shadow-sm hover:shadow-md transition-shadow duration-300 ease-in-out">
-          <div
+          <div @click="viewDetail(product)"
             class="flex items-center justify-center rounded-lg bg-gray-50 hover:bg-gray-100 transition-hover duration-300 ease-in-out">
             <img :src="product.image" :alt="product.title" class="product-image scale-95 rounded-lg min-h-[220px]" />
           </div>
@@ -56,10 +58,10 @@
               
               <div
                 class="flex justify-center items-center w-full px-1 py-2.5 rounded-lg font-medium text-[#022d5a] border-[#022d5a] border hover:bg-[#022d5a] hover:text-white transition duration-300 ease-in-out transform hover:scale-105"
-                @click="addToCart(product)"
+                @click="addToCart(product.name)"
               >
                 <svg-icon type="mdi" :path="mdiShoppingOutline" />
-                  Add To Cart
+                  Cart
               </div>
             </div>
           </div>
@@ -117,12 +119,13 @@
 <script setup lang="ts">
 import { mdiShoppingOutline } from "@mdi/js";
 import { computed, onMounted, ref } from "@vue/runtime-dom";
+import { useRouter } from 'vue-router';
 import Loading from "../../shared/Loading.vue";
 import { useCartstore } from "../../stores/counter";
-import { useProductStore } from "../../stores/productStore";
+import { ProductStore } from "../../stores/productStore";
 
 // Store instance
-const store = useProductStore();
+const store = ProductStore();
 const loading = ref(true);
 const cartStore = useCartstore(); // Use your counter store.
 
@@ -130,13 +133,23 @@ const cartStore = useCartstore(); // Use your counter store.
 const currentPage = computed(() => store.currentPage);
 const totalPages = computed(() => store.totalPages);
 const currentPageProducts = computed(() => store.currentPageProducts);
+const router = useRouter();
 
 //=======================================
-function addToCart(product) {
-  console.log("Product to add:", product); // Debug log
-  cartStore.addItemToCart(product.id); // Add product by ID
+function addToCart(product: any) {
+  console.log("click")
+  cartStore.addItemToCart(product); // Call the existing method from your counter.js.
   cartStore.showNotifications(`${product.id} added to cart!`);
-  cartStore.hideNotifications();
+  cartStore.hideNotifications(); // Automatically hide notifications after a timeout.
+  console.log(`${product} added to cart!`)
+}
+
+function viewDetail(product) {
+  router.push({
+    name: 'Detail',
+    params: { id: product.id },
+    state: { product: product } // Pass the entire product object using state
+  });
 }
 
 
