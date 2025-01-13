@@ -11,7 +11,7 @@
 </template>
 <script>
     import SvgIcon from '@jamescoyle/vue-icon';
-    import { mdiShoppingOutline } from "@mdi/js";
+import { mdiShoppingOutline } from "@mdi/js";
     // import  {useCartstore} from '../../stores/counter'
     import { useCartstore } from '../stores/counter';
     export default {
