@@ -126,7 +126,7 @@ export const products: Product[] = [
         currentPrice: '1.60',
         no_default: 80,
         originalPrice: '2.00',
-        discount: '20% Off',
+        discount: '50% Off',
         qty: 1
     },
     {
