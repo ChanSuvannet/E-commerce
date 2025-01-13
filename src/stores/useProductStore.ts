@@ -65,6 +65,7 @@ interface Product {
   no_default: number;
 }
 
+// new function
 export const useProductStore = defineStore('product', {
   state: () => ({
     // Array of products with diverse information
