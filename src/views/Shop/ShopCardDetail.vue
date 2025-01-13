@@ -3,7 +3,7 @@ import {
   StarIcon, 
   HeartIcon, 
   ShoppingCartIcon,
-  HomeIcon, MinusIcon, PlusIcon
+  HomeIcon, MinusIcon, PlusIcon, ChevronRight 
 } from 'lucide-vue-next';
 import { onMounted, ref, watch } from 'vue'; // Add 'watch' to the import
 import { useRoute } from 'vue-router'; // Import useRoute to access route params and state
@@ -77,22 +77,25 @@ watch(() => route.params.id, loadProduct); // Re-fetch the product if the route 
 </script>
 
 <template>
-  
-  <div class="min-h-screen bg-gray-50 p-6">
+  <div class="h-screen w-screen  p-6">
     <Loading v-if="loading"></Loading>
-    <div class="max-w-7xl mx-auto bg-white rounded-lg shadow-sm p-6">
+    <div class="flex items-center space-x-2">
+      <router-link :to="{ name: 'shop' }">
+        <h1 class="text-2xl font-semibold text-gray-800 hover:text-gray-300">Shop</h1>
+      </router-link>
+      <span  class="-ml-2 mt-1"><ChevronRight /></span>
+      <h1 class="text-2xl font-semibold text-gray-800">Product Details</h1>
+    </div>
+
+    <div class="max-w-7xl mx-auto bg-white rounded-lg shadow-sm p-6 justify-center">
       <div class="flex justify-between items-center mb-6">
-        <router-link :to="{ name: 'home' }">
-          <button class="text-gray-600 hover:text-gray-800">
-            <HomeIcon class="w-6 h-6" />
-          </button>
-        </router-link>
+        
       </div>
       <Loading v-if="loading" />
       <div v-else-if="product" class="grid md:grid-cols-2 gap-8">
         <!-- Product Images -->
         <div class="space-y-4">
-        <div class="aspect-square w-5/6 h-5/6 mx-auto rounded-lg overflow-hidden bg-gray-50">
+        <div class="aspect-square w-5/6 h-5/6 mx-auto rounded-lg overflow-hidden ">
           <img :src="product.image" :alt="product.title" class="w-full h-full object-contain" />
         </div>
       </div>
