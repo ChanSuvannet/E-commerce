@@ -1,5 +1,5 @@
 <template>
-  <div class="shopping-cart">
+  <div class="shopping-cart h-screen px-10">
     <h1 class="text-2xl font-bold mb-6">Shopping Cart</h1>
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
       <!-- Product List Section -->
@@ -97,7 +97,7 @@
 </template>
 
 <script>
-import { ref, computed, onMounted, watch } from "vue";
+import { computed, onMounted, ref, watch } from "vue";
 
 export default {
   name: "CardList",
