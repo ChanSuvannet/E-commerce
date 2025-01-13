@@ -51,17 +51,18 @@
               </div>
             </div>
             <div class="flex items-center justify-between pt-3 gap-4">
-              <div
-                class="flex justify-center items-center w-full px-1 py-2.5 rounded-lg font-medium text-white bg-[#022d5a] hover:bg-blue-800 transition duration-300 ease-in-out transform hover:scale-105">
+              <div 
+                class="flex justify-center items-center w-full px-1 py-2.5 rounded-lg font-medium text-white bg-[#022d5a] hover:bg-blue-800 transition duration-300 ease-in-out transform hover:scale-105"
+                >
                 Buy Now
               </div>
               
               <div
                 class="flex justify-center items-center w-full px-1 py-2.5 rounded-lg font-medium text-[#022d5a] border-[#022d5a] border hover:bg-[#022d5a] hover:text-white transition duration-300 ease-in-out transform hover:scale-105"
-                @click="addToCart(product.name)"
+                @click="addToCart(product)"
               >
                 <svg-icon type="mdi" :path="mdiShoppingOutline" />
-                  Cart
+                  Add to cart
               </div>
             </div>
           </div>
@@ -137,11 +138,19 @@ const router = useRouter();
 
 //=======================================
 function addToCart(product: any) {
-  console.log("click")
-  cartStore.addItemToCart(product); // Call the existing method from your counter.js.
-  cartStore.showNotifications(`${product.id} added to cart!`);
-  cartStore.hideNotifications(); // Automatically hide notifications after a timeout.
-  console.log(`${product} added to cart!`)
+  const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+  const existingProduct = cartItems.find((item: any) => item.id === product.id);
+  if (existingProduct) {
+    existingProduct.quantity += 1;
+  } else {
+    cartItems.push({ ...product, quantity: 1 });
+  }
+  localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+  // Update the cart store
+  cartStore.addItemToCart(product.title);
+  cartStore.showNotifications(`${product.title} added to cart!`);
+  cartStore.hideNotifications(); // Automatically hide the notification
 }
 
 function viewDetail(product) {
