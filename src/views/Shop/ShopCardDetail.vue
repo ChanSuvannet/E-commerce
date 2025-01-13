@@ -31,6 +31,7 @@ const decrementQuantity = () => {
 }
 
 //=======================================
+//=====
 function addToCart(product) {
   const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
   const existingProduct = cartItems.find((item) => item.id === product.id);
