@@ -115,8 +115,8 @@
 <script>
 import { computed } from 'vue';
 import { useCartstore } from '../stores/counter';
-import CartNotification from '../views/Shop/CartNotification.vue';
 import { useProductStore } from '../stores/useProductStore';
+import CartNotification from '../views/Shop/CartNotification.vue';
 import PromoSection from '../views/Event/PromoSection.vue';
 
 export default {
