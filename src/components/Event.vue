@@ -24,6 +24,7 @@
         @click="navigateTo('/shop')"
       />
     </div>
+
     <div class="slider-nav">
       <a
         href="#slider1"
@@ -53,11 +54,17 @@
     </div>
 
     <!-- Display filtered products -->
-    <div v-if="filteredProducts.length > 0" class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 w-full">
+    <div v-if="filteredProducts.length > 0" class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-16 pl-48 pr-48 w-full">
       <div v-for="product in filteredProducts" :key="product.id">
         <div class="w-auto min-h-[435px] h-auto cursor-pointer space-y-4 overflow-hidden rounded-lg border border-gray-200 bg-white p-4 shadow-sm hover:shadow-md transition-shadow duration-300 ease-in-out">
           <div class="flex items-center justify-center rounded-lg bg-gray-50 hover:bg-gray-100 transition-hover duration-300 ease-in-out">
-            <img :src="product.image" :alt="product.title" class="product-image scale-95 rounded-lg min-h-[220px]" />
+            <img
+              :src="product.image"
+              :alt="product.title"
+              class="product-image scale-95 rounded-lg min-h-[220px]"
+              @click="navigateTo(`/shop/detail/${product.id}`)" 
+              
+            />
           </div>
           <div class="flex flex-col justify-between">
             <div>
@@ -78,19 +85,6 @@
                 <p class="ml-auto text-base font-medium text-red-500">{{ product.discount }}</p>
               </div>
             </div>
-            <div class="flex items-center justify-between pt-3 gap-4">
-              <router-link :to="`/shop/detail/${product.id}`" class="flex justify-center items-center w-full px-1 py-2.5 rounded-lg font-medium text-white bg-[#022d5a] hover:bg-blue-800 transition duration-300 ease-in-out transform hover:scale-105">
-                Buy Now
-              </router-link>
-              <button @click="addToCart(product)" class="flex justify-center items-center w-full px-1 py-2.5 rounded-lg font-medium text-[#022d5a] border-[#022d5a] border hover:bg-[#022d5a] hover:text-white transition duration-300 ease-in-out transform hover:scale-105">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
-                  <line x1="3" y1="6" x2="21" y2="6" />
-                  <path d="M16 10a4 4 0 0 1-8 0" />
-                </svg>
-                <span class="ml-2">Add to Cart</span>
-              </button>
-            </div>
           </div>
         </div>
       </div>
@@ -98,71 +92,46 @@
 
     <!-- If no products are found -->
     <p v-else class="font-3xl font-semibold">No products found with this discount.</p>
-
-    <!-- Pagination Controls -->
-    <div v-if="!loading" class="flex items-end justify-center w-full mt-5 mb-5">
-      <nav aria-label="Page navigation example">
-        <ul class="flex items-center -space-x-px h-10 text-base">
-          
-        </ul>
-      </nav>
-    </div>
-
-    <!-- Show the Cart Notification -->
-    <CartNotification v-if="notificationMessage" :message="notificationMessage" />
   </div>
 </template>
+
 <script>
 import { computed } from 'vue';
-import { useCartstore } from '../stores/counter';
-// import { useProductStore } from '../stores/useProductStore';
-import CartNotification from '../views/Shop/CartNotification.vue';
 import PromoSection from '../views/Event/PromoSection.vue';
+import { ProductStore } from "../stores/productStore";
 
 export default {
   name: 'Event',
   components: {
-    CartNotification,
     PromoSection,
   },
   data() {
     return {
-      selectedDiscount: 'All', // Default to "All Discounts"
       notificationMessage: "", // Message to be shown when adding a product to cart
     };
   },
-
   computed: {
     filteredProducts() {
-      const productStore = useProductStore();
-      return productStore.products.filter(product => {
-        // Check if the product discount matches the selected discount filter
-        if (this.selectedDiscount === 'All') {
-          return true; // No discount filter applied
-        } else {
-          return product.discount === this.selectedDiscount;
-        }
-      });
+      const store = ProductStore(); // Accessing the store
+      return store.filteredProducts;
     },
   },
-
   methods: {
     selectDiscount(discount) {
-      this.selectedDiscount = discount; // Update the selected discount filter
+      const store = ProductStore(); // Accessing the store
+      store.selectDiscount(discount); // Update the selected discount filter in the store
     },
-
-    addToCart(product) {
-      const cartStore = useCartstore();
-      cartStore.addToCart(product);
-      this.notificationMessage = `${product.title} added to cart!`;
-      setTimeout(() => {
-        this.notificationMessage = "";
-      }, 2000);
+    navigateTo(path) {
+      this.$router.push(path); // Navigate programmatically
+    },
+    handleScroll() {
+      // Placeholder for scroll handling logic
     },
   },
 };
 </script>
-<style>
+
+<style scoped>
 /* Slider and Navigation */
 .slider-wrapper {
   position: relative;
@@ -192,15 +161,16 @@ export default {
 
 .slider img {
   flex: 0 0 100%; /* Full slide width */
+ padding-left: 10%;
+ padding-right: 10%;
+ padding-top: 5%;
   scroll-snap-align: start;
   object-fit: cover; /* Make the image cover the container */
-  border-radius: 10%;
+ border-radius: 10%;
   height: 90%;
   transition: transform 0.3s ease; /* Smooth zoom effect */
-  padding-left: 10%;
-  padding-right: 10%;
-  padding-top: 5%;
 }
+
 
 .slider img:hover {
   transform: scale(1.1);
@@ -211,7 +181,7 @@ export default {
   display: flex;
   column-gap: 0.5rem;
   position: absolute;
-  top: 142%; /* Adjusted to place at the bottom */
+ top: 50%;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1;
@@ -232,7 +202,6 @@ export default {
   opacity: 1;
   background-color: #ffff;
 }
-
 
 /* Discount Buttons */
 .discount-buttons {
@@ -278,11 +247,12 @@ export default {
 
 /* Product Card */
 .product-card {
+  
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.0s ease;
 }
 
 .product-card:hover {

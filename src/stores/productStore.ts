@@ -12,6 +12,7 @@ export const ProductStore = defineStore("product", {
     minPrice: 0, // Minimum price for filtering
     maxPrice: 1000, // Maximum price for filtering
     minRating: 0, // Minimum rating for filtering
+    selectedDiscount: "All", // Discount filter state
   }),
 
   getters: {
@@ -42,6 +43,11 @@ export const ProductStore = defineStore("product", {
 
         // Filter by minimum rating
         if (product.rating <= state.minRating) {
+          return false;
+        }
+
+        // Filter by discount (new condition)
+        if (state.selectedDiscount !== "All" && product.discount !== state.selectedDiscount) {
           return false;
         }
 
@@ -108,7 +114,13 @@ export const ProductStore = defineStore("product", {
       this.minPrice = 0;
       this.maxPrice = 1000;
       this.minRating = 0;
+      this.selectedDiscount = "All"; // Reset discount filter
       this.currentPage = 1;
+    },
+
+    // Select discount filter
+    selectDiscount(discount: string) {
+      this.selectedDiscount = discount; // Update the selected discount filter
     },
   },
 });
