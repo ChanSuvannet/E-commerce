@@ -9,6 +9,7 @@ import { onMounted, ref, watch } from 'vue'; // Add 'watch' to the import
 import { useRoute } from 'vue-router'; // Import useRoute to access route params and state
 import { ProductStore } from "../../stores/productStore";
 import Loading from "../../shared/Loading.vue";
+import { useCartstore } from "../../stores/counter";
 
 
 const route = useRoute(); // Get the route object
@@ -16,6 +17,7 @@ const product = ref(null); // Create a reactive reference for the product
 const loading = ref(true); // Loading state
 const store = ProductStore(); // Assuming a product store for fetching product data
 const quantity = ref(1); // the default quantity 1
+const cartStore = useCartstore(); // Use your counter store.
 
 const incrementQuantity = () => {
   if(quantity.value < product.value.no_default){
@@ -26,6 +28,24 @@ const decrementQuantity = () => {
   if(quantity.value > 1){
     quantity.value --;
   }
+}
+
+//=======================================
+//=====
+function addToCart(product) {
+  const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+  const existingProduct = cartItems.find((item) => item.id === product.id);
+  if (existingProduct) {
+    existingProduct.quantity += 1;
+  } else {
+    cartItems.push({ ...product, quantity: 1 });
+  }
+  localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+  // Update the cart store
+  cartStore.addItemToCart(product.title);
+  cartStore.showNotifications(`${product.title} added to cart!`);
+  cartStore.hideNotifications(); // Automatically hide the notification
 }
 
 // Fetch the product based on route state or route params
@@ -134,11 +154,13 @@ watch(() => route.params.id, loadProduct); // Re-fetch the product if the route 
 
           <div class="flex space-x-3">
             <router-link to="/checkout">
-              <button class="w-32 bg-purple-600 text-white py-3 rounded-lg hover:bg-purple-700 transition-colors">
+              <button class="w-32 bg-purple-600 text-white py-3 rounded-lg hover:bg-purple-700 transition-colors"
+              @click="addToCart(product)">
               Buy Now
             </button>
             </router-link>
-            <button class="w-32 bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors">
+            <button class="w-32 bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors"
+              @click="addToCart(product)">
               Add To Cart
             </button>
             <button class="p-3 border rounded-lg hover:bg-gray-50">

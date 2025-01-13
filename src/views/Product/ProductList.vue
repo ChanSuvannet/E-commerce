@@ -1,5 +1,3 @@
-
-
 <template>
   <div>
     <Loading v-if="loading"></Loading>
@@ -51,18 +49,17 @@
               </div>
             </div>
             <div class="flex items-center justify-between pt-3 gap-4">
-              <div 
-                class="flex justify-center items-center w-full px-1 py-2.5 rounded-lg font-medium text-white bg-[#022d5a] hover:bg-blue-800 transition duration-300 ease-in-out transform hover:scale-105"
-                >
-                Buy Now
-              </div>
-              
+              <router-link to="/checkout">
+                <button class="w-32 bg-[#022d5a] text-white py-3 rounded-lg transition-colors"
+                  @click="addToCart(product)">
+                  Buy Now
+                </button>
+              </router-link>
               <div
                 class="flex justify-center items-center w-full px-1 py-2.5 rounded-lg font-medium text-[#022d5a] border-[#022d5a] border hover:bg-[#022d5a] hover:text-white transition duration-300 ease-in-out transform hover:scale-105"
-                @click="addToCart(product)"
-              >
+                @click="addToCart(product)">
                 <svg-icon type="mdi" :path="mdiShoppingOutline" />
-                  Add to cart
+                Add to cart
               </div>
             </div>
           </div>
