@@ -85,7 +85,7 @@
             </div>
             <button
               @click="proceedToCheckout"
-              class="w-full py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 mt-4"
+              class="flex justify-center items-center w-full px-1 py-2.5 rounded-lg font-medium bg-[#022d5a] text-white border-[#022d5a] border hover:bg-[#022d5a] hover:text-white transition duration-300 ease-in-out transform hover:scale-105"
             >
               Proceed To Checkout →
             </button>
