@@ -46,9 +46,7 @@
     <!-- Discount Filter Buttons -->
     <div class="discount-buttons">
       <button @click="selectDiscount('All')">All Discounts</button>
-      <button @click="selectDiscount('10% Off')">10% Off</button>
-      <button @click="selectDiscount('20% Off')">20% Off</button>
-      <button @click="selectDiscount('25% Off')">25% Off</button>
+      <button @click="selectDiscount('25% Off')">20% Off</button>
       <button @click="selectDiscount('30% Off')">30% Off</button>
       <button @click="selectDiscount('50% Off')">50% Off</button>
     </div>
@@ -234,7 +232,7 @@ export default {
 .product-image {
   width: 120px;
   height: 120px;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
