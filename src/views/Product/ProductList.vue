@@ -133,7 +133,7 @@ const totalPages = computed(() => store.totalPages);
 const currentPageProducts = computed(() => store.currentPageProducts);
 const router = useRouter();
 
-//=======================================
+//===========================================
 function addToCart(product: any) {
   const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
   const existingProduct = cartItems.find((item: any) => item.id === product.id);
