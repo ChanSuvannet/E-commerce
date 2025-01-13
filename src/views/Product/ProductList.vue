@@ -56,10 +56,10 @@
                 </button>
               </router-link>
               <div
-                class="flex justify-center items-center w-full px-1 py-2.5 rounded-lg font-medium text-[#022d5a] border-[#022d5a] border hover:bg-[#022d5a] hover:text-white transition duration-300 ease-in-out transform hover:scale-105"
+                class="flex gap-2 justify-center items-center w-full px-1 py-2.5 rounded-lg font-medium text-[#022d5a] border-[#022d5a] border hover:bg-[#022d5a] hover:text-white transition duration-300 ease-in-out transform hover:scale-105"
                 @click="addToCart(product)">
                 <svg-icon type="mdi" :path="mdiShoppingOutline" />
-                Add to cart
+                Add
               </div>
             </div>
           </div>
