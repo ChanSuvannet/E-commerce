@@ -31,7 +31,6 @@ const decrementQuantity = () => {
 }
 
 //=======================================
-//=====
 function addToCart(product) {
   const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
   const existingProduct = cartItems.find((item) => item.id === product.id);
@@ -154,12 +153,12 @@ watch(() => route.params.id, loadProduct); // Re-fetch the product if the route 
 
           <div class="flex space-x-3">
             <router-link to="/checkout">
-              <button class="w-32 bg-purple-600 text-white py-3 rounded-lg hover:bg-purple-700 transition-colors"
+              <button class="w-32 bg-[#022d5a] text-white py-3 rounded-lg transition-colors"
               @click="addToCart(product)">
               Buy Now
             </button>
             </router-link>
-            <button class="w-32 bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors"
+            <button class="flex justify-center items-center w-64 px-1 py-2.5 rounded-lg font-medium text-[#022d5a] border-[#022d5a] border hover:bg-[#022d5a] hover:text-white transition duration-300 ease-in-out transform hover:scale-105"
               @click="addToCart(product)">
               Add To Cart
             </button>
