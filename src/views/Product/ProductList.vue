@@ -121,7 +121,10 @@ import { mdiShoppingOutline } from "@mdi/js";
 import { computed, onMounted, ref } from "@vue/runtime-dom";
 import Loading from "../../shared/Loading.vue";
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { ProductStore } from "../../stores/productStore";
+=======
+>>>>>>> 25868701a9ed12066224d1431b0d8c6f370b5cf2
 =======
 >>>>>>> 25868701a9ed12066224d1431b0d8c6f370b5cf2
 import { useCartstore } from "../../stores/counter";
@@ -139,6 +142,7 @@ const currentPageProducts = computed(() => store.currentPageProducts);
 
 //=======================================
 <<<<<<< HEAD
+<<<<<<< HEAD
 function addToCart(product: any) {
   alert(product)
   console.log("click")
@@ -146,6 +150,13 @@ function addToCart(product: any) {
   cartStore.showNotifications(`${product.id} added to cart!`);
   cartStore.hideNotifications(); // Automatically hide notifications after a timeout.
   console.log(`${product} added to cart!`);
+=======
+function addToCart(product) {
+  console.log("Product to add:", product); // Debug log
+  cartStore.addItemToCart(product.id); // Add product by ID
+  cartStore.showNotifications(`${product.id} added to cart!`);
+  cartStore.hideNotifications();
+>>>>>>> 25868701a9ed12066224d1431b0d8c6f370b5cf2
 =======
 function addToCart(product) {
   console.log("Product to add:", product); // Debug log
