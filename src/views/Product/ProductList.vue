@@ -118,8 +118,8 @@
 import { mdiShoppingOutline } from "@mdi/js";
 import { computed, onMounted, ref } from "@vue/runtime-dom";
 import Loading from "../../shared/Loading.vue";
-import { useProductStore } from "../../stores/productStore";
 import { useCartstore } from "../../stores/counter";
+import { useProductStore } from "../../stores/productStore";
 
 // Store instance
 const store = useProductStore();
@@ -133,11 +133,12 @@ const currentPageProducts = computed(() => store.currentPageProducts);
 
 //=======================================
 function addToCart(product) {
-  cartStore.addItemToCart(product.id); // Call the existing method from your counter.js.
+  console.log("Product to add:", product); // Debug log
+  cartStore.addItemToCart(product.id); // Add product by ID
   cartStore.showNotifications(`${product.id} added to cart!`);
-  cartStore.hideNotifications(); // Automatically hide notifications after a timeout.
-  console.log(`${product.id} added to cart!`);
+  cartStore.hideNotifications();
 }
+
 
 function nextPage() {
   store.nextPage();
