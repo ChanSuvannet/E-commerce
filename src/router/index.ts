@@ -36,49 +36,11 @@ const router = createRouter({
       path: '/shop',
       name: 'shop',
       component: Shop,
-      children: [
-        {
-          path: 'category/ruler',
-          name: 'ruler',
-          component: Ruler
-        },
-        {
-          path: 'category/book',
-          name: 'book',
-          component: Book
-        },
-        {
-          path: 'category/pen',
-          name: 'pen',
-          component: Pen
-        },
-        {
-          path: 'category/pencil',
-          name: 'pencil',
-          component: Pencil
-        },
-        {
-          path: 'category/sticker',
-          name: 'sticker',
-          component: Sticker
-        },
-        {
-          path: 'category/officematerial',
-          name: 'officematerial',
-          component: OfficeMaterial
-        },
-        { 
-          path: '',
-          name: 'all',
-          component: ShopCard,
-        },
-        {
-          path: 'detail/:id',
-          name: 'detail',
-          component: ShopCardDetail,
-        },
-       
-      ],
+    },
+    {
+      path: '/shop/detail/:id',
+      name: 'detail',
+      component: ShopCardDetail,
     },
     
     {

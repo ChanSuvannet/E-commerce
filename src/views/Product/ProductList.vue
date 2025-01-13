@@ -15,7 +15,9 @@
           class="w-auto min-h-[435px] h-auto cursor-pointer space-y-4 overflow-hidden rounded-lg border border-gray-200 bg-white p-4 shadow-sm hover:shadow-md transition-shadow duration-300 ease-in-out">
           <div
             class="flex items-center justify-center rounded-lg bg-gray-50 hover:bg-gray-100 transition-hover duration-300 ease-in-out">
-            <img :src="product.image" :alt="product.title" class="product-image scale-95 rounded-lg min-h-[220px]" />
+            <router-link :to="`/shop/detail/${product.id}`" class="flex items-center justify-center rounded-lg bg-gray-50 hover:bg-gray-100 transition-hover duration-300 ease-in-out">
+              <img :src="product.image" :alt="product.title" class="product-image scale-95 rounded-lg min-h-[220px]" />
+            </router-link>
           </div>
           <div class="flex flex-col justify-between">
             <div>
@@ -56,10 +58,10 @@
               
               <div
                 class="flex justify-center items-center w-full px-1 py-2.5 rounded-lg font-medium text-[#022d5a] border-[#022d5a] border hover:bg-[#022d5a] hover:text-white transition duration-300 ease-in-out transform hover:scale-105"
-                @click="addToCart(product)"
+                @click="addToCart(product.name)"
               >
                 <svg-icon type="mdi" :path="mdiShoppingOutline" />
-                  Add To Cart
+                  Cart
               </div>
             </div>
           </div>
@@ -118,11 +120,11 @@
 import { mdiShoppingOutline } from "@mdi/js";
 import { computed, onMounted, ref } from "@vue/runtime-dom";
 import Loading from "../../shared/Loading.vue";
-import { useProductStore } from "../../stores/productStore";
+import { ProductStore } from "../../stores/productStore";
 import { useCartstore } from "../../stores/counter";
 
 // Store instance
-const store = useProductStore();
+const store = ProductStore();
 const loading = ref(true);
 const cartStore = useCartstore(); // Use your counter store.
 
@@ -132,11 +134,13 @@ const totalPages = computed(() => store.totalPages);
 const currentPageProducts = computed(() => store.currentPageProducts);
 
 //=======================================
-function addToCart(product) {
-  cartStore.addItemToCart(product.id); // Call the existing method from your counter.js.
+function addToCart(product: any) {
+  alert(product)
+  console.log("click")
+  cartStore.addItemToCart(product); // Call the existing method from your counter.js.
   cartStore.showNotifications(`${product.id} added to cart!`);
   cartStore.hideNotifications(); // Automatically hide notifications after a timeout.
-  console.log(`${product.id} added to cart!`);
+  console.log(`${product} added to cart!`);
 }
 
 function nextPage() {

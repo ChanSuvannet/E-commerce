@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import { categories, Product, products } from "../db/products";
 
-export const useProductStore = defineStore("product", {
+export const ProductStore = defineStore("product", {
   state: () => ({
     products: products, // List of products
     categories: categories, // List of categories
@@ -70,6 +70,10 @@ export const useProductStore = defineStore("product", {
       this.products = products; // Replace with API data if needed
     },
 
+    async fetchProductById(id) {
+      return this.products.find((product) => product.id === id);
+    },
+
     // Go to the next page if within range
     nextPage() {
       if (this.currentPage < this.totalPages) {
@@ -101,4 +105,6 @@ export const useProductStore = defineStore("product", {
       this.currentPage = 1;
     },
   },
+
+  
 });

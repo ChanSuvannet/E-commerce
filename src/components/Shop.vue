@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { useProductStore } from "../stores/productStore";
+import { ProductStore } from "../stores/productStore";
 import Filters from "../views/Product/Filters.vue";
 import ProductList from "../views/Product/ProductList.vue";
 
@@ -34,7 +34,7 @@ export default {
   },
   computed: {
     store() {
-      return useProductStore();
+      return ProductStore();
     },
     filteredProducts() {
       return this.store.filteredProducts;
