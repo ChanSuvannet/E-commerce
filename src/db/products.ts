@@ -1,5 +1,12 @@
-// hi I am narin
+// 
 import book from '../assets/shop/book.png'
+import book1 from '../assets/photo/book1.jpg'
+import book2 from '../assets/photo/book2.jpg'
+import book3 from '../assets/photo/book3.jpg'
+import book4 from '../assets/photo/book4.jpg'
+import book5 from '../assets/photo/book5.jpg'
+import book6 from '../assets/photo/book6.jpg'
+import book7 from '../assets/photo/book7.jpg'
 import caculator from '../assets/shop/caculator.png'
 import higglightor from '../assets/shop/higglightor.png'
 import pen from '../assets/shop/pen.png'
@@ -751,6 +758,111 @@ export const products: Product[] = [
         description: "Premium sticker pack featuring trendy and fun designs.",
         category: "Sticker",
         no_default: 100
-    }
+    },
+    {
+        id: 46,
+        image: book1,
+        title: 'It End With Us',
+        rating: 4,
+        description: 'A popular novel book.',
+        category: 'Book',
+        categoryId: 1,
+        reviews: '7,778',
+        currentPrice: '8.60',
+        no_default: 100,
+        originalPrice: '10.00',
+        discount: '20% Off',
+        qty: 1
+    },
+    {
+        id: 47,
+        image: book2,
+        title: 'Power to Change',
+        rating: 4,
+        description: 'A popular novel book.',
+        category: 'Book',
+        categoryId: 1,
+        reviews: '7,778',
+        currentPrice: '8.60',
+        no_default: 100,
+        originalPrice: '10.00',
+        discount: '20% Off',
+        qty: 1
+    },
+    {
+        id: 48,
+        image: book3,
+        title: 'Harry Potter and the Soccer',
+        rating: 3,
+        description: 'A popular advanture book.',
+        category: 'Book',
+        categoryId: 1,
+        reviews: '4,778',
+        currentPrice: '8.60',
+        no_default: 100,
+        originalPrice: '10.00',
+        discount: '20% Off',
+        qty: 1
+    },
+    {
+        id: 49,
+        image: book4,
+        title: 'Harry Potter and the Prisoner',
+        rating: 3,
+        description: 'A popular advanture book.',
+        category: 'Book',
+        categoryId: 1,
+        reviews: '4,778',
+        currentPrice: '8.60',
+        no_default: 100,
+        originalPrice: '10.00',
+        discount: '20% Off',
+        qty: 1
+    },
+    {
+        id: 50,
+        image: book5,
+        title: 'Harry Potter and the Phylosopher',
+        rating: 3,
+        description: 'A popular advanture book.',
+        category: 'Book',
+        categoryId: 1,
+        reviews: '4,778',
+        currentPrice: '8.60',
+        no_default: 100,
+        originalPrice: '10.00',
+        discount: '20% Off',
+        qty: 1
+    },
+    {
+        id: 51,
+        image: book6,
+        title: 'The paper daughter',
+        rating: 3,
+        description: 'A popular advanture book.',
+        category: 'Book',
+        categoryId: 1,
+        reviews: '4,778',
+        currentPrice: '8.60',
+        no_default: 100,
+        originalPrice: '10.00',
+        discount: '20% Off',
+        qty: 1
+    },
+    {
+        id: 52,
+        image: book7,
+        title: 'The Spinddle of Fate',
+        rating: 3,
+        description: 'A popular advanture book.',
+        category: 'Book',
+        categoryId: 1,
+        reviews: '4,778',
+        currentPrice: '8.60',
+        no_default: 100,
+        originalPrice: '10.00',
+        discount: '20% Off',
+        qty: 1
+    },
     
 ]
