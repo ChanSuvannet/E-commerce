@@ -1,51 +1,52 @@
 <template>
-<footer class="border-t border-gray-300">
-    <div class="mx-auto w-full px-10 p-4 py-8">
+  <footer class="border-t border-gray-300 bg-gray-100">
+    <div class="mx-auto w-full px-10 py-8">
       <div class="md:flex md:justify-between">
+        <!-- Logo Section -->
         <div class="mb-6 md:mb-0">
           <div class="flex gap-1 items-center text-2xl">
             <h1 class="font-medium text-blue-950">EduMaterial</h1>
             <h1 class="font-medium text-yellow-500">Shop</h1>
           </div>
         </div>
+
+        <!-- Links Section -->
         <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+          <!-- Learn More Section -->
           <div>
-            <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase">
-              Learn More
-            </h2>
+            <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase">Learn More</h2>
             <ul class="text-gray-500 dark:text-gray-400 font-medium">
               <li class="mb-4">
-                <a href="" class="hover:underline">New Product</a>
-              </li>
-
-              <li class="mb-4">
-                <a href="" class="hover:underline">Discount</a>
+                <a href="#" class="hover:underline">New Product</a>
               </li>
               <li class="mb-4">
-                <a href="" class="hover:underline">Payment</a>
+                <a href="#" class="hover:underline">Discount</a>
+              </li>
+              <li class="mb-4">
+                <a href="#" class="hover:underline">Payment</a>
               </li>
             </ul>
           </div>
+
+          <!-- Contact Us Section -->
           <div>
-            <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase">
-              Contact Us
-            </h2>
+            <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase">Contact Us</h2>
             <ul class="text-gray-500 dark:text-gray-400 font-medium">
               <li class="mb-4">
-                <a href="" class="hover:underline">Phone: +123456789</a>
+                <a href="#" class="hover:underline">Phone: +123456789</a>
               </li>
               <li class="mb-4">
-                <a class="hover:underline">Email: example@domain.com</a>
+                <a href="#" class="hover:underline">Email: example@domain.com</a>
               </li>
               <li>
-                <a class="hover:underline">Address: 123 Street Name, City</a>
+                <a href="#" class="hover:underline">Address: 123 Street Name, City</a>
               </li>
             </ul>
           </div>
+
+          <!-- Legal Section -->
           <div>
-            <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase">
-              Legal
-            </h2>
+            <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase">Legal</h2>
             <ul class="text-gray-500 dark:text-gray-400 font-medium">
               <li class="mb-4">
                 <a href="#" class="hover:underline">Privacy Policy</a>
@@ -57,17 +58,21 @@
           </div>
         </div>
       </div>
-      <hr
-        class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8"
-      />
+
+      <!-- Divider -->
+      <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+
+      <!-- Footer Bottom Section -->
       <div class="sm:flex sm:items-center sm:justify-between">
-        <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400"
-          >© 2025
+        <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">
+          © 2025
           <a
             href="https://moodle.ccun.edu.kh/enrol/index.php?id=276"
             class="hover:underline"
-            >Internet Programming I™</a
-          >. All Rights Reserved.
+          >
+            Internet Programming I™
+          </a>
+          . All Rights Reserved.
         </span>
         <div class="flex mt-4 sm:justify-center sm:mt-0">
           <a href="#" class="text-gray-500 hover:text-gray-900">
@@ -149,7 +154,7 @@
             <span class="sr-only">Dribbble account</span>
           </a>
         </div>
-      </div>
+     </div>
     </div>
   </footer>
 </template>
@@ -159,3 +164,4 @@ export default {
   name: "Footer",
 };
 </script>
+
