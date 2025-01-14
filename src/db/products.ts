@@ -1,4 +1,4 @@
-// 
+
 import book from '../assets/shop/book.png'
 import book1 from '../assets/photo/book1.jpg'
 import book2 from '../assets/photo/book2.jpg'
@@ -7,6 +7,7 @@ import book4 from '../assets/photo/book4.jpg'
 import book5 from '../assets/photo/book5.jpg'
 import book6 from '../assets/photo/book6.jpg'
 import book7 from '../assets/photo/book7.jpg'
+import pencialCase from '../assets/photo/pencialCase.png'
 
 import shopbook1 from '../assets/shop/book/book1.png'
 import shopbook2 from '../assets/shop/book/book2.png'
