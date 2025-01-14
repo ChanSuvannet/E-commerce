@@ -7,6 +7,12 @@ import book4 from '../assets/photo/book4.jpg'
 import book5 from '../assets/photo/book5.jpg'
 import book6 from '../assets/photo/book6.jpg'
 import book7 from '../assets/photo/book7.jpg'
+
+import shopbook1 from '../assets/shop/book/book1.png'
+import shopbook2 from '../assets/shop/book/book2.png'
+import shopbook3 from '../assets/shop/book/book3.png'
+import shopbook4 from '../assets/shop/book/book4.png'
+
 import caculator from '../assets/shop/caculator.png'
 import higglightor from '../assets/shop/higglightor.png'
 import pen from '../assets/shop/pen.png'
@@ -38,7 +44,6 @@ import pencil4 from '../assets/shop/pencil/pencil4.png'
 import pencil5 from '../assets/shop/pencil/pencil5.png'
 import pencil6 from '../assets/shop/pencil/pencil6.png'
 import pencil7 from '../assets/shop/pencil/pencil7.png'
-import pencialCase from '../assets/photo/pencialCase.png'
 
 // products of Pen
 import pen1 from '../assets/shop/pen/pen1.png'
@@ -185,7 +190,7 @@ export const products: Product[] = [
     },
     {
         id: 7,
-        image: book,
+        image: shopbook1,
         title: "Pink Notebook",
         rating: 3,
         description: "Bright pink notebook with a glossy cover.",
@@ -200,7 +205,7 @@ export const products: Product[] = [
     },
     {
         id: 8,
-        image: book,
+        image: shopbook2,
         title: "Orange Notebook",
         rating: 4,
         description: "Vibrant orange notebook for creative projects.",
@@ -215,7 +220,7 @@ export const products: Product[] = [
     },
     {
         id: 9,
-        image: book,
+        image: shopbook3,
         title: "Purple Notebook",
         rating: 5,
         description: "Elegant purple notebook with a hardcover.",
@@ -230,7 +235,7 @@ export const products: Product[] = [
     },
     {
         id: 10,
-        image: book,
+        image: shopbook4,
         title: "White Notebook",
         rating: 3,
         description: "Clean white notebook with minimalistic design.",
@@ -462,7 +467,7 @@ export const products: Product[] = [
         reviews: "100",
         currentPrice: "1.50",
         originalPrice: "2.00",
-        discount: "25% OFF",
+        discount: "25%",
         qty: 1,
         description: "HB pencil suitable for sketching and writing.",
         category: "Pencil",
@@ -477,7 +482,7 @@ export const products: Product[] = [
         reviews: "100",
         currentPrice: "1.30",
         originalPrice: "1.80",
-        discount: "28% OFF",
+        discount: "28%",
         qty: 1,
         description: "Premium pencil for smooth writing experience.",
         category: "Pencil",
@@ -492,7 +497,7 @@ export const products: Product[] = [
         reviews: "100",
         currentPrice: "1.75",
         originalPrice: "2.20",
-        discount: "20% OFF",
+        discount: "20%",
         qty: 1,
         description: "Durable pencil with a comfortable grip.",
         category: "Pencil",
@@ -507,7 +512,7 @@ export const products: Product[] = [
         reviews: "100",
         currentPrice: "1.40",
         originalPrice: "1.90",
-        discount: "26% OFF",
+        discount: "26%",
         qty: 1,
         description: "Eco-friendly pencil made from recycled materials.",
         category: "Pencil",
@@ -522,7 +527,7 @@ export const products: Product[] = [
         reviews: "100",
         currentPrice: "1.60",
         originalPrice: "2.10",
-        discount: "24% OFF",
+        discount: "24%",
         qty: 1,
         description: "Pencil with break-resistant lead.",
         category: "Pencil",
@@ -537,7 +542,7 @@ export const products: Product[] = [
         reviews: "100",
         currentPrice: "1.20",
         originalPrice: "1.50",
-        discount: "20% OFF",
+        discount: "20%",
         qty: 1,
         description: "Lightweight pencil perfect for school use.",
         category: "Pencil",
@@ -552,7 +557,7 @@ export const products: Product[] = [
         reviews: "100",
         currentPrice: "1.00",
         originalPrice: "1.30",
-        discount: "23% OFF",
+        discount: "23%",
         qty: 1,
         description: "Stylish pencil with a soft eraser.",
         category: "Pencil",
@@ -567,7 +572,7 @@ export const products: Product[] = [
         reviews: "100",
         currentPrice: "2.00",
         originalPrice: "2.50",
-        discount: "20% OFF",
+        discount: "20%",
         qty: 1,
         description: "Blue ink ballpoint pen with smooth flow.",
         category: "Pen",
@@ -582,7 +587,7 @@ export const products: Product[] = [
         reviews: "100",
         currentPrice: "1.80",
         originalPrice: "2.20",
-        discount: "18% OFF",
+        discount: "18%",
         qty: 1,
         description: "Black ink gel pen with comfortable grip.",
         category: "Pen",
@@ -597,7 +602,7 @@ export const products: Product[] = [
         reviews: "100",
         currentPrice: "1.90",
         originalPrice: "2.30",
-        discount: "17% OFF",
+        discount: "17%",
         qty: 1,
         description: "Durable pen with waterproof ink.",
         category: "Pen",
@@ -612,7 +617,7 @@ export const products: Product[] = [
         reviews: "100",
         currentPrice: "2.10",
         originalPrice: "2.50",
-        discount: "16% OFF",
+        discount: "16%",
         qty: 1,
         description: "Fine tip pen for precision writing.",
         category: "Pen",
@@ -873,7 +878,7 @@ export const products: Product[] = [
         discount: "20% OFF",
         qty: 1,
         no_default: 100,
-        currentPrice: '8.00'
+        currentPrice: '8.00'    
     },
     {
         id: 53,

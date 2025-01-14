@@ -188,9 +188,7 @@ watch(() => route.params.id, loadProduct); // Re-fetch the product if the route 
               @click="addToCart(product)">
               Add To Cart
             </button>
-            <button class="p-3 border rounded-lg hover:bg-gray-50">
-              <HeartIcon class="w-6 h-6 text-gray-600" />
-            </button>
+            
           </div>
         </div>
       </div>
