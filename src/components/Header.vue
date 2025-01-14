@@ -142,7 +142,7 @@ const goToSignIn = () => {
 
 // Navigation actions
 const goToCheckout = () => {
-  router.push("/checkout");
+  router.push("/shop/checkout");
 };
 
 const goToSignUp = () => {

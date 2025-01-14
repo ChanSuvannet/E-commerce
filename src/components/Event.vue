@@ -46,67 +46,67 @@
     <!-- Discount Filter Buttons -->
     <div class="discount-buttons">
       <button @click="selectDiscount('All')">All Discounts</button>
-      <button @click="selectDiscount('25% Off')">20% Off</button>
+      <button @click="selectDiscount('20% Off')">20% Off</button>
       <button @click="selectDiscount('30% Off')">30% Off</button>
       <button @click="selectDiscount('50% Off')">50% Off</button>
     </div>
 
     <!-- Display filtered products -->
-    <div
-      v-if="filteredProducts.length > 0"
-      class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-16 pl-48 pr-48 w-full"
-    >
+<div
+  v-if="filteredProducts.length > 0"
+  class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12 h-screen pl-48 pr-48 justify-center"
+>
       <div v-for="product in filteredProducts" :key="product.id">
-        <div
-          class="w-auto min-h-[435px] h-auto cursor-pointer space-y-4 overflow-hidden rounded-lg border border-gray-200 bg-white p-4 shadow-sm hover:shadow-md transition-shadow duration-300 ease-in-out"
-        >
+        <router-link :to="`/shop`" class="w-full">
           <div
-            class="flex items-center justify-center rounded-lg bg-gray-50 hover:bg-gray-100 transition-hover duration-300 ease-in-out"
+            class="w-auto min-h-[435px] h-auto cursor-pointer space-y-4 overflow-hidden rounded-lg border border-gray-200 bg-white p-4 shadow-sm hover:shadow-md transition-shadow duration-300 ease-in-out"
           >
-            <img
-              :src="product.image"
-              :alt="product.title"
-              class="product-image scale-95 rounded-lg min-h-[220px]"
-              @click="navigateTo(`/shop/detail/${product.id}`)"
-            />
-          </div>
-          <div class="flex flex-col justify-between">
-            <div>
-              <p class="text-lg font-bold">{{ product.title }}</p>
-              <div class="flex justify-between items-center">
-                <!-- Star Ratings -->
-                <div class="stars flex">
-                  <span
-                    v-for="n in 5"
-                    :key="n"
-                    class="text-gray-400 text-lg"
-                    :class="{ 'text-yellow-500': n <= product.rating }"
+            <div
+              class="flex items-center justify-center rounded-lg bg-gray-50 hover:bg-gray-100 transition-hover duration-300 ease-in-out"
+            >
+              <img
+                :src="product.image"
+                :alt="product.title"
+                class="product-image scale-95 rounded-lg min-h-[220px]"
+              />
+            </div>
+            <div class="flex flex-col justify-between">
+              <div>
+                <p class="text-lg font-bold">{{ product.title }}</p>
+                <div class="flex justify-between items-center">
+                  <!-- Star Ratings -->
+                  <div class="stars flex">
+                    <span
+                      v-for="n in 5"
+                      :key="n"
+                      class="text-gray-400 text-lg"
+                      :class="{ 'text-yellow-500': n <= product.rating }"
+                    >
+                      ★
+                    </span>
+                  </div>
+                  <!-- Number of Reviews -->
+                  <span class="text-gray-600 text-sm ml-2"
+                    >{{ product.reviews }} Reviews</span
                   >
-                    ★
-                  </span>
                 </div>
-                <!-- Number of Reviews -->
-                <span class="text-gray-600 text-sm ml-2"
-                  >{{ product.reviews }} Reviews</span
-                >
-              </div>
-              <div class="flex items-center">
-                <p class="mr-2 text-lg font-semibold text-gray-900 h-screen">
-                  ${{ product.currentPrice }}
-                </p>
-                <p class="text-base font-medium text-gray-500 line-through">
-                  ${{ product.originalPrice }}
-                </p>
-                <p class="ml-auto text-base font-medium text-red-500">
-                  {{ product.discount }}
-                </p>
+                <div class="flex items-center">
+                  <p class="mr-2 text-lg font-semibold text-gray-900">
+                    {{ product.currentPrice }}
+                  </p>
+                  <p class="text-base font-medium text-gray-500 line-through">
+                    {{ product.originalPrice }}
+                  </p>
+                  <p class="ml-auto text-base font-medium text-red-500">
+                    {{ product.discount }}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </router-link>
       </div>
     </div>
-
     <!-- If no products are found -->
     <p v-else class="font-3xl font-semibold">
       No products found with this discount.
@@ -145,6 +145,7 @@ export default {
     handleScroll() {
       // Placeholder for scroll handling logic
     },
+    
   },
 };
 </script>
@@ -177,6 +178,7 @@ export default {
   display: none;
 }
 
+/* Slider image */
 .slider img {
   flex: 0 0 100%; /* Full slide width */
   padding-left: 10%;
@@ -190,15 +192,19 @@ export default {
 }
 
 .slider img:hover {
-  transform: scale(1.1);
-  filter: brightness(1.2);
+  transform: scale(1.1); /* Only apply scale effect on hover */
+}
+
+/* Add a new class for the active state (on click) */
+.slider img.active {
+  filter: brightness(1.2); /* Apply brightness only when clicked */
 }
 
 .slider-nav {
   display: flex;
   column-gap: 0.5rem;
   position: absolute;
-  top: 50%;
+  top: 140%;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1;

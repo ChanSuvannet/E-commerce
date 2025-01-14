@@ -49,12 +49,21 @@
               </div>
             </div>
             <div class="flex items-center justify-between pt-3 gap-4">
+<<<<<<< HEAD
               <router-link to="/checkout">
                 <button class="w-32 bg-[#022d5a] text-white py-3 rounded-lg transition-colors"
                   @click="addToCart(product)">
                   Buy Now
                 </button>
               </router-link>
+=======
+              
+                <button class="w-32 bg-[#022d5a] text-white py-3 rounded-lg transition-colors"
+                  @click="buyNow(product)">
+                  Buy Now
+                </button>
+
+>>>>>>> dc710f81283440694e0c7c1ad0be621704c95dc1
               <div
                 class="flex gap-2 justify-center items-center w-full px-1 py-2.5 rounded-lg font-medium text-[#022d5a] border-[#022d5a] border hover:bg-[#022d5a] hover:text-white transition duration-300 ease-in-out transform hover:scale-105"
                 @click="addToCart(product)">
@@ -148,6 +157,36 @@ function addToCart(product: any) {
   cartStore.addItemToCart(product.title);
   cartStore.showNotifications(`${product.title} added to cart!`);
   cartStore.hideNotifications(); // Automatically hide the notification
+<<<<<<< HEAD
+=======
+
+  const userData = JSON.parse(localStorage.getItem('userData') || 'null');
+  if (!userData) {
+    router.push("/login");
+  }
+}
+function buyNow(product: any) {
+  const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+  const existingProduct = cartItems.find((item: any) => item.id === product.id);
+  if (existingProduct) {
+    existingProduct.quantity += 1;
+  } else {
+    cartItems.push({ ...product, quantity: 1 });
+  }
+  localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+  // Update the cart store
+  cartStore.addItemToCart(product.title);
+  cartStore.showNotifications(`${product.title} added to cart!`);
+  cartStore.hideNotifications(); // Automatically hide the notification
+
+  const userData = JSON.parse(localStorage.getItem('userData') || 'null');
+  if (!userData) {
+    router.push("/login");
+  } else {
+    router.push("/shop/checkout");
+  }
+>>>>>>> dc710f81283440694e0c7c1ad0be621704c95dc1
 }
 
 function viewDetail(product) {
@@ -188,3 +227,7 @@ function incrementCartCount() {
   margin-bottom: 10px;
 }
 </style>
+<<<<<<< HEAD
+=======
+
+>>>>>>> dc710f81283440694e0c7c1ad0be621704c95dc1
