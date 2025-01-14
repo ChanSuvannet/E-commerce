@@ -849,6 +849,7 @@ export const products: Product[] = [
         discount: '20% Off',
         qty: 1
     },
+
     {
         id: 51,
         image: book6,
@@ -1015,6 +1016,7 @@ export const products: Product[] = [
         discount: '15% Off',
         qty: 1
     },
+    
     {
         id: 62,
         image: PEN,
