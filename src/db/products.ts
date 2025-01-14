@@ -875,7 +875,7 @@ export const products: Product[] = [
         no_default: 100,
         currentPrice: '8.00'
     }
-    
+    ,
     {
         id: 53,
         image: pencialCase,
