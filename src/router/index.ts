@@ -30,7 +30,6 @@ const router = createRouter({
       name: 'checkout',
       component: Payment,
     },
-
     {
       path: '/shop',
       name: 'shop',

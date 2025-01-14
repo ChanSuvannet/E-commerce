@@ -93,7 +93,7 @@
                 </span>
               </div>
               <!-- Prices and Discount -->
-              <div class="flex items-center">
+              <div class="fletems-center">
                 <p class="mr-2 text-lg font-bold text-gray-900">
                   {{ product.currentPrice }}
                 </p>
