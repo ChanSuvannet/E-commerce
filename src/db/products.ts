@@ -7,6 +7,11 @@ import book4 from '../assets/photo/book4.jpg'
 import book5 from '../assets/photo/book5.jpg'
 import book6 from '../assets/photo/book6.jpg'
 import book7 from '../assets/photo/book7.jpg'
+import book8 from '../assets/photo/book8.jpg'
+import book9 from '../assets/photo/book9.jpg'
+import bookk1 from '../assets/photo/bookk1.jpg'
+
+
 import caculator from '../assets/shop/caculator.png'
 import higglightor from '../assets/shop/higglightor.png'
 import pen from '../assets/shop/pen.png'
@@ -14,11 +19,14 @@ import pencil from '../assets/shop/pencil.png'
 import ruler from '../assets/shop/ruler.png'
 
 
+
 import ruller1 from '../assets/shop/ruller/ruller1.png'
 import ruller2 from '../assets/shop/ruller/ruller2.png'
 import ruller3 from '../assets/shop/ruller/ruller3.png'
 import ruller4 from '../assets/shop/ruller/ruller4.png'
 import ruller5 from '../assets/shop/ruller/ruller5.png'
+import rulerk1 from '../assets/photo/rulerk1.jpg'
+
 
 // Product of Office material 
 import { default as board1, default as board2 } from '../assets/shop/office_material/board1.jpg'
@@ -29,6 +37,10 @@ import printer2 from '../assets/shop/office_material/printer2.jpg'
 import printer3 from '../assets/shop/office_material/printer3.jpg'
 import table1 from '../assets/shop/office_material/table1.jpg'
 import table2 from '../assets/shop/office_material/table2.jpg'
+import chairk1 from '../assets/photo/chairk1.jpg'
+import chairk2 from '../assets/photo/chairk2.jpg'
+import chairk3 from '../assets/photo/chairk3.jpg'
+import chairk4 from '../assets/photo/chairk4.jpg'
 
 // products of Pencil
 import pencil1 from '../assets/shop/pencil/pencil1.png'
@@ -48,6 +60,8 @@ import pen4 from '../assets/shop/pen/pen4.png'
 import pen5 from '../assets/shop/pen/pen5.png'
 import pen6 from '../assets/shop/pen/pen6.png'
 import pen7 from '../assets/shop/pen/pen7.png'
+import PEN from '../assets/photo/PEN.jpg'
+
 
 //products of Sticker
 import sticker1 from '../assets/shop/sticker/sticker1.jpg'
@@ -879,5 +893,141 @@ export const products: Product[] = [
         qty: 1,
         description: "HB pencil suitable for sketching and writing.",
         category: "Pencil",
+        no_default:100  
+    },
+    {
+        id: 54,
+        image: book8,
+        title: 'Before the Coffee get Cold',
+        rating: 3,
+        description: 'A popular advanture book.',
+        category: 'Book',
+        categoryId: 1,
+        reviews: '4,778',
+        currentPrice: '7.50',
+        no_default: 100,
+        originalPrice: '15.00',
+        discount: '50% Off',
+        qty: 1
+    },
+    {
+        id: 55,
+        image: book9,
+        title: 'I want to die but I want to eat...',
+        rating: 4,
+        description: 'A popular advanture book.',
+        category: 'Book',
+        categoryId: 1,
+        reviews: '4,778',
+        currentPrice: '7.50',
+        no_default: 100,
+        originalPrice: '15',
+        discount: '50% Off',
+        qty: 1
+    },
+    {
+        id: 56,
+        image: bookk1,
+        title: 'Rainbow Notebook',
+        rating: 4,
+        description: 'A rainbow notebook with light weight.',
+        category: 'Book',
+        categoryId: 1,
+        reviews: '4,778',
+        currentPrice: '2.50',
+        no_default: 100,
+        originalPrice: '1.50',
+        discount: '20% Off',
+        qty: 1
+    },
+    {
+        id: 57,
+        image: chairk1,
+        title: 'Chair',
+        rating: 2,
+        description: 'Durable chair with adjustable height',
+        category: 'Office Material',
+        categoryId: 6,
+        reviews: '10',
+        currentPrice: '10.00',
+        no_default: 25,
+        originalPrice: '15.00',
+        discount: '30%',
+        qty: 1
+    },
+    {
+        id: 58,
+        image: chairk2,
+        title: 'Chair',
+        rating: 2,
+        description: 'Durable chair with adjustable height',
+        category: 'Office Material',
+        categoryId: 6,
+        reviews: '0',
+        currentPrice: '7.50',
+        no_default: 25,
+        originalPrice: '15.00',
+        discount: '50%',
+        qty: 1
+    },
+    {
+        id: 59,
+        image: chairk3,
+        title: 'Chair',
+        rating: 2,
+        description: 'Durable chair with adjustable height',
+        category: 'Office Material',
+        categoryId: 6,
+        reviews: '20',
+        currentPrice: '25.00',
+        no_default: 25,
+        originalPrice: '30.00',
+        discount: '10%',
+        qty: 1
+    },
+    {
+        id: 60,
+        image: chairk4,
+        title: 'Chair',
+        rating: 4,
+        description: 'Durable chair with adjustable height',
+        category: 'Office Material',
+        categoryId: 6,
+        reviews: '10',
+        currentPrice: '10.00',
+        no_default: 25,
+        originalPrice: '15.00',
+        discount: '50%',
+        qty: 1
+    },
+    {
+        id: 61,
+        image: rulerk1,
+        title: 'Ruller',
+        rating: 4,
+        description: 'Best ruler of the year',
+        category: 'Ruler',
+        categoryId: 4,
+        reviews: '2,000',
+        currentPrice: '1.70',
+        no_default: 85,
+        originalPrice: '2.00',
+        discount: '15% Off',
+        qty: 1
+    },
+    {
+        id: 62,
+        image: PEN,
+        title: "Pen",
+        rating: 2,
+        categoryId: 2,
+        reviews: "0",
+        currentPrice: "2.00",
+        originalPrice: "2.50",
+        discount: "20%",
+        qty: 1,
+        description: "Ink ballpoint pen with smooth flow.",
+        category: "Pen",
         no_default:100  },
+    
 ]
