@@ -32,6 +32,7 @@ import ruller2 from '../assets/shop/ruller/ruller2.png'
 import ruller3 from '../assets/shop/ruller/ruller3.png'
 import ruller4 from '../assets/shop/ruller/ruller4.png'
 import ruller5 from '../assets/shop/ruller/ruller5.png'
+import rulerk1 from '../assets/photo/rulerk1.jpg'
 
 
 // Product of Office material 
@@ -43,6 +44,10 @@ import printer2 from '../assets/shop/office_material/printer2.jpg'
 import printer3 from '../assets/shop/office_material/printer3.jpg'
 import table1 from '../assets/shop/office_material/table1.jpg'
 import table2 from '../assets/shop/office_material/table2.jpg'
+import chairk1 from '../assets/photo/chairk1.jpg'
+import chairk2 from '../assets/photo/chairk2.jpg'
+import chairk3 from '../assets/photo/chairk3.jpg'
+import chairk4 from '../assets/photo/chairk4.jpg'
 
 // products of Pencil
 import pencil1 from '../assets/shop/pencil/pencil1.png'
@@ -61,6 +66,8 @@ import pen4 from '../assets/shop/pen/pen4.png'
 import pen5 from '../assets/shop/pen/pen5.png'
 import pen6 from '../assets/shop/pen/pen6.png'
 import pen7 from '../assets/shop/pen/pen7.png'
+import PEN from '../assets/photo/PEN.jpg'
+import penk1 from '../assets/photo/penk1.jpg'
 
 
 //products of Sticker
@@ -947,13 +954,13 @@ export const products: Product[] = [
         currentPrice: '2.50',
         no_default: 100,
         originalPrice: '1.50',
-        discount: '20% Off',
+        discount: '40% Off',
         qty: 1
     },
     {
         id: 57,
         image: chairk1,
-        title: 'Chair',
+        title: 'Heart Chair',
         rating: 2,
         description: 'Durable chair with adjustable height',
         category: 'Office Material',
@@ -962,7 +969,7 @@ export const products: Product[] = [
         currentPrice: '10.00',
         no_default: 25,
         originalPrice: '15.00',
-        discount: '30%',
+        discount: '33.33%',
         qty: 1
     },
     {
@@ -983,7 +990,7 @@ export const products: Product[] = [
     {
         id: 59,
         image: chairk3,
-        title: 'Chair',
+        title: 'Stainless steel Chair',
         rating: 2,
         description: 'Durable chair with adjustable height',
         category: 'Office Material',
@@ -992,13 +999,13 @@ export const products: Product[] = [
         currentPrice: '25.00',
         no_default: 25,
         originalPrice: '30.00',
-        discount: '10%',
+        discount: '16%',
         qty: 1
     },
     {
         id: 60,
         image: chairk4,
-        title: 'Chair',
+        title: ' Pink Bunny Chair',
         rating: 4,
         description: 'Durable chair with adjustable height',
         category: 'Office Material',
@@ -1007,7 +1014,7 @@ export const products: Product[] = [
         currentPrice: '10.00',
         no_default: 25,
         originalPrice: '15.00',
-        discount: '50%',
+        discount: '33.33%',
         qty: 1
     },
     {
@@ -1025,21 +1032,37 @@ export const products: Product[] = [
         discount: '15% Off',
         qty: 1
     },
-    
+
     {
-        id: 62,
+        id: 38,
         image: PEN,
-        title: "Pen",
-        rating: 2,
+        title: "Pink Pen Set",
+        rating: 4,
         categoryId: 2,
         reviews: "0",
-        currentPrice: "2.00",
-        originalPrice: "2.50",
-        discount: "20%",
+        originalPrice: "6.00",
+        discount: "50% OFF",
         qty: 1,
-        no_default: 120,
-        currentPrice: '1.50'
-    }
+        description: "Pen with quick-drying ink.",
+        category: "Pen",
+        no_default: 100,
+        currentPrice: "3.00"
+    },
+    {
+        id: 38,
+        image: penk1,
+        title: "Pink Diamond Pen",
+        rating: 4,
+        categoryId: 2,
+        reviews: "0",
+        originalPrice: "5.00",
+        discount: "50% OFF",
+        qty: 1,
+        description: "Pen with quick-drying ink.",
+        category: "Pen",
+        no_default: 100,
+        currentPrice: "2.50"
+    },
 
 
 ];
