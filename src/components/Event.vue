@@ -55,7 +55,7 @@
     <!-- Display filtered products -->
     <div
   v-if="filteredProducts.length > 0"
-  class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12 pl-12 pr-12 justify-center"
+  class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12 pl-12 pr-12 justify-center pb-10"
 >
   <div v-for="product in filteredProducts" :key="product.id">
     <!-- Navigate to product details on click -->

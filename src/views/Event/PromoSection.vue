@@ -25,6 +25,7 @@ export default {
   color: #0f1253;
   text-decoration: bold;
   text-align: center;
+  padding-bottom: 20px;
 }
 
 </style>
