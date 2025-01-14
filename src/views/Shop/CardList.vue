@@ -75,14 +75,15 @@
               <span>Discount:</span>
               <span>-${{ discount.toFixed(2) }}</span>
             </div>
-            <div class="flex justify-between pt-4 border-t font-semibold">
+            <div class="flex justify-between pt-5 border-t font-semibold">
               <span>Total:</span>
               <span class="text-purple-600">${{ total.toFixed(2) }}</span>
             </div>
             <router-link :to="'/shop/checkout/payment'">
               <button
+              
                 @click="proceedToCheckout"
-                class="flex justify-center items-center w-full px-1 py-2.5 rounded-lg font-medium bg-[#022d5a] text-white border-[#022d5a] border hover:bg-[#022d5a] hover:text-white transition duration-300 ease-in-out transform hover:scale-105"
+                class="flex justify-center items-center w-full px-1 py-2.5 mt-6 rounded-lg font-medium bg-[#022d5a] text-white border-[#022d5a] border hover:bg-[#022d5a] hover:text-white transition duration-300 ease-in-out transform hover:scale-105"
               >
                 Proceed To Checkout →
               </button>
