@@ -21,19 +21,19 @@ const router = createRouter({
       component: Home
     },
     {
+      path: '/shop',
+      name: 'shop',
+      component: Shop,
+    },
+    {
       path: '/shop/checkout',
       name: 'checkout',
       component: CardList,
     },
     {
       path: '/shop/checkout/payment',
-      name: 'checkout',
+      name: 'checkout-payment',
       component: Payment,
-    },
-    {
-      path: '/shop',
-      name: 'shop',
-      component: Shop,
     },
     {
       path: '/shop/detail/:id',
