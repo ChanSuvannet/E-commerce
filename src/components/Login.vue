@@ -36,7 +36,7 @@
           <label for="rememberMe">Remember Me</label>
           <a href="/forgot-password" style="margin-left: auto;">Forgot Password?</a>
         </div>
-        <button type="submit">Login</button>
+        <button type="submit" class="text-[#ffffff] bg-[#022d5a] border-[#022d5a] border hover:bg-[#022d5a] hover:text-white transition duration-300 ease-in-out transform hover:scale-105">Login</button>
       </form>
       <p>New on our platform? <a href="/register">Create new account</a></p>
       <p style="text-align: center;">or</p>
@@ -150,14 +150,8 @@ button {
   border-radius: 10px;
   box-sizing: border-box;
   padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
   border: none;
   cursor: pointer;
-}
-
-button:hover {
-  background-color: #0056b3;
 }
 
 p {
