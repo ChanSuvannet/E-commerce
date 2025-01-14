@@ -6,11 +6,18 @@ import book4 from '../assets/photo/book4.jpg'
 import book5 from '../assets/photo/book5.jpg'
 import book6 from '../assets/photo/book6.jpg'
 import book7 from '../assets/photo/book7.jpg'
+import book8 from '../assets/photo/book8.jpg'
+import book9 from '../assets/photo/book9.jpg'
+import bookk1 from '../assets/photo/bookk1.jpg'
+
+
 import pencialCase from '../assets/photo/pencialCase.png'
 import book from '../assets/shop/book.png'
 
 import shopbook2 from '../assets/shop/book/book2.png'
 import shopbook3 from '../assets/shop/book/book3.png'
+import shopbook4 from '../assets/shop/book/book4.png'
+import shopbook5 from '../assets/shop/book/book5.png'
 
 import caculator from '../assets/shop/caculator.png'
 import higglightor from '../assets/shop/higglightor.png'
@@ -19,11 +26,14 @@ import pencil from '../assets/shop/pencil.png'
 import ruler from '../assets/shop/ruler.png'
 
 
+
 import ruller1 from '../assets/shop/ruller/ruller1.png'
 import ruller2 from '../assets/shop/ruller/ruller2.png'
 import ruller3 from '../assets/shop/ruller/ruller3.png'
 import ruller4 from '../assets/shop/ruller/ruller4.png'
 import ruller5 from '../assets/shop/ruller/ruller5.png'
+import rulerk1 from '../assets/photo/rulerk1.jpg'
+
 
 // Product of Office material 
 import { default as board1, default as board2 } from '../assets/shop/office_material/board1.jpg'
@@ -34,6 +44,10 @@ import printer2 from '../assets/shop/office_material/printer2.jpg'
 import printer3 from '../assets/shop/office_material/printer3.jpg'
 import table1 from '../assets/shop/office_material/table1.jpg'
 import table2 from '../assets/shop/office_material/table2.jpg'
+import chairk1 from '../assets/photo/chairk1.jpg'
+import chairk2 from '../assets/photo/chairk2.jpg'
+import chairk3 from '../assets/photo/chairk3.jpg'
+import chairk4 from '../assets/photo/chairk4.jpg'
 
 // products of Pencil
 import pencil1 from '../assets/shop/pencil/pencil1.png'
@@ -52,6 +66,8 @@ import pen4 from '../assets/shop/pen/pen4.png'
 import pen5 from '../assets/shop/pen/pen5.png'
 import pen6 from '../assets/shop/pen/pen6.png'
 import pen7 from '../assets/shop/pen/pen7.png'
+import PEN from '../assets/photo/PEN.jpg'
+
 
 //products of Sticker
 import sticker1 from '../assets/shop/sticker/sticker1.jpg'
@@ -189,7 +205,7 @@ export const products: Product[] = [
     },
     {
         id: 7,
-        image: book,
+        image: shopbook5,
         title: "Pink Notebook",
         rating: 3,
         description: "Bright pink notebook with a glossy cover.",

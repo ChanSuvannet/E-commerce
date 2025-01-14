@@ -93,7 +93,7 @@
                 </div>
 
                 <!-- Add to Cart Button -->
-                <button class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition-colors"
+                <button class="w-full bg-[#022d5a] text-white py-2 rounded hover:bg-[#01467b] transition-colors"
                 @click="addToCart(product)">
                   Add to Cart
                 </button>

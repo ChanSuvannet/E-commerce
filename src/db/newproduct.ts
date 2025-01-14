@@ -3,6 +3,12 @@ import caculator from '../assets/shop/caculator.png'
 import pen from '../assets/shop/pen.png'
 import pencil from '../assets/shop/pencil.png'
 import pencialCase from '../assets/photo/pencialCase.png'
+import chairk4 from '../assets/photo/chairk4.jpg'
+import penk2 from '../assets/photo/penk2.jpg'
+import chairk2 from '../assets/photo/chairk2.jpg'
+import book9 from '../assets/photo/book9.jpg'
+import book8 from '../assets/photo/book8.jpg'
+
 
 export interface NewProduct {
     id: number;
@@ -27,46 +33,46 @@ export const newproduct: NewProduct[] = [
           },
           {
             id: 2,
-            name: 'Polo T-shirt For Man',
-            image: caculator, 
-            price: 25,
-            originalPrice: 150,
+            name: 'Pink bunny Chair',
+            image: chairk4, 
+            price: 10,
+            originalPrice: 15,
             rating: 4,
             label: null,
           },
           {
             id: 3,
-            name: 'Luxury Wallet For Male',
-            image: pen, // Replace with your local image path
-            price: 95,
-            originalPrice: 100,
+            name: 'Glitter Pink Pen',
+            image: penk2, // Replace with your local image path
+            price: 2,
+            originalPrice: 3,
             rating: 4,
             label: 'New',
           },
           {
             id:4 ,
-            name: 'Stylish Watch For Man',
-            image: pencil, // Replace with your local image path
-            price: 75,
-            originalPrice: 150,
+            name: 'Fluffy Chair',
+            image: chairk2, // Replace with your local image path
+            price: 7.5,
+            originalPrice: 15,
             rating: 5,
             label: '-50%',
           },
           {
             id:5 ,
-            name: 'Stylish Watch For Man',
-            image: book, // Replace with your local image path
-            price: 75,
-            originalPrice: 250,
+            name: 'I want to die but I want to eat...',
+            image: book9, // Replace with your local image path
+            price: 7.5,
+            originalPrice: 15,
             rating: 5,
             label: '-50%',
           },
           {
             id:6 ,
-            name: 'Stylish Watch For Man',
-            image: caculator, // Replace with your local image path
-            price: 75,
-            originalPrice: 250,
+            name: 'Before the coffee get cold',
+            image: book8, // Replace with your local image path
+            price: 7.5,
+            originalPrice: 15,
             rating: 5,
             label: '-50%',
           }
