@@ -21,7 +21,7 @@ const router = createRouter({
       component: Home
     },
     {
-      path: '/checkout',
+      path: '/shop/checkout',
       name: 'checkout',
       component: CardList,
     },

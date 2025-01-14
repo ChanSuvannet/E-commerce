@@ -1,5 +1,5 @@
 <template>
-  <div class="shopping-cart">
+  <div class="shopping-cart h-screen px-10">
     <h1 class="text-2xl font-bold mb-6">Shopping Cart</h1>
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
       <!-- Product List Section -->
@@ -75,10 +75,6 @@
               <span>Discount:</span>
               <span>-${{ discount.toFixed(2) }}</span>
             </div>
-            <div class="flex justify-between">
-              <span>Shipping Charge:</span>
-              <span>${{ shippingCharge.toFixed(2) }}</span>
-            </div>
             <div class="flex justify-between pt-4 border-t font-semibold">
               <span>Total:</span>
               <span class="text-purple-600">${{ total.toFixed(2) }}</span>
@@ -97,7 +93,7 @@
 </template>
 
 <script>
-import { ref, computed, onMounted, watch } from "vue";
+import { computed, onMounted, ref, watch } from "vue";
 
 export default {
   name: "CardList",
@@ -112,7 +108,7 @@ export default {
     );
 
     // Calculate total
-    const total = computed(() => subtotal.value - discount.value + shippingCharge.value);
+    const total = computed(() => subtotal.value - discount.value);
 
     // Load cart items from localStorage
     const loadCartFromLocalStorage = () => {

@@ -15,12 +15,14 @@
             Exclusive Discounts for Students!
           </div>
           <div class="flex gap-6 justify-center md:justify-start">
-            <div 
-              class="ml-20 inline-block px-8 py-4 bg-yellow-400 text-black font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:bg-yellow-500 cursor-pointer">
-              50% Off
+            <div
+              class="inline-block px-8 py-4 bg-yellow-400 text-black font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:bg-yellow-500 cursor-pointer"
+            >
+              20% Off
             </div>
             <div
-              class="inline-block px-8 py-4 bg-[#022d5a] text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:bg-[#01467b] cursor-pointer" @click="navigateTo('shop')">
+              class="inline-block px-8 py-4 bg-[#022d5a] text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:bg-[#01467b] cursor-pointer"
+            >
               Shop Now
               
             </div>
@@ -35,65 +37,7 @@
         </div>
       </div>
 
-      
-
-
-      <!-- Best selling book  -->
-      <div>
-        <section class="max-w-7xl mx-auto px-4 py-16">
-          <!-- Section Header -->
-          <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold mb-4">Best Selling Book</h2>
-            <p class="text-gray-500 max-w-2xl mx-auto">
-              Find your next favorite book effortlessly! Our extensive collection boasts bestsellers, new releases, and a wide selection of genres, ensuring you'll find something to pique your interest.
-            </p>
-          </div>
-
-          <!-- Products Grid -->
-          <div class="relative overflow-hidden">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 transition-transform transform" :style="gridStyle">
-              <div
-                v-for="(product, index) in products"
-                :key="product.id"
-                class="rounded-lg shadow-sm p-4 relative bg-slate-50 transition-transform transform hover:scale-105 hover:shadow-lg"
-                v-show="currentIndex <= index && index < currentIndex + 4">
-        
-                <!-- Product Image -->
-                <img :src="product.image" :alt="product.name" class="w-full h-64 object-contain mb-4" />
-
-                <!-- Product Name -->
-                <h3 class="text-lg font-semibold mb-2">{{ product.name }}</h3>
-
-                <!-- Product Price -->
-                <div class="flex items-center mb-2">
-                  <span class="text-lg font-bold">${{ product.price }}</span>
-                  <span v-if="product.originalPrice" class="ml-2 text-gray-400 line-through">
-                    ${{ product.originalPrice }}
-                  </span>
-                </div>
-                
-                <!-- Rating -->
-                <div class="flex mb-4">
-                  <StarIcon
-                    v-for="i in 5"
-                    :key="i"
-                    :class="['w-5 h-5', i <= product.rating ? 'fill-yellow-400 stroke-yellow-400' : 'fill-gray-300 stroke-gray-400']"
-                  />
-                </div>
-
-                <!-- Add to Cart Button -->
-                <button class="w-full bg-[#022d5a] text-white py-2 rounded hover:bg-[#01467b] transition-colors">
-                  Add to Cart
-                </button>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-
-
-
-      <!-- Extra product-->
+      <!-- section two -->
       <div>
         <section class="max-w-7xl mx-auto px-4 py-16">
           <!-- Section Header -->
@@ -147,7 +91,8 @@
                 </div>
 
                 <!-- Add to Cart Button -->
-                <button class="w-full bg-[#022d5a] text-white py-2 rounded hover:bg-[#01467b] transition-colors">
+                <button class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition-colors"
+                @click="addToCart(product)">
                   Add to Cart
                 </button>
               </div>
@@ -267,8 +212,13 @@
 import { onMounted, ref } from "vue";
 import homeCard from "../views/homeCard.vue";
 import { StarIcon, ChevronLeftIcon, ChevronRightIcon, HeartIcon, TruckIcon, WalletIcon, RefreshCcwIcon } from 'lucide-vue-next'
-import { newproduct } from '../db/newproduct.ts'
-import { newarrival } from '../db/newarrival.ts'
+import book from '../assets/shop/book.png'
+import { reactive } from 'vue';
+import {newproduct} from '../db/newproduct.ts'
+import {newarrival} from '../db/newarrival.ts'
+import { useCartstore } from '../stores/counter';
+
+
 
 export default {
   components: {
@@ -310,6 +260,28 @@ export default {
     },
     toggleLike(index) {
       this.productss[index].isLiked = !this.productss[index].isLiked;
+    },
+    addToCart(product) {
+      const userData = JSON.parse(localStorage.getItem('userData') || 'null');
+      if (!userData) {
+        this.$router.push("/login");
+        return;
+      }
+
+      const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+      const existingProduct = cartItems.find((item) => item.id === product.id);
+      if (existingProduct) {
+        existingProduct.quantity += 1;
+      } else {
+        cartItems.push({ ...product, quantity: 1 });
+      }
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+      // Update the cart store
+      const cartStore = useCartstore();
+      cartStore.addItemToCart(product.title);
+      cartStore.showNotifications(`${product.title} added to cart!`);
+      cartStore.hideNotifications(); // Automatically hide the notification
     }
   },
   setup() {

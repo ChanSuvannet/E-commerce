@@ -1,3 +1,4 @@
+// hi I am narin
 import book from '../assets/shop/book.png'
 import caculator from '../assets/shop/caculator.png'
 import higglightor from '../assets/shop/higglightor.png'
