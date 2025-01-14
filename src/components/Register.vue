@@ -27,7 +27,11 @@
           <label for="password">Password</label>
           <input type="password" id="password" v-model="password" required />
         </div>
-        <button type="submit">Register</button>
+        <button type="submit" 
+        class="text-[#ffffff] bg-[#022d5a] border-[#022d5a] border hover:bg-[#022d5a] hover:text-white transition duration-300 ease-in-out transform hover:scale-105"
+        >
+          Register
+        </button>
       </form>
       <p>Already have an account? <a href="/login">Sign in instead</a></p>
       <p style="text-align: center;">or</p>
@@ -117,14 +121,8 @@ button {
   border-radius: 10px;
   box-sizing: border-box;
   padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
   border: none;
   cursor: pointer;
-}
-
-button:hover {
-  background-color: #0056b3;
 }
 
 p {
