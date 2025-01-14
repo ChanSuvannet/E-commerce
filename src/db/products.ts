@@ -13,6 +13,7 @@ import shopbook1 from '../assets/shop/book/book1.png'
 import shopbook2 from '../assets/shop/book/book2.png'
 import shopbook3 from '../assets/shop/book/book3.png'
 import shopbook4 from '../assets/shop/book/book4.png'
+import shopbook5 from '../assets/shop/book/book5.png'
 
 import caculator from '../assets/shop/caculator.png'
 import higglightor from '../assets/shop/higglightor.png'
@@ -191,7 +192,7 @@ export const products: Product[] = [
     },
     {
         id: 7,
-        image: shopbook1,
+        image: shopbook5,
         title: "Pink Notebook",
         rating: 3,
         description: "Bright pink notebook with a glossy cover.",
