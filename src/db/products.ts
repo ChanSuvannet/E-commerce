@@ -17,7 +17,6 @@ import book from '../assets/shop/book.png'
 
 import shopbook2 from '../assets/shop/book/book2.png'
 import shopbook3 from '../assets/shop/book/book3.png'
-import shopbook4 from '../assets/shop/book/book4.png'
 import shopbook5 from '../assets/shop/book/book5.png'
 
 import caculator from '../assets/shop/caculator.png'
@@ -33,7 +32,6 @@ import ruller2 from '../assets/shop/ruller/ruller2.png'
 import ruller3 from '../assets/shop/ruller/ruller3.png'
 import ruller4 from '../assets/shop/ruller/ruller4.png'
 import ruller5 from '../assets/shop/ruller/ruller5.png'
-import rulerk1 from '../assets/photo/rulerk1.jpg'
 
 
 // Product of Office material 
@@ -45,10 +43,6 @@ import printer2 from '../assets/shop/office_material/printer2.jpg'
 import printer3 from '../assets/shop/office_material/printer3.jpg'
 import table1 from '../assets/shop/office_material/table1.jpg'
 import table2 from '../assets/shop/office_material/table2.jpg'
-import chairk1 from '../assets/photo/chairk1.jpg'
-import chairk2 from '../assets/photo/chairk2.jpg'
-import chairk3 from '../assets/photo/chairk3.jpg'
-import chairk4 from '../assets/photo/chairk4.jpg'
 
 // products of Pencil
 import pencil1 from '../assets/shop/pencil/pencil1.png'
@@ -67,7 +61,6 @@ import pen4 from '../assets/shop/pen/pen4.png'
 import pen5 from '../assets/shop/pen/pen5.png'
 import pen6 from '../assets/shop/pen/pen6.png'
 import pen7 from '../assets/shop/pen/pen7.png'
-import PEN from '../assets/photo/PEN.jpg'
 
 
 //products of Sticker
@@ -126,7 +119,7 @@ export const products: Product[] = [
         currentPrice: "1.60",
         no_default: 100,
         originalPrice: "2.00",
-        discount: "20% Off",
+        discount: "50% Off",
         qty: 1
     },
     {
@@ -141,7 +134,7 @@ export const products: Product[] = [
         currentPrice: "1.50",
         no_default: 90,
         originalPrice: "2.00",
-        discount: "25% Off",
+        discount: "50% Off",
         qty: 1
     },
     {
@@ -246,7 +239,7 @@ export const products: Product[] = [
         currentPrice: "2.38",
         no_default: 75,
         originalPrice: "2.50",
-        discount: "5% Off",
+        discount: "30% Off",
         qty: 1
     },
     {
@@ -261,7 +254,7 @@ export const products: Product[] = [
         currentPrice: "1.53",
         no_default: 130,
         originalPrice: "1.80",
-        discount: "15% Off",
+        discount: "30% Off",
         qty: 1
     },
     {
@@ -276,7 +269,7 @@ export const products: Product[] = [
         currentPrice: '1.60',
         no_default: 65,
         originalPrice: '2.00',
-        discount: '20% Off',
+        discount: '50% Off',
         qty: 1
     },
     {
@@ -291,7 +284,7 @@ export const products: Product[] = [
         currentPrice: '1.60',
         no_default: 60,
         originalPrice: '2.00',
-        discount: '20% Off',
+        discount: '30% Off',
         qty: 1
     },
     {

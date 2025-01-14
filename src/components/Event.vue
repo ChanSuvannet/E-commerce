@@ -1,28 +1,30 @@
 <template>
   <div class="event-page">
     <PromoSection />
-    <div class="slider" ref="slider" @scroll="handleScroll">
-      <img
-        id="slider1"
-        src="/src/image/pro.png"
-        alt="Christmas Image 1"
-        class="image"
-        @click="navigateTo('/shop')"
-      />
-      <img
-        id="slider2"
-        src="/src/image/pro1.png"
-        alt="Christmas Image 2"
-        class="image"
-        @click="navigateTo('/shop')"
-      />
-      <img
-        id="slider3"
-        src="/src/image/pro2.png"
-        alt="Christmas Image 3"
-        class="image"
-        @click="navigateTo('/shop')"
-      />
+    <div class="flex justify-center">
+      <div class="slider" ref="slider" @scroll="handleScroll">
+        <img
+          id="slider1"
+          src="/src/image/pro.png"
+          alt="Christmas Image 1 w-[400px]"
+          class="image"
+          @click="navigateTo('/shop')"
+        />
+        <img
+          id="slider2"
+          src="/src/image/pro1.png"
+          alt="Christmas Image 2"
+          class="image w-[400px]"
+          @click="navigateTo('/shop')"
+        />
+        <img
+          id="slider3"
+          src="/src/image/pro2.png"
+          alt="Christmas Image 3"
+          class="image w-[400px]"
+          @click="navigateTo('/shop')"
+        />
+      </div>
     </div>
 
     <div class="slider-nav">
@@ -45,17 +47,19 @@
 
     <!-- Discount Filter Buttons -->
     <div class="discount-buttons">
-      <button @click="selectDiscount('All')">All Discounts</button>
-      <button @click="selectDiscount('20% Off')">20% Off</button>
-      <button @click="selectDiscount('30% Off')">30% Off</button>
-      <button @click="selectDiscount('20% Off')">20% Off</button>
+      <button class="bg-yellow-500" @click="selectDiscount('50% Off')">
+        50% Off
+      </button>
+      <button class="bg-[#022d5a]" @click="selectDiscount('30% Off')">
+        30% Off
+      </button>
+      <button class="bg-[#022d5a]" @click="selectDiscount('50% Off')">
+        20% Off
+      </button>
     </div>
 
     <!-- Display filtered products -->
-    <div
-      v-if="filteredProducts.length > 0"
-      class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12 pl-12 pr-12 justify-center"
-    >
+    <div v-if="filteredProducts.length > 0" class="flex gap-6 justify-center">
       <div v-for="product in filteredProducts" :key="product.id">
         <!-- Navigate to product details on click -->
         <router-link :to="`/shop/detail/${product.id}`" class="w-full">
@@ -93,7 +97,7 @@
                 </span>
               </div>
               <!-- Prices and Discount -->
-              <div class="fletems-center">
+              <div class="flex justify-between items-center">
                 <p class="mr-2 text-lg font-bold text-gray-900">
                   {{ product.currentPrice }}
                 </p>
@@ -109,6 +113,7 @@
         </router-link>
       </div>
     </div>
+    <br />
   </div>
 </template>
 
@@ -123,26 +128,42 @@ export default {
   },
   data() {
     return {
-      notificationMessage: "", // Message to be shown when adding a product to cart
+      discount: "50% Off",
+      notificationMessage: "",
     };
   },
   computed: {
     filteredProducts() {
-      const store = ProductStore(); // Accessing the store
+      const store = ProductStore();
       return store.filteredProducts;
     },
   },
   methods: {
     selectDiscount(discount) {
-      const store = ProductStore(); // Accessing the store
-      store.selectDiscount(discount); // Update the selected discount filter in the store
+      const store = ProductStore();
+      store.selectDiscount(discount);
     },
     navigateTo(path) {
-      this.$router.push(path); // Navigate programmatically
+      this.$router.push(path);
     },
     handleScroll() {
       // Placeholder for scroll handling logic
     },
+  },
+  watch: {
+    discount(newValue) {
+      if (!newValue) {
+        this.discount = "50% Off";
+      }
+      const store = ProductStore();
+      store.selectDiscount(this.discount);
+    },
+  },
+  created() {
+    const store = ProductStore();
+    if (!store.discount) {
+      store.selectDiscount("50% Off"); // Set default discount in the store
+    }
   },
 };
 </script>
@@ -155,20 +176,16 @@ export default {
   margin: 0 auto;
   overflow: hidden;
   border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .slider {
   display: flex;
-  width: 100%;
-  padding-top: 2%;
-  padding-bottom: 5%;
+  justify-content: center;
+  width: 60%;
   height: auto;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25);
-  -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
@@ -186,7 +203,7 @@ export default {
   scroll-snap-align: start;
   object-fit: cover; /* Make the image cover the container */
   border-radius: 10%;
-  height: 90%;
+  height: 100%;
   transition: transform 0.3s ease; /* Smooth zoom effect */
 }
 
@@ -203,7 +220,7 @@ export default {
   display: flex;
   column-gap: 0.5rem;
   position: absolute;
-  top: 140%;
+  top: 1080px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1;
@@ -236,7 +253,6 @@ export default {
 
 .discount-buttons button {
   padding: 12px 20px;
-  background-color: #022d5a;
   color: white;
   border-radius: 8px;
   border: none;

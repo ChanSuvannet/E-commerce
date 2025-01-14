@@ -1,9 +1,11 @@
 <template>
-  <div class="countdown">
-    <span>{{ days }} Days</span>
-    <span>{{ hours }} Hours</span>
-    <span>{{ minutes }} Minutes</span>
-    <span>{{ seconds }} Seconds</span>
+  <div class="w-full flex justify-center">
+    <div class="countdown">
+      <span>{{ days }} Days</span>
+      <span>{{ hours }} Hours</span>
+      <span>{{ minutes }} Minutes</span>
+      <span>{{ seconds }} Seconds</span>
+    </div>
   </div>
 </template>
 
@@ -32,9 +34,14 @@ export default {
     date() {
       // Format the date (Day Month Date Year)
       const deadline = new Date("2025-01-31T00:00:00");
-      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-      return deadline.toLocaleDateString('en-US', options);
-    }
+      const options = {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      };
+      return deadline.toLocaleDateString("en-US", options);
+    },
   },
   methods: {
     updateCountdown() {
@@ -60,29 +67,29 @@ export default {
 
 <style scoped>
 .countdown {
+  max-width: 1000px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 8px;
   padding: 8px;
-  padding-top: 5%;
-  padding-bottom: 2%;
-  flex-wrap: wrap; /* Allow wrapping of items if screen size is small */
+  flex-wrap: wrap;
+  min-width: 600px;
+  text-align: center;
 }
 
 .countdown span {
-
   display: inline-block;
-  margin: 0 6px;
+  min-width: 600px;
   padding: 6px;
   background-color: #1e1f54;
   color: white;
-  font-size: 32px; /* Further reduced base font size */
+  font-size: 1.2rem;
   border-radius: 4px;
-  text-align: center;
-  min-width: 50px; /* Reduced minimum width */
-  flex: 1; /* Make each item flexible */
-  max-width: 18%; /* Limit the maximum width */
+  min-width: 50px;
+  flex: 1;
+  max-width: 200px;
+  box-sizing: border-box;
 }
 
 /* Adjust font size for smaller screens */
