@@ -16,11 +16,13 @@
           </div>
           <div class="flex gap-6 justify-center md:justify-start">
             <div
+             @click="navigateTo('event')"
               class="inline-block px-8 py-4 bg-yellow-400 text-black font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:bg-yellow-500 cursor-pointer"
             >
-              20% Off
+              50% Off
             </div>
             <div
+             @click="navigateTo('shop')"
               class="inline-block px-8 py-4 bg-[#022d5a] text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:bg-[#01467b] cursor-pointer"
             >
               Shop Now
