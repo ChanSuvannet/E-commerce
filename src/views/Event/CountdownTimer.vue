@@ -63,21 +63,42 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-  padding:10px;
+  gap: 8px;
+  padding: 8px;
+  padding-top: 5%;
+  padding-bottom: 2%;
+  flex-wrap: wrap; /* Allow wrapping of items if screen size is small */
 }
 
 .countdown span {
+
   display: inline-block;
-  margin: 0 20px;
-  padding: 10px;
+  margin: 0 6px;
+  padding: 6px;
   background-color: #1e1f54;
   color: white;
-  font-size: 18px;
-  border-radius: 5px;
+  font-size: 32px; /* Further reduced base font size */
+  border-radius: 4px;
   text-align: center;
-  width: 20%;
-  height: 10%;
-  font-size: 24px;
+  min-width: 50px; /* Reduced minimum width */
+  flex: 1; /* Make each item flexible */
+  max-width: 18%; /* Limit the maximum width */
+}
+
+/* Adjust font size for smaller screens */
+@media (max-width: 768px) {
+  .countdown span {
+    font-size: 0.7em; /* Even smaller font for medium screens */
+    min-width: 40px; /* Further reduce minimum width */
+    max-width: 25%; /* Allow more items to fit */
+  }
+}
+
+@media (max-width: 480px) {
+  .countdown span {
+    font-size: 0.6em; /* Even smaller font size for small screens */
+    min-width: 30px;
+    max-width: 35%; /* Allow more wrapping and fit items on small screens */
+  }
 }
 </style>
