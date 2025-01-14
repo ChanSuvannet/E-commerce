@@ -878,7 +878,21 @@ export const products: Product[] = [
         discount: "20% OFF",
         qty: 1,
         no_default: 100,
-        currentPrice: '8.00'
+        currentPrice: '8.00'    
+    },
+    {
+        id: 53,
+        image: pencialCase,
+        title: "Cappicabara pencial case",
+        rating: 4,
+        categoryId: 3,
+        reviews: "50",
+        currentPrice: "2.5",
+        originalPrice: "5",
+        discount: "50%",
+        qty: 1,
+        description: "HB pencil suitable for sketching and writing.",
+        category: "Pencil",
+        no_default:100
     }
-    
 ]

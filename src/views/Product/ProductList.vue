@@ -49,12 +49,10 @@
               </div>
             </div>
             <div class="flex items-center justify-between pt-3 gap-4">
-              <router-link to="/checkout">
-                <button class="w-32 bg-[#022d5a] text-white py-3 rounded-lg transition-colors"
-                  @click="addToCart(product)">
-                  Buy Now
-                </button>
-              </router-link>
+              <button class="w-32 bg-[#022d5a] text-white py-3 rounded-lg transition-colors"
+                @click="buyNow(product)">
+                Buy Now
+              </button>
               <div
                 class="flex gap-2 justify-center items-center w-full px-1 py-2.5 rounded-lg font-medium text-[#022d5a] border-[#022d5a] border hover:bg-[#022d5a] hover:text-white transition duration-300 ease-in-out transform hover:scale-105"
                 @click="addToCart(product)">
@@ -215,5 +213,3 @@ function incrementCartCount() {
   margin-bottom: 10px;
 }
 </style>
-
-
