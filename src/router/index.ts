@@ -8,8 +8,8 @@ import Shop from '../components/Shop.vue';
 
 
 import CardList from '../views/Shop/CardList.vue';
+import Payment from '../views/Shop/Payment.vue';
 import ShopCardDetail from '../views/Shop/ShopCardDetail.vue';
-import Payment from '../views/shop/Payment.vue';
 
 const router = createRouter({
   history: createWebHistory(),
