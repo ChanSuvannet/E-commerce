@@ -1,43 +1,46 @@
 <template>
     <div class="home">
       <!-- section one  -->
-      <div class="flex justify-between items-center py-12 px-20">
-        <div
-          class="w-full md:w-[50%] flex flex-col items-center md:items-start ">
-          <div
-            class="text-3xl sm:text-4xl lg:text-5xl font-semibold font-serif text-center md:text-left ml-20 mb-4 ">
-            <div class="flex flex-col gap-5">
-              <span>Best Products for</span>
-              <span class="text-yellow-400">Your Education</span>
-            </div>
+      <div class="flex flex-col-reverse md:flex-row justify-between items-center py-8 px-6 md:px-12 lg:px-20 gap-8">
+        <!-- Left Section -->
+        <div class="w-full md:w-[50%] flex flex-col items-center md:items-start">
+          <div class="text-center md:text-left mb-4">
+            <h1 class="text-2xl sm:text-3xl lg:text-5xl font-semibold font-serif leading-tight">
+              <div class="flex flex-col gap-3">
+                <span>Best Products for</span>
+                <span class="text-yellow-400">Your Education</span>
+              </div>
+            </h1>
           </div>
-          <div class="text-lg sm:text-xl mb-8 text-center md:text-left ml-20">
+          <p class="text-base sm:text-lg text-gray-600 mb-6 text-center md:text-left">
             Exclusive Discounts for Students!
-          </div>
-          <div class="pl-20 flex gap-6 justify-center md:justify-start">
+          </p>
+          <div class="flex gap-4 justify-center md:justify-start">
             <div
-             @click="navigateTo('event')"
-              class=" inline-block px-8 py-4 bg-yellow-400 text-black font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:bg-yellow-500 cursor-pointer"
+              @click="navigateTo('event')"
+              class="px-6 py-3 bg-yellow-400 text-black font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 hover:bg-yellow-500 cursor-pointer"
             >
               50% Off
             </div>
             <div
-             @click="navigateTo('shop')"
-              class="inline-block px-8 py-4 bg-[#022d5a] text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:bg-[#01467b] cursor-pointer"
+              @click="navigateTo('shop')"
+              class="px-6 py-3 bg-[#022d5a] text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 hover:bg-[#01467b] cursor-pointer"
             >
               Shop Now
-              
             </div>
           </div>
         </div>
-        <div class="w-full md:w-[50%] mt-10 md:mt-0">
-          <img
-            class="w-full h-auto rounded-xl bg-transparent"
-            src="../assets/photo/intro.jpg"
-            alt="banner"
-          />
-        </div>
-      </div>
+
+    <!-- Right Section -->
+    <div class="w-full md:w-[50%]">
+      <img
+        class="w-full h-auto rounded-xl bg-transparent object-cover"
+        src="../assets/photo/intro.jpg"
+        alt="banner"
+      />
+    </div>
+  </div>
+
 
       <!-- section two -->
       <div>
