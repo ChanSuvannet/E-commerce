@@ -14,10 +14,10 @@
           <div class="text-lg sm:text-xl mb-8 text-center md:text-left ml-20">
             Exclusive Discounts for Students!
           </div>
-          <div class="flex gap-6 justify-center md:justify-start">
+          <div class="pl-20 flex gap-6 justify-center md:justify-start">
             <div
              @click="navigateTo('event')"
-              class="inline-block px-8 py-4 bg-yellow-400 text-black font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:bg-yellow-500 cursor-pointer"
+              class=" inline-block px-8 py-4 bg-yellow-400 text-black font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:bg-yellow-500 cursor-pointer"
             >
               50% Off
             </div>

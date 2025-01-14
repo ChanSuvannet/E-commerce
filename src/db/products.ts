@@ -38,6 +38,7 @@ import pencil4 from '../assets/shop/pencil/pencil4.png'
 import pencil5 from '../assets/shop/pencil/pencil5.png'
 import pencil6 from '../assets/shop/pencil/pencil6.png'
 import pencil7 from '../assets/shop/pencil/pencil7.png'
+import pencialCase from '../assets/photo/pencialCase.png'
 
 // products of Pen
 import pen1 from '../assets/shop/pen/pen1.png'
@@ -865,4 +866,18 @@ export const products: Product[] = [
         qty: 1
     },
     
+    {
+        id: 53,
+        image: pencialCase,
+        title: "Cappicabara pencial case",
+        rating: 4,
+        categoryId: 3,
+        reviews: "50",
+        currentPrice: "2.5",
+        originalPrice: "5",
+        discount: "50%",
+        qty: 1,
+        description: "HB pencil suitable for sketching and writing.",
+        category: "Pencil",
+        no_default:100  },
 ]
