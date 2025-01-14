@@ -1,6 +1,3 @@
-<template>
-  <div>
-    <Loading v-if="loading"></Loading>
 
     <!-- No Data Message -->
     <div v-else-if="!currentPageProducts.length" class="flex flex-col justify-center items-center mb-4">
@@ -215,3 +212,4 @@ function incrementCartCount() {
   margin-bottom: 10px;
 }
 </style>
+
