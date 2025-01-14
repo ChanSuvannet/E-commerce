@@ -49,67 +49,66 @@
       <button @click="selectDiscount('20% Off')">20% Off</button>
       <button @click="selectDiscount('30% Off')">30% Off</button>
       <button @click="selectDiscount('20% Off')">20% Off</button>
-      
     </div>
 
     <!-- Display filtered products -->
     <div
-  v-if="filteredProducts.length > 0"
-  class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12 pl-12 pr-12 justify-center pb-10"
->
-  <div v-for="product in filteredProducts" :key="product.id">
-    <!-- Navigate to product details on click -->
-    <router-link :to="`/shop/detail/${product.id}`" class="w-full">
-      <div
-        class="w-full h-auto cursor-pointer space-y-4 overflow-hidden rounded-lg border border-gray-200 bg-white p-4 shadow-sm hover:shadow-md transition-shadow duration-300 ease-in-out"
-      >
-        <div
-          class="flex items-center justify-center rounded-lg bg-gray-50 hover:bg-gray-100 p-4"
-        >
-          <img
-            :src="product.image"
-            :alt="product.title"
-            class="object-contain w-[150px] h-[150px] rounded-lg"
-          />
-        </div>
-        <div class="flex flex-col justify-between space-y-2">
-          <!-- Product Title -->
-          <p class="text-md font-semibold text-gray-800">
-            {{ product.title }}
-          </p>
-          <!-- Star Ratings and Reviews -->
-          <div class="flex justify-between items-center">
-            <div class="stars flex">
-              <span
-                v-for="n in 5"
-                :key="n"
-                class="text-gray-400 text-sm"
-                :class="{ 'text-yellow-500': n <= product.rating }"
-              >
-                ★
-              </span>
+      v-if="filteredProducts.length > 0"
+      class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12 pl-12 pr-12 justify-center"
+    >
+      <div v-for="product in filteredProducts" :key="product.id">
+        <!-- Navigate to product details on click -->
+        <router-link :to="`/shop/detail/${product.id}`" class="w-full">
+          <div
+            class="w-full h-auto cursor-pointer space-y-4 overflow-hidden rounded-lg border border-gray-200 bg-white p-4 shadow-sm hover:shadow-md transition-shadow duration-300 ease-in-out"
+          >
+            <div
+              class="flex items-center justify-center rounded-lg bg-gray-50 hover:bg-gray-100 p-4"
+            >
+              <img
+                :src="product.image"
+                :alt="product.title"
+                class="object-contain w-[150px] h-[150px] rounded-lg"
+              />
             </div>
-            <span class="text-gray-600 text-xs">
-              {{ product.reviews }} Reviews
-            </span>
+            <div class="flex flex-col justify-between space-y-2">
+              <!-- Product Title -->
+              <p class="text-md font-semibold text-gray-800">
+                {{ product.title }}
+              </p>
+              <!-- Star Ratings and Reviews -->
+              <div class="flex justify-between items-center">
+                <div class="stars flex">
+                  <span
+                    v-for="n in 5"
+                    :key="n"
+                    class="text-gray-400 text-sm"
+                    :class="{ 'text-yellow-500': n <= product.rating }"
+                  >
+                    ★
+                  </span>
+                </div>
+                <span class="text-gray-600 text-xs">
+                  {{ product.reviews }} Reviews
+                </span>
+              </div>
+              <!-- Prices and Discount -->
+              <div class="fletems-center">
+                <p class="mr-2 text-lg font-bold text-gray-900">
+                  {{ product.currentPrice }}
+                </p>
+                <p class="text-sm font-medium text-gray-500 line-through">
+                  {{ product.originalPrice }}
+                </p>
+                <p class="ml-auto text-sm font-medium text-red-500">
+                  {{ product.discount }}
+                </p>
+              </div>
+            </div>
           </div>
-          <!-- Prices and Discount -->
-          <div class="flex items-center">
-            <p class="mr-2 text-lg font-bold text-gray-900">
-              {{ product.currentPrice }}
-            </p>
-            <p class="text-sm font-medium text-gray-500 line-through">
-              {{ product.originalPrice }}
-            </p>
-            <p class="ml-auto text-sm font-medium text-red-500">
-              {{ product.discount }}
-            </p>
-          </div>
-        </div>
+        </router-link>
       </div>
-    </router-link>
-  </div>
-</div>
+    </div>
   </div>
 </template>
 
@@ -144,7 +143,6 @@ export default {
     handleScroll() {
       // Placeholder for scroll handling logic
     },
-    
   },
 };
 </script>

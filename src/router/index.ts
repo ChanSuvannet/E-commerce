@@ -9,7 +9,7 @@ import Shop from '../components/Shop.vue';
 
 import CardList from '../views/Shop/CardList.vue';
 import ShopCardDetail from '../views/Shop/ShopCardDetail.vue';
-
+import Payment from '../views/shop/Payment.vue';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -25,13 +25,17 @@ const router = createRouter({
       name: 'checkout',
       component: CardList,
     },
-
+    {
+      path: '/shop/checkout/payment',
+      name: 'checkout',
+      component: Payment,
+    },
     {
       path: '/shop',
       name: 'shop',
       component: Shop,
     },
-     {
+    {
       path: '/shop/detail/:id',
       name: 'Detail',
       component: ShopCardDetail,
@@ -40,7 +44,7 @@ const router = createRouter({
       path: '/event',
       name: 'event',
       component: Event,
-         
+
     },
     {
       path: '/faqs',
@@ -63,7 +67,7 @@ const router = createRouter({
     // Redirect root path to '/5173/home'
     {
       path: '/',
-      redirect: '/home', 
+      redirect: '/home',
     },
     {
       path: '/:catchAll(.*)',
