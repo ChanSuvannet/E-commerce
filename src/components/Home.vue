@@ -92,7 +92,8 @@
                 </div>
 
                 <!-- Add to Cart Button -->
-                <button class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition-colors">
+                <button class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition-colors"
+                @click="addToCart(product)">
                   Add to Cart
                 </button>
               </div>
@@ -219,6 +220,7 @@ import book from '../assets/shop/book.png'
 import { reactive } from 'vue';
 import {newproduct} from '../db/newproduct.ts'
 import {newarrival} from '../db/newarrival.ts'
+import { useCartstore } from '../stores/counter';
 
 
 
@@ -259,6 +261,28 @@ export default {
     },
     toggleLike(index) {
       this.productss[index].isLiked = !this.productss[index].isLiked;
+    },
+    addToCart(product) {
+      const userData = JSON.parse(localStorage.getItem('userData') || 'null');
+      if (!userData) {
+        this.$router.push("/login");
+        return;
+      }
+
+      const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+      const existingProduct = cartItems.find((item) => item.id === product.id);
+      if (existingProduct) {
+        existingProduct.quantity += 1;
+      } else {
+        cartItems.push({ ...product, quantity: 1 });
+      }
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+      // Update the cart store
+      const cartStore = useCartstore();
+      cartStore.addItemToCart(product.title);
+      cartStore.showNotifications(`${product.title} added to cart!`);
+      cartStore.hideNotifications(); // Automatically hide the notification
     }
   },
   setup() {

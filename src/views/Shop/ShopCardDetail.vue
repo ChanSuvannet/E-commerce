@@ -1,17 +1,17 @@
 <script setup>
-import { 
-  StarIcon, 
-  HeartIcon, 
+import {
+  StarIcon,
+  HeartIcon,
   ShoppingCartIcon,
-  HomeIcon, MinusIcon, PlusIcon, ChevronRight 
+  HomeIcon, MinusIcon, PlusIcon, ChevronRight
 } from 'lucide-vue-next';
 import { onMounted, ref, watch } from 'vue'; // Add 'watch' to the import
-import { useRoute } from 'vue-router'; // Import useRoute to access route params and state
+import { useRoute, useRouter } from 'vue-router'; // Import useRoute to access route params and state
 import { ProductStore } from "../../stores/productStore";
 import Loading from "../../shared/Loading.vue";
 import { useCartstore } from "../../stores/counter";
 
-
+const router = useRouter(); // Get the router object
 const route = useRoute(); // Get the route object
 const product = ref(null); // Create a reactive reference for the product
 const loading = ref(true); // Loading state
@@ -20,18 +20,23 @@ const quantity = ref(1); // the default quantity 1
 const cartStore = useCartstore(); // Use your counter store.
 
 const incrementQuantity = () => {
-  if(quantity.value < product.value.no_default){
-    quantity.value ++;
+  if (quantity.value < product.value.no_default) {
+    quantity.value++;
   }
 }
 const decrementQuantity = () => {
-  if(quantity.value > 1){
-    quantity.value --;
+  if (quantity.value > 1) {
+    quantity.value--;
   }
 }
 
 //=======================================
 function addToCart(product) {
+  const userData = JSON.parse(localStorage.getItem('userData') || 'null');
+  if (!userData) {
+    router.push("/login");
+  }
+
   const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
   const existingProduct = cartItems.find((item) => item.id === product.id);
   if (existingProduct) {
@@ -45,6 +50,28 @@ function addToCart(product) {
   cartStore.addItemToCart(product.title);
   cartStore.showNotifications(`${product.title} added to cart!`);
   cartStore.hideNotifications(); // Automatically hide the notification
+}
+function buyNow(product) {
+  const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+  const existingProduct = cartItems.find((item) => item.id === product.id);
+  if (existingProduct) {
+    existingProduct.quantity += 1;
+  } else {
+    cartItems.push({ ...product, quantity: 1 });
+  }
+  localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+  // Update the cart store
+  cartStore.addItemToCart(product.title);
+  cartStore.showNotifications(`${product.title} added to cart!`);
+  cartStore.hideNotifications(); // Automatically hide the notification
+
+  const userData = JSON.parse(localStorage.getItem('userData') || 'null');
+  if (!userData) {
+    router.push("/login");
+  } else {
+    router.push("/shop/checkout");
+  }
 }
 
 // Fetch the product based on route state or route params
@@ -83,27 +110,29 @@ watch(() => route.params.id, loadProduct); // Re-fetch the product if the route 
       <router-link :to="{ name: 'shop' }">
         <h1 class="text-2xl font-semibold text-gray-800 hover:text-gray-300">Shop</h1>
       </router-link>
-      <span  class="-ml-2 mt-1"><ChevronRight /></span>
+      <span class="-ml-2 mt-1">
+        <ChevronRight />
+      </span>
       <h1 class="text-2xl font-semibold text-gray-800">Product Details</h1>
     </div>
 
     <div class="max-w-7xl mx-auto bg-white rounded-lg shadow-sm p-6 justify-center">
       <div class="flex justify-between items-center mb-6">
-        
+
       </div>
       <Loading v-if="loading" />
       <div v-else-if="product" class="grid md:grid-cols-2 gap-8">
         <!-- Product Images -->
         <div class="space-y-4">
-        <div class="aspect-square w-5/6 h-5/6 mx-auto rounded-lg overflow-hidden ">
-          <img :src="product.image" :alt="product.title" class="w-full h-full object-contain" />
+          <div class="aspect-square w-5/6 h-5/6 mx-auto rounded-lg overflow-hidden ">
+            <img :src="product.image" :alt="product.title" class="w-full h-full object-contain" />
+          </div>
         </div>
-      </div>
 
         <!-- Product Info -->
         <div class="space-y-6">
           <h2 class="text-3xl font-semibold text-gray-900">{{ product.title }}</h2>
-          
+
           <div class="flex items-center space-x-2">
             <div class="flex">
               <StarIcon v-for="i in product.rating" :key="i" class="w-5 h-5 text-yellow-400" />
@@ -140,13 +169,8 @@ watch(() => route.params.id, loadProduct); // Re-fetch the product if the route 
               <button class="p-2 hover:bg-gray-100" @click="decrementQuantity">
                 <MinusIcon class="w-5 h-5" />
               </button>
-              <input 
-                type="number" 
-                v-model="quantity" 
-                class="w-16 text-center border-x p-2"
-                min="1"
-                :max="product.no_default"
-              >
+              <input type="number" v-model="quantity" class="w-16 text-center border-x p-2" min="1"
+                :max="product.no_default">
               <button class="p-2 hover:bg-gray-100" @click="incrementQuantity">
                 <PlusIcon class="w-5 h-5" />
               </button>
@@ -155,13 +179,12 @@ watch(() => route.params.id, loadProduct); // Re-fetch the product if the route 
           </div>
 
           <div class="flex space-x-3">
-            <router-link to="/checkout">
-              <button class="w-32 bg-[#022d5a] text-white py-3 rounded-lg transition-colors"
-              @click="addToCart(product)">
+            <button class="w-32 bg-[#022d5a] text-white py-3 rounded-lg transition-colors" 
+              @click="buyNow(product)">
               Buy Now
             </button>
-            </router-link>
-            <button class="flex justify-center items-center w-64 px-1 py-2.5 rounded-lg font-medium text-[#022d5a] border-[#022d5a] border hover:bg-[#022d5a] hover:text-white transition duration-300 ease-in-out transform hover:scale-105"
+            <button
+              class="flex justify-center items-center w-64 px-1 py-2.5 rounded-lg font-medium text-[#022d5a] border-[#022d5a] border hover:bg-[#022d5a] hover:text-white transition duration-300 ease-in-out transform hover:scale-105"
               @click="addToCart(product)">
               Add To Cart
             </button>

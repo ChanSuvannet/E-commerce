@@ -75,10 +75,6 @@
               <span>Discount:</span>
               <span>-${{ discount.toFixed(2) }}</span>
             </div>
-            <div class="flex justify-between">
-              <span>Shipping Charge:</span>
-              <span>${{ shippingCharge.toFixed(2) }}</span>
-            </div>
             <div class="flex justify-between pt-4 border-t font-semibold">
               <span>Total:</span>
               <span class="text-purple-600">${{ total.toFixed(2) }}</span>
@@ -112,7 +108,7 @@ export default {
     );
 
     // Calculate total
-    const total = computed(() => subtotal.value - discount.value + shippingCharge.value);
+    const total = computed(() => subtotal.value - discount.value);
 
     // Load cart items from localStorage
     const loadCartFromLocalStorage = () => {
