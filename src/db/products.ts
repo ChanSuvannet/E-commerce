@@ -874,8 +874,7 @@ export const products: Product[] = [
         qty: 1,
         no_default: 100,
         currentPrice: '8.00'
-    }
-    
+    },
     {
         id: 53,
         image: pencialCase,
@@ -889,5 +888,6 @@ export const products: Product[] = [
         qty: 1,
         description: "HB pencil suitable for sketching and writing.",
         category: "Pencil",
-        no_default:100  },
+        no_default:100
+    }
 ]
