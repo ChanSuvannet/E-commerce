@@ -79,12 +79,14 @@
               <span>Total:</span>
               <span class="text-purple-600">${{ total.toFixed(2) }}</span>
             </div>
-            <button
-              @click="proceedToCheckout"
-              class="flex justify-center items-center w-full px-1 py-2.5 rounded-lg font-medium bg-[#022d5a] text-white border-[#022d5a] border hover:bg-[#022d5a] hover:text-white transition duration-300 ease-in-out transform hover:scale-105"
-            >
-              Proceed To Checkout →
-            </button>
+            <router-link :to="'/shop/checkout/payment'">
+              <button
+                @click="proceedToCheckout"
+                class="flex justify-center items-center w-full px-1 py-2.5 rounded-lg font-medium bg-[#022d5a] text-white border-[#022d5a] border hover:bg-[#022d5a] hover:text-white transition duration-300 ease-in-out transform hover:scale-105"
+              >
+                Proceed To Checkout →
+              </button>
+            </router-link>
           </div>
         </div>
       </div>
@@ -94,7 +96,8 @@
 
 <script>
 import { computed, onMounted, ref, watch } from "vue";
-
+import { useRouter } from "vue-router";
+const router = useRouter();
 export default {
   name: "CardList",
   setup() {
@@ -104,7 +107,10 @@ export default {
 
     // Calculate subtotal
     const subtotal = computed(() =>
-      cart.value.reduce((sum, item) => sum + item.currentPrice * item.quantity, 0)
+      cart.value.reduce(
+        (sum, item) => sum + item.currentPrice * item.quantity,
+        0
+      )
     );
 
     // Calculate total
@@ -147,9 +153,8 @@ export default {
 
     // Load cart data on component mount
     onMounted(() => {
-  loadCartFromLocalStorage();
-});
-
+      loadCartFromLocalStorage();
+    });
 
     return {
       cart,
