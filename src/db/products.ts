@@ -11,6 +11,7 @@ import book9 from '../assets/photo/book9.jpg'
 import bookk1 from '../assets/photo/bookk1.jpg'
 
 
+
 import pencialCase from '../assets/photo/pencialCase.png'
 import book from '../assets/shop/book.png'
 
@@ -909,5 +910,52 @@ export const products: Product[] = [
         description: "HB pencil suitable for sketching and writing.",
         category: "Pencil",
         no_default: 100
+    },
+    {
+        id: 54,
+        image: book8,
+        title: 'Before the coffee get cold',
+        rating: 4,
+        description: 'The popular book in 2024.',
+        category: 'Book',
+        categoryId: 1,
+        reviews: '5,123',
+        originalPrice: '15.00',
+        discount: "50% OFF",
+        qty: 1,
+        no_default: 200,
+        currentPrice: '7.50'
+    },
+    {
+        id: 55,
+        image: book9,
+        title: 'I want to die but I want to eat...',
+        rating: 5,
+        description: 'A popular book this year.',
+        category: 'Book',
+        categoryId: 1,
+        reviews: '6,450',
+        originalPrice: '7.50',
+        discount: "50% OFF",
+        qty: 1,
+        no_default: 150,
+        currentPrice: '7.50'
+    },
+    {
+        id: 56,
+        image: bookk1,
+        title: 'Rainbow Notebook',
+        rating: 4,
+        description: 'Best Notebook',
+        category: 'Book',
+        categoryId: 1,
+        reviews: '3,892',
+        originalPrice: '2.50',
+        discount: "20% OFF",
+        qty: 1,
+        no_default: 120,
+        currentPrice: '1.50'
     }
-]
+
+
+];
