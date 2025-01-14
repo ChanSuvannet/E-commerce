@@ -2,6 +2,7 @@ import book from '../assets/shop/book.png'
 import caculator from '../assets/shop/caculator.png'
 import pen from '../assets/shop/pen.png'
 import pencil from '../assets/shop/pencil.png'
+import pencialCase from '../assets/photo/pencialCase.png'
 
 export interface NewProduct {
     id: number;
@@ -17,11 +18,11 @@ export const newproduct: NewProduct[] = [
     
          {
             id: 1,
-            name: 'Stylish Watch For Man',
-            image: book, // Replace with your local image path
-            price: 75,
-            originalPrice: 150,
-            rating: 5,
+            name: 'Cappibara Pencial Case',
+            image: pencialCase, 
+            price: 2.5,
+            originalPrice: 5,
+            rating: 4,
             label: '-50%',
           },
           {
