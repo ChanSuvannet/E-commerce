@@ -77,7 +77,7 @@
 
                 <!-- Product Price -->
                 <div class="flex items-center mb-2">
-                  <span class="text-lg font-bold">${{ product.price }}</span>
+                  <span class="text-lg font-bold">${{ product.currentPrice }}</span>
                   <span v-if="product.originalPrice" class="ml-2 text-gray-400 line-through">
                     ${{ product.originalPrice }}
                   </span>
